@@ -1,0 +1,31 @@
+# PatchedClusterDetail
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | Option<**i32**> |  | [optional][readonly]
+**status** | Option<[**models::ResourceStatusEnum**](ResourceStatusEnum.md)> |  | [optional][readonly]
+**name** | Option<**String**> |  | [optional]
+**generation** | Option<**String**> |  | [optional][readonly]
+**cluster_type** | Option<**String**> |  | [optional][readonly]
+**kube_version** | Option<**String**> |  | [optional][readonly]
+**price_per_month** | Option<**String**> |  | [optional]
+**price_per_hour** | Option<**f64**> |  | [optional][readonly]
+**features** | Option<[**Vec<models::FeaturesEnum>**](FeaturesEnum.md)> |  | [optional]
+**features_ready** | Option<**bool**> |  | [optional][readonly]
+**kubeconfig_valid_until** | Option<**String**> |  | [optional][readonly]
+**ipv4_address** | Option<**String**> |  | [optional][readonly]
+**ipv6_address** | Option<**String**> |  | [optional][readonly]
+**dual_stack** | Option<**bool**> |  | [optional][readonly]
+**protected** | Option<**bool**> |  | [optional]
+**talos_version** | Option<**String**> |  | [optional][readonly]
+**talos_upgrade_available** | Option<**bool**> |  | [optional][readonly]
+**talos_next_version** | Option<**String**> |  | [optional][readonly]
+**storage_quota_gb** | Option<**i32**> |  | [optional][readonly]
+**last_pool_used_bytes** | Option<**i64**> |  | [optional][readonly]
+**last_storage_sync_at** | Option<**String**> |  | [optional][readonly]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
