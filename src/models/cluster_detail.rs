@@ -21,10 +21,10 @@ pub struct ClusterDetail {
     pub name: Option<String>,
     #[serde(rename = "generation")]
     pub generation: String,
-    #[serde(rename = "cluster_type")]
-    pub cluster_type: String,
-    #[serde(rename = "kube_version")]
-    pub kube_version: String,
+    #[serde(rename = "cluster_type", deserialize_with = "Option::deserialize")]
+    pub cluster_type: Option<String>,
+    #[serde(rename = "kube_version", deserialize_with = "Option::deserialize")]
+    pub kube_version: Option<String>,
     #[serde(rename = "price_per_month")]
     pub price_per_month: String,
     #[serde(rename = "price_per_hour")]
@@ -33,32 +33,32 @@ pub struct ClusterDetail {
     pub features: Option<Vec<models::FeaturesEnum>>,
     #[serde(rename = "features_ready")]
     pub features_ready: bool,
-    #[serde(rename = "kubeconfig_valid_until")]
-    pub kubeconfig_valid_until: String,
-    #[serde(rename = "ipv4_address")]
-    pub ipv4_address: String,
-    #[serde(rename = "ipv6_address")]
-    pub ipv6_address: String,
+    #[serde(rename = "kubeconfig_valid_until", deserialize_with = "Option::deserialize")]
+    pub kubeconfig_valid_until: Option<String>,
+    #[serde(rename = "ipv4_address", deserialize_with = "Option::deserialize")]
+    pub ipv4_address: Option<String>,
+    #[serde(rename = "ipv6_address", deserialize_with = "Option::deserialize")]
+    pub ipv6_address: Option<String>,
     #[serde(rename = "dual_stack")]
     pub dual_stack: bool,
     #[serde(rename = "protected", skip_serializing_if = "Option::is_none")]
     pub protected: Option<bool>,
-    #[serde(rename = "talos_version")]
-    pub talos_version: String,
+    #[serde(rename = "talos_version", deserialize_with = "Option::deserialize")]
+    pub talos_version: Option<String>,
     #[serde(rename = "talos_upgrade_available")]
     pub talos_upgrade_available: bool,
-    #[serde(rename = "talos_next_version")]
-    pub talos_next_version: String,
-    #[serde(rename = "storage_quota_gb")]
-    pub storage_quota_gb: i32,
-    #[serde(rename = "last_pool_used_bytes")]
-    pub last_pool_used_bytes: i64,
-    #[serde(rename = "last_storage_sync_at")]
-    pub last_storage_sync_at: String,
+    #[serde(rename = "talos_next_version", deserialize_with = "Option::deserialize")]
+    pub talos_next_version: Option<String>,
+    #[serde(rename = "storage_quota_gb", deserialize_with = "Option::deserialize")]
+    pub storage_quota_gb: Option<i32>,
+    #[serde(rename = "last_pool_used_bytes", deserialize_with = "Option::deserialize")]
+    pub last_pool_used_bytes: Option<i64>,
+    #[serde(rename = "last_storage_sync_at", deserialize_with = "Option::deserialize")]
+    pub last_storage_sync_at: Option<String>,
 }
 
 impl ClusterDetail {
-    pub fn new(id: i32, status: models::ResourceStatusEnum, generation: String, cluster_type: String, kube_version: String, price_per_month: String, price_per_hour: f64, features_ready: bool, kubeconfig_valid_until: String, ipv4_address: String, ipv6_address: String, dual_stack: bool, talos_version: String, talos_upgrade_available: bool, talos_next_version: String, storage_quota_gb: i32, last_pool_used_bytes: i64, last_storage_sync_at: String) -> ClusterDetail {
+    pub fn new(id: i32, status: models::ResourceStatusEnum, generation: String, cluster_type: Option<String>, kube_version: Option<String>, price_per_month: String, price_per_hour: f64, features_ready: bool, kubeconfig_valid_until: Option<String>, ipv4_address: Option<String>, ipv6_address: Option<String>, dual_stack: bool, talos_version: Option<String>, talos_upgrade_available: bool, talos_next_version: Option<String>, storage_quota_gb: Option<i32>, last_pool_used_bytes: Option<i64>, last_storage_sync_at: Option<String>) -> ClusterDetail {
         ClusterDetail {
             id,
             status,

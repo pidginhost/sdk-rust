@@ -36,11 +36,9 @@ pub struct ServerDetail {
     #[serde(rename = "volumes")]
     pub volumes: Vec<models::Volume>,
     #[serde(rename = "networks")]
-    pub networks: std::collections::HashMap<String, serde_json::Value>,
+    pub networks: Box<models::ServerNetworks>,
     #[serde(rename = "floating_ips")]
     pub floating_ips: Vec<models::FloatingIpSummary>,
-    #[serde(rename = "password", skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
     /// Public key to apply for SSH login. Applying a non-empty key regenerates cloud-init and reboots a running server. Clearing removes the key from future cloud-init data, but does not revoke keys already in the guest.
     #[serde(rename = "ssh_pub_key", skip_serializing_if = "Option::is_none")]
     pub ssh_pub_key: Option<String>,
@@ -66,7 +64,7 @@ pub struct ServerDetail {
 }
 
 impl ServerDetail {
-    pub fn new(id: i32, hostname: String, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, machine: std::collections::HashMap<String, serde_json::Value>, volumes: Vec<models::Volume>, networks: std::collections::HashMap<String, serde_json::Value>, floating_ips: Vec<models::FloatingIpSummary>, status: models::ResourceStatusEnum, username: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> ServerDetail {
+    pub fn new(id: i32, hostname: String, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, machine: std::collections::HashMap<String, serde_json::Value>, volumes: Vec<models::Volume>, networks: models::ServerNetworks, floating_ips: Vec<models::FloatingIpSummary>, status: models::ResourceStatusEnum, username: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> ServerDetail {
         ServerDetail {
             id,
             hostname,
@@ -79,9 +77,8 @@ impl ServerDetail {
             generation,
             machine,
             volumes,
-            networks,
+            networks: Box::new(networks),
             floating_ips,
-            password: None,
             ssh_pub_key: None,
             status,
             username,

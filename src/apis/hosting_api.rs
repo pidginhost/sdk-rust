@@ -38,10 +38,10 @@ pub enum HostingHostingRetrieveError {
 
 
 /// Change the cPanel password for this hosting service.
-pub async fn hosting_hosting_change_password_create(configuration: &configuration::Configuration, id: &str, change_password: models::ChangePassword) -> Result<models::HostingChangePasswordResponse, Error<HostingHostingChangePasswordCreateError>> {
+pub async fn hosting_hosting_change_password_create(configuration: &configuration::Configuration, id: &str, change_password_request: models::ChangePasswordRequest) -> Result<models::HostingChangePasswordResponse, Error<HostingHostingChangePasswordCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_change_password = change_password;
+    let p_body_change_password_request = change_password_request;
 
     let uri_str = format!("{}/api/hosting/hosting/{id}/change-password/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -57,7 +57,7 @@ pub async fn hosting_hosting_change_password_create(configuration: &configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_change_password);
+    req_builder = req_builder.json(&p_body_change_password_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

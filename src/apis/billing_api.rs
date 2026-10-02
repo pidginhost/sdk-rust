@@ -143,9 +143,9 @@ pub enum BillingSubscriptionsRetrieveError {
 
 
 /// Create a new funds deposit.
-pub async fn billing_deposits_create(configuration: &configuration::Configuration, deposit_create: models::DepositCreate) -> Result<models::Deposit, Error<BillingDepositsCreateError>> {
+pub async fn billing_deposits_create(configuration: &configuration::Configuration, deposit_create_request: models::DepositCreateRequest) -> Result<models::Deposit, Error<BillingDepositsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_deposit_create = deposit_create;
+    let p_body_deposit_create_request = deposit_create_request;
 
     let uri_str = format!("{}/api/billing/deposits/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -161,7 +161,7 @@ pub async fn billing_deposits_create(configuration: &configuration::Configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_deposit_create);
+    req_builder = req_builder.json(&p_body_deposit_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -373,9 +373,9 @@ pub async fn billing_funds_log_list(configuration: &configuration::Configuration
 }
 
 /// Update low-balance notification settings.
-pub async fn billing_funds_notification_settings_create(configuration: &configuration::Configuration, low_balance_settings: models::LowBalanceSettings) -> Result<models::NotificationSettingsResponse, Error<BillingFundsNotificationSettingsCreateError>> {
+pub async fn billing_funds_notification_settings_create(configuration: &configuration::Configuration, low_balance_settings_request: models::LowBalanceSettingsRequest) -> Result<models::NotificationSettingsResponse, Error<BillingFundsNotificationSettingsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_low_balance_settings = low_balance_settings;
+    let p_body_low_balance_settings_request = low_balance_settings_request;
 
     let uri_str = format!("{}/api/billing/funds/notification-settings/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -391,7 +391,7 @@ pub async fn billing_funds_notification_settings_create(configuration: &configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_low_balance_settings);
+    req_builder = req_builder.json(&p_body_low_balance_settings_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -636,10 +636,10 @@ pub async fn billing_services_cancel_create(configuration: &configuration::Confi
 }
 
 /// Change the billing cycle of a service.
-pub async fn billing_services_change_billing_cycle_create(configuration: &configuration::Configuration, id: &str, change_billing_cycle: models::ChangeBillingCycle) -> Result<models::ChangeBillingCycleResponse, Error<BillingServicesChangeBillingCycleCreateError>> {
+pub async fn billing_services_change_billing_cycle_create(configuration: &configuration::Configuration, id: &str, change_billing_cycle_request: models::ChangeBillingCycleRequest) -> Result<models::ChangeBillingCycleResponse, Error<BillingServicesChangeBillingCycleCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_change_billing_cycle = change_billing_cycle;
+    let p_body_change_billing_cycle_request = change_billing_cycle_request;
 
     let uri_str = format!("{}/api/billing/services/{id}/change-billing-cycle/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -655,7 +655,7 @@ pub async fn billing_services_change_billing_cycle_create(configuration: &config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_change_billing_cycle);
+    req_builder = req_builder.json(&p_body_change_billing_cycle_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -683,10 +683,10 @@ pub async fn billing_services_change_billing_cycle_create(configuration: &config
 }
 
 /// Change the company associated with a service.
-pub async fn billing_services_change_company_create(configuration: &configuration::Configuration, id: &str, change_company: Option<models::ChangeCompany>) -> Result<models::ChangeCompanyResponse, Error<BillingServicesChangeCompanyCreateError>> {
+pub async fn billing_services_change_company_create(configuration: &configuration::Configuration, id: &str, change_company_request: Option<models::ChangeCompanyRequest>) -> Result<models::ChangeCompanyResponse, Error<BillingServicesChangeCompanyCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_change_company = change_company;
+    let p_body_change_company_request = change_company_request;
 
     let uri_str = format!("{}/api/billing/services/{id}/change-company/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -702,7 +702,7 @@ pub async fn billing_services_change_company_create(configuration: &configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_change_company);
+    req_builder = req_builder.json(&p_body_change_company_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

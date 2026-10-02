@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 ## account_api_tokens_create
 
-> models::ApiTokenCreate account_api_tokens_create(api_token_create)
+> models::ApiTokenCreate account_api_tokens_create(api_token_create_request)
 
 
 Manage your API tokens
@@ -38,7 +38,7 @@ Manage your API tokens
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**api_token_create** | [**ApiTokenCreate**](ApiTokenCreate.md) |  | [required] |
+**api_token_create_request** | [**ApiTokenCreateRequest**](ApiTokenCreateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_companies_create
 
-> models::Company account_companies_create(company)
+> models::Company account_companies_create(company_request)
 
 
 Manage your companies
@@ -128,7 +128,7 @@ Manage your companies
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**company** | [**Company**](Company.md) |  | [required] |
+**company_request** | [**CompanyRequest**](CompanyRequest.md) |  | [required] |
 
 ### Return type
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_companies_partial_update
 
-> models::Company account_companies_partial_update(id, patched_company)
+> models::Company account_companies_partial_update(id, patched_company_request)
 
 
 Manage your companies
@@ -219,7 +219,7 @@ Manage your companies
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this company. | [required] |
-**patched_company** | Option<[**PatchedCompany**](PatchedCompany.md)> |  |  |
+**patched_company_request** | Option<[**PatchedCompanyRequest**](PatchedCompanyRequest.md)> |  |  |
 
 ### Return type
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_companies_update
 
-> models::Company account_companies_update(id, company)
+> models::Company account_companies_update(id, company_request)
 
 
 Manage your companies
@@ -280,7 +280,7 @@ Manage your companies
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this company. | [required] |
-**company** | [**Company**](Company.md) |  | [required] |
+**company_request** | [**CompanyRequest**](CompanyRequest.md) |  | [required] |
 
 ### Return type
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_profile_partial_update
 
-> models::Profile account_profile_partial_update(patched_profile)
+> models::Profile account_profile_partial_update(patched_profile_request)
 
 
 Manage your profile data
@@ -340,7 +340,7 @@ Manage your profile data
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**patched_profile** | Option<[**PatchedProfile**](PatchedProfile.md)> |  |  |
+**patched_profile_request** | Option<[**PatchedProfileRequest**](PatchedProfileRequest.md)> |  |  |
 
 ### Return type
 
@@ -387,7 +387,7 @@ This endpoint does not need any parameter.
 
 ## account_profile_update
 
-> models::Profile account_profile_update(profile)
+> models::Profile account_profile_update(profile_request)
 
 
 Manage your profile data
@@ -397,7 +397,7 @@ Manage your profile data
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**profile** | [**Profile**](Profile.md) |  | [required] |
+**profile_request** | [**ProfileRequest**](ProfileRequest.md) |  | [required] |
 
 ### Return type
 
@@ -417,7 +417,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_ssh_keys_create
 
-> models::SshKey account_ssh_keys_create(ssh_key)
+> models::SshKey account_ssh_keys_create(ssh_key_request)
 
 
 Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
@@ -427,7 +427,7 @@ Account context + IAM role enforcement for the account residue: billing identity
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**ssh_key** | Option<[**SshKey**](SshKey.md)> |  |  |
+**ssh_key_request** | [**SshKeyRequest**](SshKeyRequest.md) |  | [required] |
 
 ### Return type
 
@@ -507,7 +507,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_ssh_keys_partial_update
 
-> models::SshKey account_ssh_keys_partial_update(id, patched_ssh_key)
+> models::SshKey account_ssh_keys_partial_update(id, patched_ssh_key_update_request)
 
 
 Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
@@ -518,7 +518,7 @@ Account context + IAM role enforcement for the account residue: billing identity
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**patched_ssh_key** | Option<[**PatchedSshKey**](PatchedSshKey.md)> |  |  |
+**patched_ssh_key_update_request** | Option<[**PatchedSshKeyUpdateRequest**](PatchedSshKeyUpdateRequest.md)> |  |  |
 
 ### Return type
 
@@ -568,7 +568,7 @@ Name | Type | Description  | Required | Notes
 
 ## account_ssh_keys_update
 
-> models::SshKey account_ssh_keys_update(id, ssh_key)
+> models::SshKey account_ssh_keys_update(id, ssh_key_update_request)
 
 
 Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
@@ -579,7 +579,7 @@ Account context + IAM role enforcement for the account residue: billing identity
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**ssh_key** | Option<[**SshKey**](SshKey.md)> |  |  |
+**ssh_key_update_request** | Option<[**SshKeyUpdateRequest**](SshKeyUpdateRequest.md)> |  |  |
 
 ### Return type
 

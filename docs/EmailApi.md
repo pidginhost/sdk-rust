@@ -34,7 +34,6 @@ Method | HTTP request | Description
 [**email_services_create**](EmailApi.md#email_services_create) | **POST** /api/email/services/ | 
 [**email_services_dedicated_ip_create**](EmailApi.md#email_services_dedicated_ip_create) | **POST** /api/email/services/{id}/dedicated_ip/ | 
 [**email_services_dedicated_ip_destroy**](EmailApi.md#email_services_dedicated_ip_destroy) | **DELETE** /api/email/services/{id}/dedicated_ip/ | 
-[**email_services_destroy**](EmailApi.md#email_services_destroy) | **DELETE** /api/email/services/{id}/ | 
 [**email_services_domains_create**](EmailApi.md#email_services_domains_create) | **POST** /api/email/services/{service_pk}/domains/ | 
 [**email_services_domains_list**](EmailApi.md#email_services_domains_list) | **GET** /api/email/services/{service_pk}/domains/ | 
 [**email_services_list**](EmailApi.md#email_services_list) | **GET** /api/email/services/ | 
@@ -62,7 +61,7 @@ Method | HTTP request | Description
 
 ## email_api_credentials_create
 
-> models::ApiCredential email_api_credentials_create(api_credential)
+> models::ApiCredentialCreated email_api_credentials_create(credential_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -72,11 +71,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**api_credential** | Option<[**ApiCredential**](ApiCredential.md)> |  |  |
+**credential_create_request** | Option<[**CredentialCreateRequest**](CredentialCreateRequest.md)> |  |  |
 
 ### Return type
 
-[**models::ApiCredential**](ApiCredential.md)
+[**models::ApiCredentialCreated**](ApiCredentialCreated.md)
 
 ### Authorization
 
@@ -182,7 +181,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_domains_create
 
-> models::SendingDomain email_domains_create(domain_add)
+> models::SendingDomain email_domains_create(domain_add_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -192,7 +191,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**domain_add** | [**DomainAdd**](DomainAdd.md) |  | [required] |
+**domain_add_request** | [**DomainAddRequest**](DomainAddRequest.md) |  | [required] |
 
 ### Return type
 
@@ -212,7 +211,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_domains_inbound_routes_create
 
-> models::InboundRoute email_domains_inbound_routes_create(domain_pk, inbound_route)
+> models::InboundRouteWriteResponse email_domains_inbound_routes_create(domain_pk, inbound_route_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -223,11 +222,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain_pk** | **i32** |  | [required] |
-**inbound_route** | [**InboundRoute**](InboundRoute.md) |  | [required] |
+**inbound_route_create_request** | [**InboundRouteCreateRequest**](InboundRouteCreateRequest.md) |  | [required] |
 
 ### Return type
 
-[**models::InboundRoute**](InboundRoute.md)
+[**models::InboundRouteWriteResponse**](InboundRouteWriteResponse.md)
 
 ### Authorization
 
@@ -334,7 +333,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_domains_rotate_dkim_create
 
-> models::SendingDomain email_domains_rotate_dkim_create(id, sending_domain)
+> models::SendingDomain email_domains_rotate_dkim_create(id)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -345,7 +344,6 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this sending domain. | [required] |
-**sending_domain** | Option<[**SendingDomain**](SendingDomain.md)> |  |  |
 
 ### Return type
 
@@ -357,7 +355,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -365,7 +363,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_domains_toggle_inbound_create
 
-> models::SendingDomain email_domains_toggle_inbound_create(id, sending_domain)
+> models::SendingDomain email_domains_toggle_inbound_create(id, toggle_inbound_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -376,7 +374,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this sending domain. | [required] |
-**sending_domain** | Option<[**SendingDomain**](SendingDomain.md)> |  |  |
+**toggle_inbound_request** | Option<[**ToggleInboundRequest**](ToggleInboundRequest.md)> |  |  |
 
 ### Return type
 
@@ -396,7 +394,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_domains_verify_create
 
-> models::SendingDomain email_domains_verify_create(id, sending_domain)
+> models::SendingDomain email_domains_verify_create(id)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -407,7 +405,6 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this sending domain. | [required] |
-**sending_domain** | Option<[**SendingDomain**](SendingDomain.md)> |  |  |
 
 ### Return type
 
@@ -419,7 +416,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -427,7 +424,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_inbound_routes_create
 
-> models::InboundRoute email_inbound_routes_create(inbound_route)
+> models::InboundRouteWriteResponse email_inbound_routes_create(inbound_route_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -437,11 +434,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inbound_route** | [**InboundRoute**](InboundRoute.md) |  | [required] |
+**inbound_route_create_request** | [**InboundRouteCreateRequest**](InboundRouteCreateRequest.md) |  | [required] |
 
 ### Return type
 
-[**models::InboundRoute**](InboundRoute.md)
+[**models::InboundRouteWriteResponse**](InboundRouteWriteResponse.md)
 
 ### Authorization
 
@@ -517,7 +514,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_inbound_routes_partial_update
 
-> models::InboundRoute email_inbound_routes_partial_update(id, patched_inbound_route)
+> models::InboundRouteWriteResponse email_inbound_routes_partial_update(id, patched_inbound_route_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -528,11 +525,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this inbound route. | [required] |
-**patched_inbound_route** | Option<[**PatchedInboundRoute**](PatchedInboundRoute.md)> |  |  |
+**patched_inbound_route_create_request** | Option<[**PatchedInboundRouteCreateRequest**](PatchedInboundRouteCreateRequest.md)> |  |  |
 
 ### Return type
 
-[**models::InboundRoute**](InboundRoute.md)
+[**models::InboundRouteWriteResponse**](InboundRouteWriteResponse.md)
 
 ### Authorization
 
@@ -578,7 +575,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_messages_retrieve
 
-> email_messages_retrieve(message_id)
+> std::collections::HashMap<String, serde_json::Value> email_messages_retrieve(message_id)
 
 
 Look up a single message via Postal v3 legacy API using the server's own token.
@@ -592,7 +589,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)
 
 ### Authorization
 
@@ -601,14 +598,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## email_sandbox_addresses_create
 
-> models::SandboxAddress email_sandbox_addresses_create(sandbox_address)
+> models::SandboxAddress email_sandbox_addresses_create(sandbox_address_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -618,7 +615,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**sandbox_address** | [**SandboxAddress**](SandboxAddress.md) |  | [required] |
+**sandbox_address_request** | [**SandboxAddressRequest**](SandboxAddressRequest.md) |  | [required] |
 
 ### Return type
 
@@ -728,32 +725,35 @@ Name | Type | Description  | Required | Notes
 
 ## email_send_create
 
-> email_send_create()
+> models::EmailSendResponse email_send_create(send_request)
 
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**send_request** | [**SendRequest**](SendRequest.md) |  | [required] |
 
 ### Return type
 
- (empty response body)
+[**models::EmailSendResponse**](EmailSendResponse.md)
 
 ### Authorization
 
-No authorization required
+[emailApiKey](../README.md#emailApiKey)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## email_services_api_credentials_create
 
-> models::ApiCredential email_services_api_credentials_create(service_pk, api_credential)
+> models::ApiCredentialCreated email_services_api_credentials_create(service_pk, credential_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -764,11 +764,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
-**api_credential** | Option<[**ApiCredential**](ApiCredential.md)> |  |  |
+**credential_create_request** | Option<[**CredentialCreateRequest**](CredentialCreateRequest.md)> |  |  |
 
 ### Return type
 
-[**models::ApiCredential**](ApiCredential.md)
+[**models::ApiCredentialCreated**](ApiCredentialCreated.md)
 
 ### Authorization
 
@@ -845,7 +845,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_change_tier_partial_update
 
-> models::EmailService email_services_change_tier_partial_update(id, patched_subscribe)
+> models::EmailService email_services_change_tier_partial_update(id, subscribe_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -856,7 +856,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this email service. | [required] |
-**patched_subscribe** | Option<[**PatchedSubscribe**](PatchedSubscribe.md)> |  |  |
+**subscribe_request** | [**SubscribeRequest**](SubscribeRequest.md) |  | [required] |
 
 ### Return type
 
@@ -876,7 +876,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_create
 
-> models::EmailService email_services_create(subscribe)
+> models::EmailService email_services_create(subscribe_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -886,7 +886,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**subscribe** | [**Subscribe**](Subscribe.md) |  | [required] |
+**subscribe_request** | [**SubscribeRequest**](SubscribeRequest.md) |  | [required] |
 
 ### Return type
 
@@ -936,7 +936,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_dedicated_ip_destroy
 
-> email_services_dedicated_ip_destroy(id)
+> models::EmailService email_services_dedicated_ip_destroy(id)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -950,7 +950,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::EmailService**](EmailService.md)
 
 ### Authorization
 
@@ -959,44 +959,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## email_services_destroy
-
-> email_services_destroy(id)
-
-
-Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | A unique integer value identifying this email service. | [required] |
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## email_services_domains_create
 
-> models::SendingDomain email_services_domains_create(service_pk, domain_add)
+> models::SendingDomain email_services_domains_create(service_pk, domain_add_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1007,7 +977,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
-**domain_add** | [**DomainAdd**](DomainAdd.md) |  | [required] |
+**domain_add_request** | [**DomainAddRequest**](DomainAddRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1088,7 +1058,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_messages_retrieve
 
-> email_services_messages_retrieve(service_pk)
+> models::EmailMessageList email_services_messages_retrieve(service_pk, page, per_page)
 
 
 List recently observed messages for a customer's email service.  Postal v3 legacy API exposes per-message lookups only; phclient builds the list locally from webhook events. Each message_id is deduped, keeping the most recent event_type as the message status.
@@ -1099,10 +1069,12 @@ List recently observed messages for a customer's email service.  Postal v3 legac
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
+**page** | Option<**i32**> | Page number, starting at 1. |  |
+**per_page** | Option<**i32**> | Page size, capped at 200; defaults to 50. |  |
 
 ### Return type
 
- (empty response body)
+[**models::EmailMessageList**](EmailMessageList.md)
 
 ### Authorization
 
@@ -1111,14 +1083,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## email_services_partial_update
 
-> models::EmailService email_services_partial_update(id, patched_email_service)
+> models::EmailService email_services_partial_update(id)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1129,7 +1101,6 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this email service. | [required] |
-**patched_email_service** | Option<[**PatchedEmailService**](PatchedEmailService.md)> |  |  |
 
 ### Return type
 
@@ -1141,7 +1112,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1209,7 +1180,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_sandbox_addresses_create
 
-> models::SandboxAddress email_services_sandbox_addresses_create(service_pk, sandbox_address)
+> models::SandboxAddress email_services_sandbox_addresses_create(service_pk, sandbox_address_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1220,7 +1191,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
-**sandbox_address** | [**SandboxAddress**](SandboxAddress.md) |  | [required] |
+**sandbox_address_request** | [**SandboxAddressRequest**](SandboxAddressRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1271,7 +1242,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_smtp_credentials_create
 
-> models::SmtpCredential email_services_smtp_credentials_create(service_pk, smtp_credential)
+> models::SmtpCredentialCreated email_services_smtp_credentials_create(service_pk, credential_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1282,11 +1253,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
-**smtp_credential** | Option<[**SmtpCredential**](SmtpCredential.md)> |  |  |
+**credential_create_request** | Option<[**CredentialCreateRequest**](CredentialCreateRequest.md)> |  |  |
 
 ### Return type
 
-[**models::SmtpCredential**](SmtpCredential.md)
+[**models::SmtpCredentialCreated**](SmtpCredentialCreated.md)
 
 ### Authorization
 
@@ -1333,7 +1304,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_services_stats_retrieve
 
-> email_services_stats_retrieve(service_pk)
+> models::EmailStats email_services_stats_retrieve(service_pk, end, start)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1344,10 +1315,12 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
+**end** | Option<**chrono::NaiveDate**> |  |  |
+**start** | Option<**chrono::NaiveDate**> |  |  |
 
 ### Return type
 
- (empty response body)
+[**models::EmailStats**](EmailStats.md)
 
 ### Authorization
 
@@ -1356,14 +1329,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## email_services_suppressions_create
 
-> models::SuppressionEntry email_services_suppressions_create(service_pk, suppression_entry)
+> models::SuppressionEntry email_services_suppressions_create(service_pk, suppression_add_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1374,7 +1347,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_pk** | **i32** |  | [required] |
-**suppression_entry** | Option<[**SuppressionEntry**](SuppressionEntry.md)> |  |  |
+**suppression_add_request** | [**SuppressionAddRequest**](SuppressionAddRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1425,7 +1398,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_smtp_credentials_create
 
-> models::SmtpCredential email_smtp_credentials_create(smtp_credential)
+> models::SmtpCredentialCreated email_smtp_credentials_create(credential_create_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1435,11 +1408,11 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**smtp_credential** | Option<[**SmtpCredential**](SmtpCredential.md)> |  |  |
+**credential_create_request** | Option<[**CredentialCreateRequest**](CredentialCreateRequest.md)> |  |  |
 
 ### Return type
 
-[**models::SmtpCredential**](SmtpCredential.md)
+[**models::SmtpCredentialCreated**](SmtpCredentialCreated.md)
 
 ### Authorization
 
@@ -1545,7 +1518,7 @@ Name | Type | Description  | Required | Notes
 
 ## email_suppressions_create
 
-> models::SuppressionEntry email_suppressions_create(suppression_entry)
+> models::SuppressionEntry email_suppressions_create(suppression_add_request)
 
 
 Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -1555,7 +1528,7 @@ Intersect the beta gate and IAM with the configured API permissions.  Keeping th
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**suppression_entry** | Option<[**SuppressionEntry**](SuppressionEntry.md)> |  |  |
+**suppression_add_request** | [**SuppressionAddRequest**](SuppressionAddRequest.md) |  | [required] |
 
 ### Return type
 

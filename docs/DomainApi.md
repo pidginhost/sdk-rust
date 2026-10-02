@@ -61,7 +61,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_check_availability_create
 
-> models::CheckAvailability domain_domain_check_availability_create(check_availability)
+> models::CheckAvailability domain_domain_check_availability_create(check_availability_request)
 
 
 Manage your domains
@@ -71,7 +71,7 @@ Manage your domains
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**check_availability** | [**CheckAvailability**](CheckAvailability.md) |  | [required] |
+**check_availability_request** | [**CheckAvailabilityRequest**](CheckAvailabilityRequest.md) |  | [required] |
 
 ### Return type
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_contacts_create
 
-> models::ContactsUpdateResponse domain_domain_contacts_create(domain, contacts_update)
+> models::ContactsUpdateResponse domain_domain_contacts_create(domain, contacts_update_request)
 
 
 Update a contact on this domain using a saved DomainRegistrant.
@@ -102,7 +102,7 @@ Update a contact on this domain using a saved DomainRegistrant.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** |  | [required] |
-**contacts_update** | [**ContactsUpdate**](ContactsUpdate.md) |  | [required] |
+**contacts_update_request** | [**ContactsUpdateRequest**](ContactsUpdateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_create
 
-> models::DomainCreate domain_domain_create(domain_create)
+> models::DomainCreate domain_domain_create(domain_create_request)
 
 
 Manage your domains
@@ -132,7 +132,7 @@ Manage your domains
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**domain_create** | [**DomainCreate**](DomainCreate.md) |  | [required] |
+**domain_create_request** | [**DomainCreateRequest**](DomainCreateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_dns_create
 
-> models::DnsGlue domain_domain_dns_create(domain, dns_glue)
+> models::DnsGlue domain_domain_dns_create(domain, dns_glue_request)
 
 
 List or upsert glue / personal-DNS records (child nameserver hosts) for this domain. POST body: ``{\"name\": \"ns1\", \"ip\": \"1.2.3.4\", \"ip2\": \"\"}``.
@@ -163,7 +163,7 @@ List or upsert glue / personal-DNS records (child nameserver hosts) for this dom
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** |  | [required] |
-**dns_glue** | [**DnsGlue**](DnsGlue.md) |  | [required] |
+**dns_glue_request** | [**DnsGlueRequest**](DnsGlueRequest.md) |  | [required] |
 
 ### Return type
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_nameservers_create
 
-> models::NameserversUpdateResponse domain_domain_nameservers_create(domain, nameservers_update)
+> models::NameserversUpdateResponse domain_domain_nameservers_create(domain, nameservers_update_request)
 
 
 Update nameservers for this domain.
@@ -286,7 +286,7 @@ Update nameservers for this domain.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** |  | [required] |
-**nameservers_update** | [**NameserversUpdate**](NameserversUpdate.md) |  | [required] |
+**nameservers_update_request** | [**NameserversUpdateRequest**](NameserversUpdateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_partial_update
 
-> models::Domain domain_domain_partial_update(domain, patched_domain)
+> models::Domain domain_domain_partial_update(domain, patched_domain_request)
 
 
 Manage your domains
@@ -317,7 +317,7 @@ Manage your domains
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** |  | [required] |
-**patched_domain** | Option<[**PatchedDomain**](PatchedDomain.md)> |  |  |
+**patched_domain_request** | Option<[**PatchedDomainRequest**](PatchedDomainRequest.md)> |  |  |
 
 ### Return type
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_renew_create
 
-> models::RenewDomain domain_domain_renew_create(domain, renew_domain)
+> models::RenewDomain domain_domain_renew_create(domain, renew_domain_request)
 
 
 Manage your domains
@@ -348,7 +348,7 @@ Manage your domains
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** |  | [required] |
-**renew_domain** | [**RenewDomain**](RenewDomain.md) |  | [required] |
+**renew_domain_request** | [**RenewDomainRequest**](RenewDomainRequest.md) |  | [required] |
 
 ### Return type
 
@@ -398,7 +398,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_transfer_ro_domain_create
 
-> models::TransferRoDomain domain_domain_transfer_ro_domain_create(transfer_ro_domain)
+> models::TransferRoDomain domain_domain_transfer_ro_domain_create(transfer_ro_domain_request)
 
 
 Manage your domains
@@ -408,7 +408,7 @@ Manage your domains
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**transfer_ro_domain** | [**TransferRoDomain**](TransferRoDomain.md) |  | [required] |
+**transfer_ro_domain_request** | [**TransferRoDomainRequest**](TransferRoDomainRequest.md) |  | [required] |
 
 ### Return type
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_update
 
-> models::Domain domain_domain_update(domain, domain2)
+> models::Domain domain_domain_update(domain, domain_request)
 
 
 Manage your domains
@@ -439,7 +439,7 @@ Manage your domains
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** |  | [required] |
-**domain2** | Option<[**Domain**](Domain.md)> |  |  |
+**domain_request** | Option<[**DomainRequest**](DomainRequest.md)> |  |  |
 
 ### Return type
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_registrants_create
 
-> models::DomainRegistrant domain_registrants_create(domain_registrant)
+> models::DomainRegistrant domain_registrants_create(domain_registrant_request)
 
 
 Manage your domain registrant views
@@ -469,7 +469,7 @@ Manage your domain registrant views
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**domain_registrant** | [**DomainRegistrant**](DomainRegistrant.md) |  | [required] |
+**domain_registrant_request** | [**DomainRegistrantRequest**](DomainRegistrantRequest.md) |  | [required] |
 
 ### Return type
 
@@ -549,7 +549,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_registrants_partial_update
 
-> models::DomainRegistrant domain_registrants_partial_update(id, patched_domain_registrant)
+> models::DomainRegistrant domain_registrants_partial_update(id, patched_domain_registrant_request)
 
 
 Manage your domain registrant views
@@ -560,7 +560,7 @@ Manage your domain registrant views
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**patched_domain_registrant** | Option<[**PatchedDomainRegistrant**](PatchedDomainRegistrant.md)> |  |  |
+**patched_domain_registrant_request** | Option<[**PatchedDomainRegistrantRequest**](PatchedDomainRegistrantRequest.md)> |  |  |
 
 ### Return type
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_registrants_update
 
-> models::DomainRegistrant domain_registrants_update(id, domain_registrant)
+> models::DomainRegistrant domain_registrants_update(id, domain_registrant_request)
 
 
 Manage your domain registrant views
@@ -621,7 +621,7 @@ Manage your domain registrant views
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**domain_registrant** | [**DomainRegistrant**](DomainRegistrant.md) |  | [required] |
+**domain_registrant_request** | [**DomainRegistrantRequest**](DomainRegistrantRequest.md) |  | [required] |
 
 ### Return type
 

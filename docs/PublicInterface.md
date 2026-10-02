@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **interface** | **String** |  | [readonly]
-**ipv4** | **String** |  | [readonly]
-**ipv6** | **String** |  | [readonly]
+**ipv4** | **String** |  | [readonly][default to ]
+**ipv6** | **String** |  | [readonly][default to ]
 **fw_rules_set** | Option<**String**> | ID or slug | [optional]
 **fw_policy_in** | Option<[**models::FwPolicyOutEnum**](FwPolicyOutEnum.md)> |  | [optional]
 **fw_policy_out** | Option<[**models::FwPolicyOutEnum**](FwPolicyOutEnum.md)> |  | [optional]

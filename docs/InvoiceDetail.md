@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **client_info** | Option<**serde_json::Value**> |  | [readonly]
 **invoice_info** | Option<**serde_json::Value**> |  | [readonly]
 **payment_method** | **String** |  | [readonly]
-**services** | **String** |  | [readonly]
+**services** | [**Vec<models::InvoiceService>**](InvoiceService.md) |  | [readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

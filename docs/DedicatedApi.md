@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## dedicated_servers_power_create
 
-> models::PowerActionResponse dedicated_servers_power_create(id, power_action)
+> models::PowerActionResponse dedicated_servers_power_create(id, power_action_request)
 
 
 Execute a power management action (start, stop, restart, shutdown).
@@ -55,7 +55,7 @@ Execute a power management action (start, stop, restart, shutdown).
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**power_action** | [**PowerAction**](PowerAction.md) |  | [required] |
+**power_action_request** | [**PowerActionRequest**](PowerActionRequest.md) |  | [required] |
 
 ### Return type
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 
 ## dedicated_servers_rdns_create
 
-> models::RdnsUpdateResponse dedicated_servers_rdns_create(id, dedicated_rdns)
+> models::RdnsUpdateResponse dedicated_servers_rdns_create(id, dedicated_rdns_request)
 
 
 Update reverse DNS for a dedicated server IP.
@@ -86,7 +86,7 @@ Update reverse DNS for a dedicated server IP.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**dedicated_rdns** | [**DedicatedRdns**](DedicatedRdns.md) |  | [required] |
+**dedicated_rdns_request** | [**DedicatedRdnsRequest**](DedicatedRdnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## dedicated_servers_reinstall_create
 
-> models::ReinstallResponse dedicated_servers_reinstall_create(id, reinstall)
+> models::ReinstallResponse dedicated_servers_reinstall_create(id, reinstall_request)
 
 
 Reinstall the dedicated server with a new operating system.
@@ -117,7 +117,7 @@ Reinstall the dedicated server with a new operating system.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**reinstall** | [**Reinstall**](Reinstall.md) |  | [required] |
+**reinstall_request** | [**ReinstallRequest**](ReinstallRequest.md) |  | [required] |
 
 ### Return type
 

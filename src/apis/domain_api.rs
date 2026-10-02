@@ -216,9 +216,9 @@ pub async fn domain_domain_cancel_create(configuration: &configuration::Configur
 }
 
 /// Manage your domains
-pub async fn domain_domain_check_availability_create(configuration: &configuration::Configuration, check_availability: models::CheckAvailability) -> Result<models::CheckAvailability, Error<DomainDomainCheckAvailabilityCreateError>> {
+pub async fn domain_domain_check_availability_create(configuration: &configuration::Configuration, check_availability_request: models::CheckAvailabilityRequest) -> Result<models::CheckAvailability, Error<DomainDomainCheckAvailabilityCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_check_availability = check_availability;
+    let p_body_check_availability_request = check_availability_request;
 
     let uri_str = format!("{}/api/domain/domain/check-availability/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -234,7 +234,7 @@ pub async fn domain_domain_check_availability_create(configuration: &configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_check_availability);
+    req_builder = req_builder.json(&p_body_check_availability_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -262,10 +262,10 @@ pub async fn domain_domain_check_availability_create(configuration: &configurati
 }
 
 /// Update a contact on this domain using a saved DomainRegistrant.
-pub async fn domain_domain_contacts_create(configuration: &configuration::Configuration, domain: &str, contacts_update: models::ContactsUpdate) -> Result<models::ContactsUpdateResponse, Error<DomainDomainContactsCreateError>> {
+pub async fn domain_domain_contacts_create(configuration: &configuration::Configuration, domain: &str, contacts_update_request: models::ContactsUpdateRequest) -> Result<models::ContactsUpdateResponse, Error<DomainDomainContactsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain = domain;
-    let p_body_contacts_update = contacts_update;
+    let p_body_contacts_update_request = contacts_update_request;
 
     let uri_str = format!("{}/api/domain/domain/{domain}/contacts/", configuration.base_path, domain=crate::apis::urlencode(p_path_domain));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -281,7 +281,7 @@ pub async fn domain_domain_contacts_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_contacts_update);
+    req_builder = req_builder.json(&p_body_contacts_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -309,9 +309,9 @@ pub async fn domain_domain_contacts_create(configuration: &configuration::Config
 }
 
 /// Manage your domains
-pub async fn domain_domain_create(configuration: &configuration::Configuration, domain_create: models::DomainCreate) -> Result<models::DomainCreate, Error<DomainDomainCreateError>> {
+pub async fn domain_domain_create(configuration: &configuration::Configuration, domain_create_request: models::DomainCreateRequest) -> Result<models::DomainCreate, Error<DomainDomainCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_domain_create = domain_create;
+    let p_body_domain_create_request = domain_create_request;
 
     let uri_str = format!("{}/api/domain/domain/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -327,7 +327,7 @@ pub async fn domain_domain_create(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_domain_create);
+    req_builder = req_builder.json(&p_body_domain_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -355,10 +355,10 @@ pub async fn domain_domain_create(configuration: &configuration::Configuration, 
 }
 
 /// List or upsert glue / personal-DNS records (child nameserver hosts) for this domain. POST body: ``{\"name\": \"ns1\", \"ip\": \"1.2.3.4\", \"ip2\": \"\"}``.
-pub async fn domain_domain_dns_create(configuration: &configuration::Configuration, domain: &str, dns_glue: models::DnsGlue) -> Result<models::DnsGlue, Error<DomainDomainDnsCreateError>> {
+pub async fn domain_domain_dns_create(configuration: &configuration::Configuration, domain: &str, dns_glue_request: models::DnsGlueRequest) -> Result<models::DnsGlue, Error<DomainDomainDnsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain = domain;
-    let p_body_dns_glue = dns_glue;
+    let p_body_dns_glue_request = dns_glue_request;
 
     let uri_str = format!("{}/api/domain/domain/{domain}/dns/", configuration.base_path, domain=crate::apis::urlencode(p_path_domain));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -374,7 +374,7 @@ pub async fn domain_domain_dns_create(configuration: &configuration::Configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_dns_glue);
+    req_builder = req_builder.json(&p_body_dns_glue_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -534,10 +534,10 @@ pub async fn domain_domain_list(configuration: &configuration::Configuration, pa
 }
 
 /// Update nameservers for this domain.
-pub async fn domain_domain_nameservers_create(configuration: &configuration::Configuration, domain: &str, nameservers_update: models::NameserversUpdate) -> Result<models::NameserversUpdateResponse, Error<DomainDomainNameserversCreateError>> {
+pub async fn domain_domain_nameservers_create(configuration: &configuration::Configuration, domain: &str, nameservers_update_request: models::NameserversUpdateRequest) -> Result<models::NameserversUpdateResponse, Error<DomainDomainNameserversCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain = domain;
-    let p_body_nameservers_update = nameservers_update;
+    let p_body_nameservers_update_request = nameservers_update_request;
 
     let uri_str = format!("{}/api/domain/domain/{domain}/nameservers/", configuration.base_path, domain=crate::apis::urlencode(p_path_domain));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -553,7 +553,7 @@ pub async fn domain_domain_nameservers_create(configuration: &configuration::Con
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_nameservers_update);
+    req_builder = req_builder.json(&p_body_nameservers_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -581,10 +581,10 @@ pub async fn domain_domain_nameservers_create(configuration: &configuration::Con
 }
 
 /// Manage your domains
-pub async fn domain_domain_partial_update(configuration: &configuration::Configuration, domain: &str, patched_domain: Option<models::PatchedDomain>) -> Result<models::Domain, Error<DomainDomainPartialUpdateError>> {
+pub async fn domain_domain_partial_update(configuration: &configuration::Configuration, domain: &str, patched_domain_request: Option<models::PatchedDomainRequest>) -> Result<models::Domain, Error<DomainDomainPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain = domain;
-    let p_body_patched_domain = patched_domain;
+    let p_body_patched_domain_request = patched_domain_request;
 
     let uri_str = format!("{}/api/domain/domain/{domain}/", configuration.base_path, domain=crate::apis::urlencode(p_path_domain));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -600,7 +600,7 @@ pub async fn domain_domain_partial_update(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_domain);
+    req_builder = req_builder.json(&p_body_patched_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -628,10 +628,10 @@ pub async fn domain_domain_partial_update(configuration: &configuration::Configu
 }
 
 /// Manage your domains
-pub async fn domain_domain_renew_create(configuration: &configuration::Configuration, domain: &str, renew_domain: models::RenewDomain) -> Result<models::RenewDomain, Error<DomainDomainRenewCreateError>> {
+pub async fn domain_domain_renew_create(configuration: &configuration::Configuration, domain: &str, renew_domain_request: models::RenewDomainRequest) -> Result<models::RenewDomain, Error<DomainDomainRenewCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain = domain;
-    let p_body_renew_domain = renew_domain;
+    let p_body_renew_domain_request = renew_domain_request;
 
     let uri_str = format!("{}/api/domain/domain/{domain}/renew/", configuration.base_path, domain=crate::apis::urlencode(p_path_domain));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -647,7 +647,7 @@ pub async fn domain_domain_renew_create(configuration: &configuration::Configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_renew_domain);
+    req_builder = req_builder.json(&p_body_renew_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -720,9 +720,9 @@ pub async fn domain_domain_retrieve(configuration: &configuration::Configuration
 }
 
 /// Manage your domains
-pub async fn domain_domain_transfer_ro_domain_create(configuration: &configuration::Configuration, transfer_ro_domain: models::TransferRoDomain) -> Result<models::TransferRoDomain, Error<DomainDomainTransferRoDomainCreateError>> {
+pub async fn domain_domain_transfer_ro_domain_create(configuration: &configuration::Configuration, transfer_ro_domain_request: models::TransferRoDomainRequest) -> Result<models::TransferRoDomain, Error<DomainDomainTransferRoDomainCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_transfer_ro_domain = transfer_ro_domain;
+    let p_body_transfer_ro_domain_request = transfer_ro_domain_request;
 
     let uri_str = format!("{}/api/domain/domain/transfer-ro-domain/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -738,7 +738,7 @@ pub async fn domain_domain_transfer_ro_domain_create(configuration: &configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_transfer_ro_domain);
+    req_builder = req_builder.json(&p_body_transfer_ro_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -766,10 +766,10 @@ pub async fn domain_domain_transfer_ro_domain_create(configuration: &configurati
 }
 
 /// Manage your domains
-pub async fn domain_domain_update(configuration: &configuration::Configuration, domain: &str, domain2: Option<models::Domain>) -> Result<models::Domain, Error<DomainDomainUpdateError>> {
+pub async fn domain_domain_update(configuration: &configuration::Configuration, domain: &str, domain_request: Option<models::DomainRequest>) -> Result<models::Domain, Error<DomainDomainUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain = domain;
-    let p_body_domain = domain2;
+    let p_body_domain_request = domain_request;
 
     let uri_str = format!("{}/api/domain/domain/{domain}/", configuration.base_path, domain=crate::apis::urlencode(p_path_domain));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -785,7 +785,7 @@ pub async fn domain_domain_update(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_domain);
+    req_builder = req_builder.json(&p_body_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -813,9 +813,9 @@ pub async fn domain_domain_update(configuration: &configuration::Configuration, 
 }
 
 /// Manage your domain registrant views
-pub async fn domain_registrants_create(configuration: &configuration::Configuration, domain_registrant: models::DomainRegistrant) -> Result<models::DomainRegistrant, Error<DomainRegistrantsCreateError>> {
+pub async fn domain_registrants_create(configuration: &configuration::Configuration, domain_registrant_request: models::DomainRegistrantRequest) -> Result<models::DomainRegistrant, Error<DomainRegistrantsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_domain_registrant = domain_registrant;
+    let p_body_domain_registrant_request = domain_registrant_request;
 
     let uri_str = format!("{}/api/domain/registrants/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -831,7 +831,7 @@ pub async fn domain_registrants_create(configuration: &configuration::Configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_domain_registrant);
+    req_builder = req_builder.json(&p_body_domain_registrant_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -941,10 +941,10 @@ pub async fn domain_registrants_list(configuration: &configuration::Configuratio
 }
 
 /// Manage your domain registrant views
-pub async fn domain_registrants_partial_update(configuration: &configuration::Configuration, id: &str, patched_domain_registrant: Option<models::PatchedDomainRegistrant>) -> Result<models::DomainRegistrant, Error<DomainRegistrantsPartialUpdateError>> {
+pub async fn domain_registrants_partial_update(configuration: &configuration::Configuration, id: &str, patched_domain_registrant_request: Option<models::PatchedDomainRegistrantRequest>) -> Result<models::DomainRegistrant, Error<DomainRegistrantsPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_domain_registrant = patched_domain_registrant;
+    let p_body_patched_domain_registrant_request = patched_domain_registrant_request;
 
     let uri_str = format!("{}/api/domain/registrants/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -960,7 +960,7 @@ pub async fn domain_registrants_partial_update(configuration: &configuration::Co
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_domain_registrant);
+    req_builder = req_builder.json(&p_body_patched_domain_registrant_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1033,10 +1033,10 @@ pub async fn domain_registrants_retrieve(configuration: &configuration::Configur
 }
 
 /// Manage your domain registrant views
-pub async fn domain_registrants_update(configuration: &configuration::Configuration, id: &str, domain_registrant: models::DomainRegistrant) -> Result<models::DomainRegistrant, Error<DomainRegistrantsUpdateError>> {
+pub async fn domain_registrants_update(configuration: &configuration::Configuration, id: &str, domain_registrant_request: models::DomainRegistrantRequest) -> Result<models::DomainRegistrant, Error<DomainRegistrantsUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_domain_registrant = domain_registrant;
+    let p_body_domain_registrant_request = domain_registrant_request;
 
     let uri_str = format!("{}/api/domain/registrants/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -1052,7 +1052,7 @@ pub async fn domain_registrants_update(configuration: &configuration::Configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_domain_registrant);
+    req_builder = req_builder.json(&p_body_domain_registrant_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

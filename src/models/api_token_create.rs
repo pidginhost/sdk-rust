@@ -24,23 +24,23 @@ pub struct ApiTokenCreate {
     pub key: String,
     #[serde(rename = "created")]
     pub created: String,
-    #[serde(rename = "account", deserialize_with = "Option::deserialize")]
-    pub account: Option<String>,
-    #[serde(rename = "membership_status", deserialize_with = "Option::deserialize")]
-    pub membership_status: Option<String>,
+    #[serde(rename = "account", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub account: Option<Option<String>>,
+    #[serde(rename = "membership_status", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub membership_status: Option<Option<String>>,
 }
 
 impl ApiTokenCreate {
     /// Label bound tokens with their account + membership status (spec §4.2).  A dark deployment (flag off) with only personal rows keeps the exact pre-feature response shape; a bound row is always labeled so it cannot be mistaken for a personal token even after an emergency disable.
-    pub fn new(id: i32, name: String, key: String, created: String, account: Option<String>, membership_status: Option<String>) -> ApiTokenCreate {
+    pub fn new(id: i32, name: String, key: String, created: String) -> ApiTokenCreate {
         ApiTokenCreate {
             id,
             name,
             scope: None,
             key,
             created,
-            account,
-            membership_status,
+            account: None,
+            membership_status: None,
         }
     }
 }

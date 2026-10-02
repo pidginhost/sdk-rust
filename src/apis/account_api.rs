@@ -150,9 +150,9 @@ pub enum AccountSshKeysUpdateError {
 
 
 /// Manage your API tokens
-pub async fn account_api_tokens_create(configuration: &configuration::Configuration, api_token_create: models::ApiTokenCreate) -> Result<models::ApiTokenCreate, Error<AccountApiTokensCreateError>> {
+pub async fn account_api_tokens_create(configuration: &configuration::Configuration, api_token_create_request: models::ApiTokenCreateRequest) -> Result<models::ApiTokenCreate, Error<AccountApiTokensCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_api_token_create = api_token_create;
+    let p_body_api_token_create_request = api_token_create_request;
 
     let uri_str = format!("{}/api/account/api-tokens/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -168,7 +168,7 @@ pub async fn account_api_tokens_create(configuration: &configuration::Configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_api_token_create);
+    req_builder = req_builder.json(&p_body_api_token_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -278,9 +278,9 @@ pub async fn account_api_tokens_list(configuration: &configuration::Configuratio
 }
 
 /// Manage your companies
-pub async fn account_companies_create(configuration: &configuration::Configuration, company: models::Company) -> Result<models::Company, Error<AccountCompaniesCreateError>> {
+pub async fn account_companies_create(configuration: &configuration::Configuration, company_request: models::CompanyRequest) -> Result<models::Company, Error<AccountCompaniesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_company = company;
+    let p_body_company_request = company_request;
 
     let uri_str = format!("{}/api/account/companies/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -296,7 +296,7 @@ pub async fn account_companies_create(configuration: &configuration::Configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_company);
+    req_builder = req_builder.json(&p_body_company_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -406,10 +406,10 @@ pub async fn account_companies_list(configuration: &configuration::Configuration
 }
 
 /// Manage your companies
-pub async fn account_companies_partial_update(configuration: &configuration::Configuration, id: i32, patched_company: Option<models::PatchedCompany>) -> Result<models::Company, Error<AccountCompaniesPartialUpdateError>> {
+pub async fn account_companies_partial_update(configuration: &configuration::Configuration, id: i32, patched_company_request: Option<models::PatchedCompanyRequest>) -> Result<models::Company, Error<AccountCompaniesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_company = patched_company;
+    let p_body_patched_company_request = patched_company_request;
 
     let uri_str = format!("{}/api/account/companies/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -425,7 +425,7 @@ pub async fn account_companies_partial_update(configuration: &configuration::Con
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_company);
+    req_builder = req_builder.json(&p_body_patched_company_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -498,10 +498,10 @@ pub async fn account_companies_retrieve(configuration: &configuration::Configura
 }
 
 /// Manage your companies
-pub async fn account_companies_update(configuration: &configuration::Configuration, id: i32, company: models::Company) -> Result<models::Company, Error<AccountCompaniesUpdateError>> {
+pub async fn account_companies_update(configuration: &configuration::Configuration, id: i32, company_request: models::CompanyRequest) -> Result<models::Company, Error<AccountCompaniesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_company = company;
+    let p_body_company_request = company_request;
 
     let uri_str = format!("{}/api/account/companies/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -517,7 +517,7 @@ pub async fn account_companies_update(configuration: &configuration::Configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_company);
+    req_builder = req_builder.json(&p_body_company_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -593,9 +593,9 @@ pub async fn account_emails_list(configuration: &configuration::Configuration, p
 }
 
 /// Manage your profile data
-pub async fn account_profile_partial_update(configuration: &configuration::Configuration, patched_profile: Option<models::PatchedProfile>) -> Result<models::Profile, Error<AccountProfilePartialUpdateError>> {
+pub async fn account_profile_partial_update(configuration: &configuration::Configuration, patched_profile_request: Option<models::PatchedProfileRequest>) -> Result<models::Profile, Error<AccountProfilePartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_patched_profile = patched_profile;
+    let p_body_patched_profile_request = patched_profile_request;
 
     let uri_str = format!("{}/api/account/profile", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -611,7 +611,7 @@ pub async fn account_profile_partial_update(configuration: &configuration::Confi
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_profile);
+    req_builder = req_builder.json(&p_body_patched_profile_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -682,9 +682,9 @@ pub async fn account_profile_retrieve(configuration: &configuration::Configurati
 }
 
 /// Manage your profile data
-pub async fn account_profile_update(configuration: &configuration::Configuration, profile: models::Profile) -> Result<models::Profile, Error<AccountProfileUpdateError>> {
+pub async fn account_profile_update(configuration: &configuration::Configuration, profile_request: models::ProfileRequest) -> Result<models::Profile, Error<AccountProfileUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_profile = profile;
+    let p_body_profile_request = profile_request;
 
     let uri_str = format!("{}/api/account/profile", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -700,7 +700,7 @@ pub async fn account_profile_update(configuration: &configuration::Configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_profile);
+    req_builder = req_builder.json(&p_body_profile_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -728,9 +728,9 @@ pub async fn account_profile_update(configuration: &configuration::Configuration
 }
 
 /// Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
-pub async fn account_ssh_keys_create(configuration: &configuration::Configuration, ssh_key: Option<models::SshKey>) -> Result<models::SshKey, Error<AccountSshKeysCreateError>> {
+pub async fn account_ssh_keys_create(configuration: &configuration::Configuration, ssh_key_request: models::SshKeyRequest) -> Result<models::SshKey, Error<AccountSshKeysCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_ssh_key = ssh_key;
+    let p_body_ssh_key_request = ssh_key_request;
 
     let uri_str = format!("{}/api/account/ssh-keys/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -746,7 +746,7 @@ pub async fn account_ssh_keys_create(configuration: &configuration::Configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_ssh_key);
+    req_builder = req_builder.json(&p_body_ssh_key_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -856,10 +856,10 @@ pub async fn account_ssh_keys_list(configuration: &configuration::Configuration,
 }
 
 /// Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
-pub async fn account_ssh_keys_partial_update(configuration: &configuration::Configuration, id: &str, patched_ssh_key: Option<models::PatchedSshKey>) -> Result<models::SshKey, Error<AccountSshKeysPartialUpdateError>> {
+pub async fn account_ssh_keys_partial_update(configuration: &configuration::Configuration, id: &str, patched_ssh_key_update_request: Option<models::PatchedSshKeyUpdateRequest>) -> Result<models::SshKey, Error<AccountSshKeysPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_ssh_key = patched_ssh_key;
+    let p_body_patched_ssh_key_update_request = patched_ssh_key_update_request;
 
     let uri_str = format!("{}/api/account/ssh-keys/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -875,7 +875,7 @@ pub async fn account_ssh_keys_partial_update(configuration: &configuration::Conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_ssh_key);
+    req_builder = req_builder.json(&p_body_patched_ssh_key_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -948,10 +948,10 @@ pub async fn account_ssh_keys_retrieve(configuration: &configuration::Configurat
 }
 
 /// Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
-pub async fn account_ssh_keys_update(configuration: &configuration::Configuration, id: &str, ssh_key: Option<models::SshKey>) -> Result<models::SshKey, Error<AccountSshKeysUpdateError>> {
+pub async fn account_ssh_keys_update(configuration: &configuration::Configuration, id: &str, ssh_key_update_request: Option<models::SshKeyUpdateRequest>) -> Result<models::SshKey, Error<AccountSshKeysUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_ssh_key = ssh_key;
+    let p_body_ssh_key_update_request = ssh_key_update_request;
 
     let uri_str = format!("{}/api/account/ssh-keys/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -967,7 +967,7 @@ pub async fn account_ssh_keys_update(configuration: &configuration::Configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_ssh_key);
+    req_builder = req_builder.json(&p_body_ssh_key_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

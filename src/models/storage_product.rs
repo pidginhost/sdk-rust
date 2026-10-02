@@ -27,13 +27,13 @@ pub struct StorageProduct {
     #[serde(rename = "price")]
     pub price: String,
     #[serde(rename = "min_size")]
-    pub min_size: String,
+    pub min_size: i32,
     #[serde(rename = "max_size")]
-    pub max_size: String,
+    pub max_size: i32,
 }
 
 impl StorageProduct {
-    pub fn new(id: i32, slug: String, name: String, r#type: String, unit: String, price: String, min_size: String, max_size: String) -> StorageProduct {
+    pub fn new(id: i32, slug: String, name: String, r#type: String, unit: String, price: String, min_size: i32, max_size: i32) -> StorageProduct {
         StorageProduct {
             id,
             slug,

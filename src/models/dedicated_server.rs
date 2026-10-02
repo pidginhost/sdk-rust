@@ -29,17 +29,17 @@ pub struct DedicatedServer {
     pub created: String,
     #[serde(rename = "billing_cycle")]
     pub billing_cycle: String,
-    #[serde(rename = "server_status")]
-    pub server_status: String,
+    #[serde(rename = "server_status", deserialize_with = "Option::deserialize")]
+    pub server_status: Option<Box<models::DedicatedServerStatus>>,
     #[serde(rename = "ips")]
-    pub ips: String,
-    #[serde(rename = "os_name")]
-    pub os_name: String,
+    pub ips: Vec<models::DedicatedServerIp>,
+    #[serde(rename = "os_name", deserialize_with = "Option::deserialize")]
+    pub os_name: Option<String>,
 }
 
 impl DedicatedServer {
     /// Read-only serializer for dedicated server services.
-    pub fn new(id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, server_status: String, ips: String, os_name: String) -> DedicatedServer {
+    pub fn new(id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, server_status: Option<models::DedicatedServerStatus>, ips: Vec<models::DedicatedServerIp>, os_name: Option<String>) -> DedicatedServer {
         DedicatedServer {
             id,
             hostname,
@@ -48,7 +48,7 @@ impl DedicatedServer {
             next_invoice,
             created,
             billing_cycle,
-            server_status,
+            server_status: if let Some(x) = server_status {Some(Box::new(x))} else {None},
             ips,
             os_name,
         }

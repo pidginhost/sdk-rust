@@ -36,13 +36,13 @@ pub struct EmailService {
     #[serde(rename = "dedicated_ip_addon")]
     pub dedicated_ip_addon: bool,
     #[serde(rename = "quota_monthly")]
-    pub quota_monthly: String,
+    pub quota_monthly: i32,
     #[serde(rename = "price_monthly_eur")]
-    pub price_monthly_eur: String,
+    pub price_monthly_eur: f64,
 }
 
 impl EmailService {
-    pub fn new(id: i32, tier: String, status: models::ResourceStatusEnum, sandbox_mode: bool, auto_suspended: bool, auto_suspend_reason: String, msgs_sent_24h: i32, msgs_sent_30d: i32, bounce_rate_pct: String, complaint_rate_pct: String, dedicated_ip_addon: bool, quota_monthly: String, price_monthly_eur: String) -> EmailService {
+    pub fn new(id: i32, tier: String, status: models::ResourceStatusEnum, sandbox_mode: bool, auto_suspended: bool, auto_suspend_reason: String, msgs_sent_24h: i32, msgs_sent_30d: i32, bounce_rate_pct: String, complaint_rate_pct: String, dedicated_ip_addon: bool, quota_monthly: i32, price_monthly_eur: f64) -> EmailService {
         EmailService {
             id,
             tier,

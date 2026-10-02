@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## billing_deposits_create
 
-> models::Deposit billing_deposits_create(deposit_create)
+> models::Deposit billing_deposits_create(deposit_create_request)
 
 
 Create a new funds deposit.
@@ -37,7 +37,7 @@ Create a new funds deposit.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**deposit_create** | [**DepositCreate**](DepositCreate.md) |  | [required] |
+**deposit_create_request** | [**DepositCreateRequest**](DepositCreateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Required | Notes
 
 ## billing_funds_notification_settings_create
 
-> models::NotificationSettingsResponse billing_funds_notification_settings_create(low_balance_settings)
+> models::NotificationSettingsResponse billing_funds_notification_settings_create(low_balance_settings_request)
 
 
 Update low-balance notification settings.
@@ -184,7 +184,7 @@ Update low-balance notification settings.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**low_balance_settings** | [**LowBalanceSettings**](LowBalanceSettings.md) |  | [required] |
+**low_balance_settings_request** | [**LowBalanceSettingsRequest**](LowBalanceSettingsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Required | Notes
 
 ## billing_services_change_billing_cycle_create
 
-> models::ChangeBillingCycleResponse billing_services_change_billing_cycle_create(id, change_billing_cycle)
+> models::ChangeBillingCycleResponse billing_services_change_billing_cycle_create(id, change_billing_cycle_request)
 
 
 Change the billing cycle of a service.
@@ -365,7 +365,7 @@ Change the billing cycle of a service.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**change_billing_cycle** | [**ChangeBillingCycle**](ChangeBillingCycle.md) |  | [required] |
+**change_billing_cycle_request** | [**ChangeBillingCycleRequest**](ChangeBillingCycleRequest.md) |  | [required] |
 
 ### Return type
 
@@ -385,7 +385,7 @@ Name | Type | Description  | Required | Notes
 
 ## billing_services_change_company_create
 
-> models::ChangeCompanyResponse billing_services_change_company_create(id, change_company)
+> models::ChangeCompanyResponse billing_services_change_company_create(id, change_company_request)
 
 
 Change the company associated with a service.
@@ -396,7 +396,7 @@ Change the company associated with a service.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**change_company** | Option<[**ChangeCompany**](ChangeCompany.md)> |  |  |
+**change_company_request** | Option<[**ChangeCompanyRequest**](ChangeCompanyRequest.md)> |  |  |
 
 ### Return type
 

@@ -20,22 +20,19 @@ pub struct ResourcePool {
     #[serde(rename = "generation")]
     pub generation: String,
     #[serde(rename = "size")]
-    pub size: String,
+    pub size: i32,
     #[serde(rename = "nodes")]
     pub nodes: Vec<models::ResourcePoolNode>,
-    #[serde(rename = "new_size", skip_serializing_if = "Option::is_none")]
-    pub new_size: Option<i32>,
 }
 
 impl ResourcePool {
-    pub fn new(id: i32, package: String, generation: String, size: String, nodes: Vec<models::ResourcePoolNode>) -> ResourcePool {
+    pub fn new(id: i32, package: String, generation: String, size: i32, nodes: Vec<models::ResourcePoolNode>) -> ResourcePool {
         ResourcePool {
             id,
             package,
             generation,
             size,
             nodes,
-            new_size: None,
         }
     }
 }

@@ -97,6 +97,7 @@ Method | HTTP request | Description
 [**cloud_servers_snapshots_destroy**](CloudApi.md#cloud_servers_snapshots_destroy) | **DELETE** /api/cloud/servers/{id}/snapshots/{snapshot_name}/ | 
 [**cloud_servers_snapshots_list**](CloudApi.md#cloud_servers_snapshots_list) | **GET** /api/cloud/servers/{id}/snapshots/ | 
 [**cloud_servers_snapshots_rollback_create**](CloudApi.md#cloud_servers_snapshots_rollback_create) | **POST** /api/cloud/servers/{id}/snapshots/{snapshot_name}/rollback/ | 
+[**cloud_servers_traffic_retrieve**](CloudApi.md#cloud_servers_traffic_retrieve) | **GET** /api/cloud/servers/{id}/traffic/ | 
 [**cloud_servers_update**](CloudApi.md#cloud_servers_update) | **PUT** /api/cloud/servers/{id}/ | 
 [**cloud_servers_usage_retrieve**](CloudApi.md#cloud_servers_usage_retrieve) | **GET** /api/cloud/servers/{id}/usage/ | 
 [**cloud_servers_volumes_create**](CloudApi.md#cloud_servers_volumes_create) | **POST** /api/cloud/servers/{server_id}/volumes/ | 
@@ -119,7 +120,7 @@ Method | HTTP request | Description
 
 ## cloud_buckets_create
 
-> models::Bucket cloud_buckets_create(bucket_create)
+> models::Bucket cloud_buckets_create(bucket_create_request)
 
 
 Create a bucket
@@ -129,7 +130,7 @@ Create a bucket
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**bucket_create** | [**BucketCreate**](BucketCreate.md) |  | [required] |
+**bucket_create_request** | [**BucketCreateRequest**](BucketCreateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -266,7 +267,7 @@ This endpoint does not need any parameter.
 
 ## cloud_buckets_resize_create
 
-> models::Bucket cloud_buckets_resize_create(id, bucket_resize)
+> models::Bucket cloud_buckets_resize_create(id, bucket_resize_request)
 
 
 Resize a bucket
@@ -277,7 +278,7 @@ Resize a bucket
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this S3 bucket. | [required] |
-**bucket_resize** | [**BucketResize**](BucketResize.md) |  | [required] |
+**bucket_resize_request** | [**BucketResizeRequest**](BucketResizeRequest.md) |  | [required] |
 
 ### Return type
 
@@ -327,7 +328,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_buckets_visibility_create
 
-> models::Bucket cloud_buckets_visibility_create(id, bucket_visibility)
+> models::Bucket cloud_buckets_visibility_create(id, bucket_visibility_request)
 
 
 Set bucket visibility
@@ -338,7 +339,7 @@ Set bucket visibility
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this S3 bucket. | [required] |
-**bucket_visibility** | [**BucketVisibility**](BucketVisibility.md) |  | [required] |
+**bucket_visibility_request** | [**BucketVisibilityRequest**](BucketVisibilityRequest.md) |  | [required] |
 
 ### Return type
 
@@ -358,7 +359,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_firewall_rules_set_create
 
-> models::FirewallRulesSet cloud_firewall_rules_set_create(firewall_rules_set)
+> models::FirewallRulesSet cloud_firewall_rules_set_create(firewall_rules_set_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -368,7 +369,7 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**firewall_rules_set** | [**FirewallRulesSet**](FirewallRulesSet.md) |  | [required] |
+**firewall_rules_set_request** | [**FirewallRulesSetRequest**](FirewallRulesSetRequest.md) |  | [required] |
 
 ### Return type
 
@@ -445,7 +446,7 @@ This endpoint does not need any parameter.
 
 ## cloud_firewall_rules_set_partial_update
 
-> models::FirewallRulesSet cloud_firewall_rules_set_partial_update(id, patched_firewall_rules_set)
+> models::FirewallRulesSet cloud_firewall_rules_set_partial_update(id, patched_firewall_rules_set_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -456,7 +457,7 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this firewall rules set. | [required] |
-**patched_firewall_rules_set** | Option<[**PatchedFirewallRulesSet**](PatchedFirewallRulesSet.md)> |  |  |
+**patched_firewall_rules_set_request** | Option<[**PatchedFirewallRulesSetRequest**](PatchedFirewallRulesSetRequest.md)> |  |  |
 
 ### Return type
 
@@ -506,7 +507,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_firewall_rules_set_rules_create
 
-> models::FirewallRule cloud_firewall_rules_set_rules_create(rules_set_id, firewall_rule)
+> models::FirewallRule cloud_firewall_rules_set_rules_create(rules_set_id, firewall_rule_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -517,7 +518,7 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **rules_set_id** | **String** |  | [required] |
-**firewall_rule** | [**FirewallRule**](FirewallRule.md) |  | [required] |
+**firewall_rule_request** | [**FirewallRuleRequest**](FirewallRuleRequest.md) |  | [required] |
 
 ### Return type
 
@@ -598,7 +599,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_firewall_rules_set_rules_partial_update
 
-> models::FirewallRule cloud_firewall_rules_set_rules_partial_update(rule_id, rules_set_id, patched_firewall_rule)
+> models::FirewallRule cloud_firewall_rules_set_rules_partial_update(rule_id, rules_set_id, patched_firewall_rule_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -610,7 +611,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **rule_id** | **String** |  | [required] |
 **rules_set_id** | **String** |  | [required] |
-**patched_firewall_rule** | Option<[**PatchedFirewallRule**](PatchedFirewallRule.md)> |  |  |
+**patched_firewall_rule_request** | Option<[**PatchedFirewallRuleRequest**](PatchedFirewallRuleRequest.md)> |  |  |
 
 ### Return type
 
@@ -661,7 +662,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_firewall_rules_set_rules_update
 
-> models::FirewallRule cloud_firewall_rules_set_rules_update(rule_id, rules_set_id, firewall_rule)
+> models::FirewallRule cloud_firewall_rules_set_rules_update(rule_id, rules_set_id, firewall_rule_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -673,7 +674,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **rule_id** | **String** |  | [required] |
 **rules_set_id** | **String** |  | [required] |
-**firewall_rule** | [**FirewallRule**](FirewallRule.md) |  | [required] |
+**firewall_rule_request** | [**FirewallRuleRequest**](FirewallRuleRequest.md) |  | [required] |
 
 ### Return type
 
@@ -693,7 +694,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_firewall_rules_set_update
 
-> models::FirewallRulesSet cloud_firewall_rules_set_update(id, firewall_rules_set)
+> models::FirewallRulesSet cloud_firewall_rules_set_update(id, firewall_rules_set_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -704,7 +705,7 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this firewall rules set. | [required] |
-**firewall_rules_set** | [**FirewallRulesSet**](FirewallRulesSet.md) |  | [required] |
+**firewall_rules_set_request** | [**FirewallRulesSetRequest**](FirewallRulesSetRequest.md) |  | [required] |
 
 ### Return type
 
@@ -786,7 +787,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_floating_ipv4_create
 
-> models::FloatingIpv4 cloud_floating_ipv4_create(floating_ipv4_create)
+> models::FloatingIpv4 cloud_floating_ipv4_create(floating_ipv4_create_request)
 
 
 Manage floating IPv4 addresses. A floating IP can be authorized on multiple VMs simultaneously; the customer asserts ownership inside the guest via keepalived/VRRP.
@@ -796,7 +797,7 @@ Manage floating IPv4 addresses. A floating IP can be authorized on multiple VMs 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**floating_ipv4_create** | Option<[**FloatingIpv4Create**](FloatingIpv4Create.md)> |  |  |
+**floating_ipv4_create_request** | Option<[**FloatingIpv4CreateRequest**](FloatingIpv4CreateRequest.md)> |  |  |
 
 ### Return type
 
@@ -876,7 +877,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_floating_ipv4_rdns_create
 
-> models::ReverseDns cloud_floating_ipv4_rdns_create(id, reverse_dns)
+> models::ReverseDns cloud_floating_ipv4_rdns_create(id, reverse_dns_request)
 
 
 Get or update reverse DNS (PTR) for the IPv4 address wrapped by this floating IP.
@@ -887,7 +888,7 @@ Get or update reverse DNS (PTR) for the IPv4 address wrapped by this floating IP
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this floating IPv4. | [required] |
-**reverse_dns** | [**ReverseDns**](ReverseDns.md) |  | [required] |
+**reverse_dns_request** | [**ReverseDnsRequest**](ReverseDnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1060,7 +1061,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_floating_ipv6_create
 
-> models::FloatingIpv6 cloud_floating_ipv6_create(floating_ipv6_create)
+> models::FloatingIpv6 cloud_floating_ipv6_create(floating_ipv6_create_request)
 
 
 Manage floating IPv6 addresses.
@@ -1070,7 +1071,7 @@ Manage floating IPv6 addresses.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**floating_ipv6_create** | Option<[**FloatingIpv6Create**](FloatingIpv6Create.md)> |  |  |
+**floating_ipv6_create_request** | Option<[**FloatingIpv6CreateRequest**](FloatingIpv6CreateRequest.md)> |  |  |
 
 ### Return type
 
@@ -1150,7 +1151,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_floating_ipv6_rdns_create
 
-> models::ReverseDns cloud_floating_ipv6_rdns_create(id, reverse_dns)
+> models::ReverseDns cloud_floating_ipv6_rdns_create(id, reverse_dns_request)
 
 
 Get or update reverse DNS (PTR) for the IPv6 address wrapped by this floating IP.
@@ -1161,7 +1162,7 @@ Get or update reverse DNS (PTR) for the IPv6 address wrapped by this floating IP
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this floating IPv6. | [required] |
-**reverse_dns** | [**ReverseDns**](ReverseDns.md) |  | [required] |
+**reverse_dns_request** | [**ReverseDnsRequest**](ReverseDnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1389,17 +1390,14 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_ipv4_create
 
-> models::PublicIpv4 cloud_ipv4_create(public_ipv4)
+> models::PublicIpv4 cloud_ipv4_create()
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
 ### Parameters
 
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**public_ipv4** | Option<[**PublicIpv4**](PublicIpv4.md)> |  |  |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -1411,7 +1409,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1449,7 +1447,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_ipv4_detach_create
 
-> models::DetachIpv4Response cloud_ipv4_detach_create(id, public_ipv4)
+> models::DetachIpv4Response cloud_ipv4_detach_create(id)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -1460,7 +1458,6 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this Public IPv4. | [required] |
-**public_ipv4** | Option<[**PublicIpv4**](PublicIpv4.md)> |  |  |
 
 ### Return type
 
@@ -1472,7 +1469,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1510,7 +1507,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_ipv4_rdns_create
 
-> models::ReverseDns cloud_ipv4_rdns_create(id, reverse_dns)
+> models::ReverseDns cloud_ipv4_rdns_create(id, reverse_dns_request)
 
 
 Get or update reverse DNS (PTR) for this IPv4 address.
@@ -1521,7 +1518,7 @@ Get or update reverse DNS (PTR) for this IPv4 address.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this Public IPv4. | [required] |
-**reverse_dns** | [**ReverseDns**](ReverseDns.md) |  | [required] |
+**reverse_dns_request** | [**ReverseDnsRequest**](ReverseDnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1601,17 +1598,14 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_ipv6_create
 
-> models::PublicIpv6 cloud_ipv6_create(public_ipv6)
+> models::PublicIpv6 cloud_ipv6_create()
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
 ### Parameters
 
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**public_ipv6** | Option<[**PublicIpv6**](PublicIpv6.md)> |  |  |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -1623,7 +1617,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1661,7 +1655,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_ipv6_detach_create
 
-> models::DetachIpv6Response cloud_ipv6_detach_create(id, public_ipv6)
+> models::DetachIpv6Response cloud_ipv6_detach_create(id)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -1672,7 +1666,6 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this Public IPv6. | [required] |
-**public_ipv6** | Option<[**PublicIpv6**](PublicIpv6.md)> |  |  |
 
 ### Return type
 
@@ -1684,7 +1677,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1722,7 +1715,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_ipv6_rdns_create
 
-> models::ReverseDns cloud_ipv6_rdns_create(id, reverse_dns)
+> models::ReverseDns cloud_ipv6_rdns_create(id, reverse_dns_request)
 
 
 Get or update reverse DNS (PTR) for this IPv6 address.
@@ -1733,7 +1726,7 @@ Get or update reverse DNS (PTR) for this IPv6 address.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this Public IPv6. | [required] |
-**reverse_dns** | [**ReverseDns**](ReverseDns.md) |  | [required] |
+**reverse_dns_request** | [**ReverseDnsRequest**](ReverseDnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1813,7 +1806,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_private_networks_add_server_create
 
-> models::AddServerResponse cloud_private_networks_add_server_create(id, private_network_add_host)
+> models::AddServerResponse cloud_private_networks_add_server_create(id, private_network_add_host_request)
 
 
 Manage private networks
@@ -1824,7 +1817,7 @@ Manage private networks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this private network. | [required] |
-**private_network_add_host** | [**PrivateNetworkAddHost**](PrivateNetworkAddHost.md) |  | [required] |
+**private_network_add_host_request** | [**PrivateNetworkAddHostRequest**](PrivateNetworkAddHostRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1844,7 +1837,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_private_networks_create
 
-> models::PrivateNetwork cloud_private_networks_create(private_network)
+> models::PrivateNetwork cloud_private_networks_create(private_network_request)
 
 
 Manage private networks
@@ -1854,7 +1847,7 @@ Manage private networks
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**private_network** | [**PrivateNetwork**](PrivateNetwork.md) |  | [required] |
+**private_network_request** | [**PrivateNetworkRequest**](PrivateNetworkRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1934,7 +1927,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_private_networks_partial_update
 
-> models::PrivateNetwork cloud_private_networks_partial_update(id, patched_private_network)
+> models::PrivateNetwork cloud_private_networks_partial_update(id, patched_private_network_update_request)
 
 
 Manage private networks
@@ -1945,7 +1938,7 @@ Manage private networks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this private network. | [required] |
-**patched_private_network** | Option<[**PatchedPrivateNetwork**](PatchedPrivateNetwork.md)> |  |  |
+**patched_private_network_update_request** | Option<[**PatchedPrivateNetworkUpdateRequest**](PatchedPrivateNetworkUpdateRequest.md)> |  |  |
 
 ### Return type
 
@@ -1965,7 +1958,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_private_networks_remove_server_create
 
-> models::RemoveServerResponse cloud_private_networks_remove_server_create(id, private_network_remove_host)
+> models::RemoveServerResponse cloud_private_networks_remove_server_create(id, private_network_remove_host_request)
 
 
 Manage private networks
@@ -1976,7 +1969,7 @@ Manage private networks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this private network. | [required] |
-**private_network_remove_host** | [**PrivateNetworkRemoveHost**](PrivateNetworkRemoveHost.md) |  | [required] |
+**private_network_remove_host_request** | [**PrivateNetworkRemoveHostRequest**](PrivateNetworkRemoveHostRequest.md) |  | [required] |
 
 ### Return type
 
@@ -2026,7 +2019,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_private_networks_update
 
-> models::PrivateNetwork cloud_private_networks_update(id, private_network)
+> models::PrivateNetwork cloud_private_networks_update(id, private_network_update_request)
 
 
 Manage private networks
@@ -2037,7 +2030,7 @@ Manage private networks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this private network. | [required] |
-**private_network** | [**PrivateNetwork**](PrivateNetwork.md) |  | [required] |
+**private_network_update_request** | Option<[**PrivateNetworkUpdateRequest**](PrivateNetworkUpdateRequest.md)> |  |  |
 
 ### Return type
 
@@ -2237,7 +2230,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_boot_isos_list
 
-> models::PaginatedBootIsoList cloud_servers_boot_isos_list(id, page)
+> Vec<models::BootIso> cloud_servers_boot_isos_list(id)
 
 
 List the ISO catalog entries visible to this user and their package compatibility.
@@ -2248,11 +2241,10 @@ List the ISO catalog entries visible to this user and their package compatibilit
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**page** | Option<**i32**> | A page number within the paginated result set. |  |
 
 ### Return type
 
-[**models::PaginatedBootIsoList**](PaginatedBootISOList.md)
+[**Vec<models::BootIso>**](BootISO.md)
 
 ### Authorization
 
@@ -2298,7 +2290,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_create
 
-> models::ServerAddResponse cloud_servers_create(server_add)
+> models::ServerAddResponse cloud_servers_create(server_add_request)
 
 
 Create new server
@@ -2308,7 +2300,7 @@ Create new server
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**server_add** | [**ServerAdd**](ServerAdd.md) |  | [required] |
+**server_add_request** | [**ServerAddRequest**](ServerAddRequest.md) |  | [required] |
 
 ### Return type
 
@@ -2358,7 +2350,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_destroy_protection_create
 
-> models::DestroyProtectionResponse cloud_servers_destroy_protection_create(id, destroy_protection)
+> models::DestroyProtectionResponse cloud_servers_destroy_protection_create(id, destroy_protection_request)
 
 
 Enable or disable destroy protection.
@@ -2369,7 +2361,7 @@ Enable or disable destroy protection.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**destroy_protection** | [**DestroyProtection**](DestroyProtection.md) |  | [required] |
+**destroy_protection_request** | [**DestroyProtectionRequest**](DestroyProtectionRequest.md) |  | [required] |
 
 ### Return type
 
@@ -2480,7 +2472,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_modify_package_create
 
-> models::ServerUpgradeResponse cloud_servers_modify_package_create(id, server_product_upgrade)
+> models::ServerUpgradeResponse cloud_servers_modify_package_create(id, server_product_upgrade_request)
 
 
 Modify server package: downgrade available only for packages with the same disk size.
@@ -2491,7 +2483,7 @@ Modify server package: downgrade available only for packages with the same disk 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**server_product_upgrade** | [**ServerProductUpgrade**](ServerProductUpgrade.md) |  | [required] |
+**server_product_upgrade_request** | [**ServerProductUpgradeRequest**](ServerProductUpgradeRequest.md) |  | [required] |
 
 ### Return type
 
@@ -2511,7 +2503,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_partial_update
 
-> models::ServerDetail cloud_servers_partial_update(id, patched_server_detail)
+> models::ServerDetail cloud_servers_partial_update(id, patched_server_detail_request)
 
 
 Cloud servers
@@ -2522,7 +2514,7 @@ Cloud servers
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**patched_server_detail** | Option<[**PatchedServerDetail**](PatchedServerDetail.md)> |  |  |
+**patched_server_detail_request** | Option<[**PatchedServerDetailRequest**](PatchedServerDetailRequest.md)> |  |  |
 
 ### Return type
 
@@ -2603,7 +2595,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_public_interface_create
 
-> models::PublicInterface cloud_servers_public_interface_create(id, public_interface)
+> models::PublicInterface cloud_servers_public_interface_create(id, public_interface_request)
 
 
 Public interface
@@ -2614,7 +2606,7 @@ Public interface
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**public_interface** | Option<[**PublicInterface**](PublicInterface.md)> |  |  |
+**public_interface_request** | Option<[**PublicInterfaceRequest**](PublicInterfaceRequest.md)> |  |  |
 
 ### Return type
 
@@ -2815,10 +2807,10 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_snapshots_create
 
-> models::PaginatedSnapshotList cloud_servers_snapshots_create(id, snapshot_create, page)
+> models::SnapshotCreateQueued cloud_servers_snapshots_create(id, snapshot_create_request)
 
 
-List snapshots for this server or queue a new snapshot.
+Cloud servers
 
 ### Parameters
 
@@ -2826,12 +2818,11 @@ List snapshots for this server or queue a new snapshot.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**snapshot_create** | [**SnapshotCreate**](SnapshotCreate.md) |  | [required] |
-**page** | Option<**i32**> | A page number within the paginated result set. |  |
+**snapshot_create_request** | [**SnapshotCreateRequest**](SnapshotCreateRequest.md) |  | [required] |
 
 ### Return type
 
-[**models::PaginatedSnapshotList**](PaginatedSnapshotList.md)
+[**models::SnapshotCreateQueued**](SnapshotCreateQueued.md)
 
 ### Authorization
 
@@ -2878,7 +2869,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_snapshots_list
 
-> models::PaginatedSnapshotList cloud_servers_snapshots_list(id, page)
+> Vec<models::Snapshot> cloud_servers_snapshots_list(id)
 
 
 List snapshots for this server or queue a new snapshot.
@@ -2889,11 +2880,10 @@ List snapshots for this server or queue a new snapshot.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**page** | Option<**i32**> | A page number within the paginated result set. |  |
 
 ### Return type
 
-[**models::PaginatedSnapshotList**](PaginatedSnapshotList.md)
+[**Vec<models::Snapshot>**](Snapshot.md)
 
 ### Authorization
 
@@ -2938,9 +2928,39 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## cloud_servers_traffic_retrieve
+
+> models::ServerTrafficResponse cloud_servers_traffic_retrieve(id)
+
+
+Get this month's traffic usage for a server.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
+
+### Return type
+
+[**models::ServerTrafficResponse**](ServerTrafficResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## cloud_servers_update
 
-> models::ServerDetail cloud_servers_update(id, server_detail)
+> models::ServerDetail cloud_servers_update(id, server_detail_request)
 
 
 Cloud servers
@@ -2951,7 +2971,7 @@ Cloud servers
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
-**server_detail** | Option<[**ServerDetail**](ServerDetail.md)> |  |  |
+**server_detail_request** | Option<[**ServerDetailRequest**](ServerDetailRequest.md)> |  |  |
 
 ### Return type
 
@@ -3001,7 +3021,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_volumes_create
 
-> models::Volume cloud_servers_volumes_create(server_id, volume)
+> models::Volume cloud_servers_volumes_create(server_id, volume_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -3012,7 +3032,7 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **server_id** | **String** |  | [required] |
-**volume** | [**Volume**](Volume.md) |  | [required] |
+**volume_request** | [**VolumeRequest**](VolumeRequest.md) |  | [required] |
 
 ### Return type
 
@@ -3093,7 +3113,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_volumes_partial_update
 
-> models::Volume cloud_servers_volumes_partial_update(server_id, volume_id, patched_volume)
+> models::Volume cloud_servers_volumes_partial_update(server_id, volume_id, patched_volume_update_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -3105,7 +3125,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **server_id** | **String** |  | [required] |
 **volume_id** | **String** |  | [required] |
-**patched_volume** | Option<[**PatchedVolume**](PatchedVolume.md)> |  |  |
+**patched_volume_update_request** | Option<[**PatchedVolumeUpdateRequest**](PatchedVolumeUpdateRequest.md)> |  |  |
 
 ### Return type
 
@@ -3156,7 +3176,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_servers_volumes_update
 
-> models::Volume cloud_servers_volumes_update(server_id, volume_id, volume)
+> models::Volume cloud_servers_volumes_update(server_id, volume_id, volume_update_request)
 
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
@@ -3168,7 +3188,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **server_id** | **String** |  | [required] |
 **volume_id** | **String** |  | [required] |
-**volume** | [**Volume**](Volume.md) |  | [required] |
+**volume_update_request** | [**VolumeUpdateRequest**](VolumeUpdateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -3248,7 +3268,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_volumes_attach_create
 
-> models::AttachVolume cloud_volumes_attach_create(id, attach_volume)
+> models::AttachVolume cloud_volumes_attach_create(id, attach_volume_request)
 
 
 Attach existing volume to a server
@@ -3259,7 +3279,7 @@ Attach existing volume to a server
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this storage. | [required] |
-**attach_volume** | [**AttachVolume**](AttachVolume.md) |  | [required] |
+**attach_volume_request** | [**AttachVolumeRequest**](AttachVolumeRequest.md) |  | [required] |
 
 ### Return type
 
@@ -3309,7 +3329,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_volumes_detach_create
 
-> models::DetachVolume cloud_volumes_detach_create(id, volume)
+> models::DetachVolume cloud_volumes_detach_create(id)
 
 
 Detach volume from server
@@ -3320,7 +3340,6 @@ Detach volume from server
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this storage. | [required] |
-**volume** | [**Volume**](Volume.md) |  | [required] |
 
 ### Return type
 
@@ -3332,7 +3351,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3367,7 +3386,7 @@ This endpoint does not need any parameter.
 
 ## cloud_volumes_partial_update
 
-> models::Volume cloud_volumes_partial_update(id, patched_volume)
+> models::Volume cloud_volumes_partial_update(id, patched_volume_update_request)
 
 
 Volumes management
@@ -3378,7 +3397,7 @@ Volumes management
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this storage. | [required] |
-**patched_volume** | Option<[**PatchedVolume**](PatchedVolume.md)> |  |  |
+**patched_volume_update_request** | Option<[**PatchedVolumeUpdateRequest**](PatchedVolumeUpdateRequest.md)> |  |  |
 
 ### Return type
 
@@ -3428,7 +3447,7 @@ Name | Type | Description  | Required | Notes
 
 ## cloud_volumes_update
 
-> models::Volume cloud_volumes_update(id, volume)
+> models::Volume cloud_volumes_update(id, volume_update_request)
 
 
 Volumes management
@@ -3439,7 +3458,7 @@ Volumes management
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | A unique integer value identifying this storage. | [required] |
-**volume** | [**Volume**](Volume.md) |  | [required] |
+**volume_update_request** | [**VolumeUpdateRequest**](VolumeUpdateRequest.md) |  | [required] |
 
 ### Return type
 

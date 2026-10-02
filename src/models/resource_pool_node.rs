@@ -17,12 +17,12 @@ pub struct ResourcePoolNode {
     pub id: i32,
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "ip")]
-    pub ip: String,
+    #[serde(rename = "ip", deserialize_with = "Option::deserialize")]
+    pub ip: Option<String>,
 }
 
 impl ResourcePoolNode {
-    pub fn new(id: i32, name: String, ip: String) -> ResourcePoolNode {
+    pub fn new(id: i32, name: String, ip: Option<String>) -> ResourcePoolNode {
         ResourcePoolNode {
             id,
             name,

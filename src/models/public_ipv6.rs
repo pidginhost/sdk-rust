@@ -25,12 +25,16 @@ pub struct PublicIpv6 {
     pub prefix: i32,
     #[serde(rename = "attached")]
     pub attached: bool,
+    /// Hostname of the server this address is attached to. Empty when it is not attached.
     #[serde(rename = "server")]
     pub server: String,
+    /// ID of the attached server, as used by /api/cloud/servers/{id}/. Null when the address is not attached to a cloud server.
+    #[serde(rename = "server_id", deserialize_with = "Option::deserialize")]
+    pub server_id: Option<i32>,
 }
 
 impl PublicIpv6 {
-    pub fn new(id: i32, slug: String, address: String, gateway: String, prefix: i32, attached: bool, server: String) -> PublicIpv6 {
+    pub fn new(id: i32, slug: String, address: String, gateway: String, prefix: i32, attached: bool, server: String, server_id: Option<i32>) -> PublicIpv6 {
         PublicIpv6 {
             id,
             slug,
@@ -39,6 +43,7 @@ impl PublicIpv6 {
             prefix,
             attached,
             server,
+            server_id,
         }
     }
 }

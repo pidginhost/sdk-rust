@@ -64,6 +64,51 @@ pub enum KubernetesClustersEligibleVmsRetrieveError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`kubernetes_clusters_encryption_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersEncryptionCreateError {
+    Status400(models::ClusterEncryptionError),
+    Status403(models::ClusterEncryptionError),
+    Status404(models::ClusterEncryptionError),
+    Status409(models::ClusterEncryptionError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_encryption_recheck_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersEncryptionRecheckCreateError {
+    Status400(models::ClusterEncryptionError),
+    Status403(models::ClusterEncryptionError),
+    Status404(models::ClusterEncryptionError),
+    Status409(models::ClusterEncryptionError),
+    Status429(models::ClusterEncryptionError),
+    Status503(models::ClusterEncryptionRefusal),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_encryption_reconcile_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersEncryptionReconcileCreateError {
+    Status400(models::ClusterEncryptionError),
+    Status403(models::ClusterEncryptionError),
+    Status404(models::ClusterEncryptionError),
+    Status409(models::ClusterEncryptionError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_encryption_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersEncryptionRetrieveError {
+    Status403(models::ClusterEncryptionError),
+    Status404(models::ClusterEncryptionError),
+    Status409(models::ClusterEncryptionError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`kubernetes_clusters_httproutes_create`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -176,10 +221,66 @@ pub enum KubernetesClustersListError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`kubernetes_clusters_node_operations_cancel_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersNodeOperationsCancelCreateError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_node_operations_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersNodeOperationsListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_node_operations_resume_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersNodeOperationsResumeCreateError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_node_operations_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersNodeOperationsRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_node_operations_retry_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersNodeOperationsRetryCreateError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`kubernetes_clusters_partial_update`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum KubernetesClustersPartialUpdateError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_pool_removal_journals_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersPoolRemovalJournalsListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_pool_removal_journals_resume_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersPoolRemovalJournalsResumeCreateError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_pool_removal_journals_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersPoolRemovalJournalsRetrieveError {
     UnknownValue(serde_json::Value),
 }
 
@@ -264,6 +365,13 @@ pub enum KubernetesClustersResourcePoolsNodesListError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum KubernetesClustersResourcePoolsNodesMetricsRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_resource_pools_nodes_reboot_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersResourcePoolsNodesRebootCreateError {
     UnknownValue(serde_json::Value),
 }
 
@@ -421,6 +529,13 @@ pub enum KubernetesClustersUpgradeFeatureCreateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`kubernetes_clusters_upgrade_lb_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersUpgradeLbCreateError {
+    UnknownValue(serde_json::Value),
+}
+
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 pub async fn kubernetes_cluster_types_list(configuration: &configuration::Configuration, page: Option<i32>) -> Result<models::PaginatedClusterTypeList, Error<KubernetesClusterTypesListError>> {
@@ -563,9 +678,9 @@ pub async fn kubernetes_clusters_connected_vms_retrieve(configuration: &configur
 }
 
 /// Create new k8s cluster
-pub async fn kubernetes_clusters_create(configuration: &configuration::Configuration, cluster_add: models::ClusterAdd) -> Result<models::ClusterAddResponse, Error<KubernetesClustersCreateError>> {
+pub async fn kubernetes_clusters_create(configuration: &configuration::Configuration, cluster_add_request: models::ClusterAddRequest) -> Result<models::ClusterAddResponse, Error<KubernetesClustersCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_cluster_add = cluster_add;
+    let p_body_cluster_add_request = cluster_add_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -581,7 +696,7 @@ pub async fn kubernetes_clusters_create(configuration: &configuration::Configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_cluster_add);
+    req_builder = req_builder.json(&p_body_cluster_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -734,11 +849,195 @@ pub async fn kubernetes_clusters_eligible_vms_retrieve(configuration: &configura
     }
 }
 
+/// Enable or disable WireGuard encryption for cluster traffic.
+pub async fn kubernetes_clusters_encryption_create(configuration: &configuration::Configuration, id: &str, cluster_encryption_request: models::ClusterEncryptionRequest) -> Result<models::ClusterEncryptionOperation, Error<KubernetesClustersEncryptionCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_cluster_encryption_request = cluster_encryption_request;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/encryption/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_cluster_encryption_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterEncryptionOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterEncryptionOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersEncryptionCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Re-count the workloads that still predate the encryption change.
+pub async fn kubernetes_clusters_encryption_recheck_create(configuration: &configuration::Configuration, id: &str) -> Result<models::ClusterEncryption, Error<KubernetesClustersEncryptionRecheckCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/encryption/recheck/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterEncryption`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterEncryption`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersEncryptionRecheckCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Staff only: resolve a cluster whose encryption state is unknown.
+pub async fn kubernetes_clusters_encryption_reconcile_create(configuration: &configuration::Configuration, id: &str, cluster_encryption_reconcile_request: models::ClusterEncryptionReconcileRequest) -> Result<models::ClusterEncryptionOperation, Error<KubernetesClustersEncryptionReconcileCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_cluster_encryption_reconcile_request = cluster_encryption_reconcile_request;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/encryption/reconcile/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_cluster_encryption_reconcile_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterEncryptionOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterEncryptionOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersEncryptionReconcileCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Read the cluster's encryption state, restart gate and per-node verification evidence.
+pub async fn kubernetes_clusters_encryption_retrieve(configuration: &configuration::Configuration, id: &str) -> Result<models::ClusterEncryption, Error<KubernetesClustersEncryptionRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/encryption/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterEncryption`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterEncryption`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersEncryptionRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Create new HTTPRoute
-pub async fn kubernetes_clusters_httproutes_create(configuration: &configuration::Configuration, cluster_id: i32, http_route: models::HttpRoute) -> Result<models::HttpRoute, Error<KubernetesClustersHttproutesCreateError>> {
+pub async fn kubernetes_clusters_httproutes_create(configuration: &configuration::Configuration, cluster_id: i32, http_route_request: models::HttpRouteRequest) -> Result<models::HttpRoute, Error<KubernetesClustersHttproutesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
-    let p_body_http_route = http_route;
+    let p_body_http_route_request = http_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/httproutes/", configuration.base_path, cluster_id=p_path_cluster_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -754,7 +1053,7 @@ pub async fn kubernetes_clusters_httproutes_create(configuration: &configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_http_route);
+    req_builder = req_builder.json(&p_body_http_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -866,11 +1165,11 @@ pub async fn kubernetes_clusters_httproutes_list(configuration: &configuration::
 }
 
 /// Partially update HTTPRoute
-pub async fn kubernetes_clusters_httproutes_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_http_route: Option<models::PatchedHttpRoute>) -> Result<models::HttpRoute, Error<KubernetesClustersHttproutesPartialUpdateError>> {
+pub async fn kubernetes_clusters_httproutes_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_http_route_request: Option<models::PatchedHttpRouteRequest>) -> Result<models::HttpRoute, Error<KubernetesClustersHttproutesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_patched_http_route = patched_http_route;
+    let p_body_patched_http_route_request = patched_http_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/httproutes/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -886,7 +1185,7 @@ pub async fn kubernetes_clusters_httproutes_partial_update(configuration: &confi
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_http_route);
+    req_builder = req_builder.json(&p_body_patched_http_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -960,11 +1259,11 @@ pub async fn kubernetes_clusters_httproutes_retrieve(configuration: &configurati
 }
 
 /// Update HTTPRoute
-pub async fn kubernetes_clusters_httproutes_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, http_route: models::HttpRoute) -> Result<models::HttpRoute, Error<KubernetesClustersHttproutesUpdateError>> {
+pub async fn kubernetes_clusters_httproutes_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, http_route_request: models::HttpRouteRequest) -> Result<models::HttpRoute, Error<KubernetesClustersHttproutesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_http_route = http_route;
+    let p_body_http_route_request = http_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/httproutes/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -980,7 +1279,7 @@ pub async fn kubernetes_clusters_httproutes_update(configuration: &configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_http_route);
+    req_builder = req_builder.json(&p_body_http_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1143,10 +1442,10 @@ pub async fn kubernetes_clusters_kubeconfig_retrieve(configuration: &configurati
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_lb_firewall_create(configuration: &configuration::Configuration, cluster_id: i32, lb_firewall_rule: Option<models::LbFirewallRule>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallCreateError>> {
+pub async fn kubernetes_clusters_lb_firewall_create(configuration: &configuration::Configuration, cluster_id: i32, lb_firewall_rule_request: Option<models::LbFirewallRuleRequest>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
-    let p_body_lb_firewall_rule = lb_firewall_rule;
+    let p_body_lb_firewall_rule_request = lb_firewall_rule_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/lb-firewall/", configuration.base_path, cluster_id=p_path_cluster_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1162,7 +1461,7 @@ pub async fn kubernetes_clusters_lb_firewall_create(configuration: &configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_lb_firewall_rule);
+    req_builder = req_builder.json(&p_body_lb_firewall_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1274,11 +1573,11 @@ pub async fn kubernetes_clusters_lb_firewall_list(configuration: &configuration:
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_lb_firewall_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_lb_firewall_rule: Option<models::PatchedLbFirewallRule>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallPartialUpdateError>> {
+pub async fn kubernetes_clusters_lb_firewall_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_lb_firewall_rule_request: Option<models::PatchedLbFirewallRuleRequest>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_patched_lb_firewall_rule = patched_lb_firewall_rule;
+    let p_body_patched_lb_firewall_rule_request = patched_lb_firewall_rule_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1294,7 +1593,7 @@ pub async fn kubernetes_clusters_lb_firewall_partial_update(configuration: &conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_lb_firewall_rule);
+    req_builder = req_builder.json(&p_body_patched_lb_firewall_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1368,11 +1667,11 @@ pub async fn kubernetes_clusters_lb_firewall_retrieve(configuration: &configurat
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_lb_firewall_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, lb_firewall_rule: Option<models::LbFirewallRule>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallUpdateError>> {
+pub async fn kubernetes_clusters_lb_firewall_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, lb_firewall_rule_request: Option<models::LbFirewallRuleRequest>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_lb_firewall_rule = lb_firewall_rule;
+    let p_body_lb_firewall_rule_request = lb_firewall_rule_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -1388,7 +1687,7 @@ pub async fn kubernetes_clusters_lb_firewall_update(configuration: &configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_lb_firewall_rule);
+    req_builder = req_builder.json(&p_body_lb_firewall_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1463,11 +1762,246 @@ pub async fn kubernetes_clusters_list(configuration: &configuration::Configurati
     }
 }
 
+/// Uncordon the node and abort a blocked operation.
+pub async fn kubernetes_clusters_node_operations_cancel_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::NodeOperation, Error<KubernetesClustersNodeOperationsCancelCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/cancel/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersNodeOperationsCancelCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+pub async fn kubernetes_clusters_node_operations_list(configuration: &configuration::Configuration, cluster_id: i32, page: Option<i32>) -> Result<models::PaginatedNodeOperationList, Error<KubernetesClustersNodeOperationsListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/node-operations/", configuration.base_path, cluster_id=p_path_cluster_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedNodeOperationList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedNodeOperationList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersNodeOperationsListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Staff-only resume of an operation waiting for support.
+pub async fn kubernetes_clusters_node_operations_resume_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::NodeOperation, Error<KubernetesClustersNodeOperationsResumeCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/resume/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersNodeOperationsResumeCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+pub async fn kubernetes_clusters_node_operations_retrieve(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::NodeOperation, Error<KubernetesClustersNodeOperationsRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersNodeOperationsRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Retry a blocked operation with the overrides that answer its blocker.
+pub async fn kubernetes_clusters_node_operations_retry_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str, node_operation_retry_request: Option<models::NodeOperationRetryRequest>) -> Result<models::NodeOperation, Error<KubernetesClustersNodeOperationsRetryCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+    let p_body_node_operation_retry_request = node_operation_retry_request;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/retry/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_node_operation_retry_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersNodeOperationsRetryCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_partial_update(configuration: &configuration::Configuration, id: &str, patched_cluster_detail: Option<models::PatchedClusterDetail>) -> Result<models::ClusterDetail, Error<KubernetesClustersPartialUpdateError>> {
+pub async fn kubernetes_clusters_partial_update(configuration: &configuration::Configuration, id: &str, patched_cluster_detail_request: Option<models::PatchedClusterDetailRequest>) -> Result<models::ClusterDetail, Error<KubernetesClustersPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_cluster_detail = patched_cluster_detail;
+    let p_body_patched_cluster_detail_request = patched_cluster_detail_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1483,7 +2017,7 @@ pub async fn kubernetes_clusters_partial_update(configuration: &configuration::C
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_cluster_detail);
+    req_builder = req_builder.json(&p_body_patched_cluster_detail_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1510,11 +2044,152 @@ pub async fn kubernetes_clusters_partial_update(configuration: &configuration::C
     }
 }
 
-/// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_port_forwards_create(configuration: &configuration::Configuration, cluster_id: i32, k8s_port_forward: models::K8sPortForward) -> Result<models::K8sPortForward, Error<KubernetesClustersPortForwardsCreateError>> {
+/// A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+pub async fn kubernetes_clusters_pool_removal_journals_list(configuration: &configuration::Configuration, cluster_id: i32, page: Option<i32>) -> Result<models::PaginatedPoolRemovalJournalList, Error<KubernetesClustersPoolRemovalJournalsListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
-    let p_body_k8s_port_forward = k8s_port_forward;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/", configuration.base_path, cluster_id=p_path_cluster_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedPoolRemovalJournalList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedPoolRemovalJournalList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersPoolRemovalJournalsListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Staff-only resume of a pool removal waiting for support.
+pub async fn kubernetes_clusters_pool_removal_journals_resume_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::PoolRemovalJournal, Error<KubernetesClustersPoolRemovalJournalsResumeCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/resume/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PoolRemovalJournal`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PoolRemovalJournal`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersPoolRemovalJournalsResumeCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+pub async fn kubernetes_clusters_pool_removal_journals_retrieve(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::PoolRemovalJournal, Error<KubernetesClustersPoolRemovalJournalsRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PoolRemovalJournal`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PoolRemovalJournal`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersPoolRemovalJournalsRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+pub async fn kubernetes_clusters_port_forwards_create(configuration: &configuration::Configuration, cluster_id: i32, k8s_port_forward_request: models::K8sPortForwardRequest) -> Result<models::K8sPortForward, Error<KubernetesClustersPortForwardsCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_body_k8s_port_forward_request = k8s_port_forward_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/port-forwards/", configuration.base_path, cluster_id=p_path_cluster_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1530,7 +2205,7 @@ pub async fn kubernetes_clusters_port_forwards_create(configuration: &configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_k8s_port_forward);
+    req_builder = req_builder.json(&p_body_k8s_port_forward_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1642,11 +2317,11 @@ pub async fn kubernetes_clusters_port_forwards_list(configuration: &configuratio
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_port_forwards_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_k8s_port_forward: Option<models::PatchedK8sPortForward>) -> Result<models::K8sPortForward, Error<KubernetesClustersPortForwardsPartialUpdateError>> {
+pub async fn kubernetes_clusters_port_forwards_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_k8s_port_forward_request: Option<models::PatchedK8sPortForwardRequest>) -> Result<models::K8sPortForward, Error<KubernetesClustersPortForwardsPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_patched_k8s_port_forward = patched_k8s_port_forward;
+    let p_body_patched_k8s_port_forward_request = patched_k8s_port_forward_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/port-forwards/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1662,7 +2337,7 @@ pub async fn kubernetes_clusters_port_forwards_partial_update(configuration: &co
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_k8s_port_forward);
+    req_builder = req_builder.json(&p_body_patched_k8s_port_forward_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1736,11 +2411,11 @@ pub async fn kubernetes_clusters_port_forwards_retrieve(configuration: &configur
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_port_forwards_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, k8s_port_forward: models::K8sPortForward) -> Result<models::K8sPortForward, Error<KubernetesClustersPortForwardsUpdateError>> {
+pub async fn kubernetes_clusters_port_forwards_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, k8s_port_forward_request: models::K8sPortForwardRequest) -> Result<models::K8sPortForward, Error<KubernetesClustersPortForwardsUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_k8s_port_forward = k8s_port_forward;
+    let p_body_k8s_port_forward_request = k8s_port_forward_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/port-forwards/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -1756,7 +2431,7 @@ pub async fn kubernetes_clusters_port_forwards_update(configuration: &configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_k8s_port_forward);
+    req_builder = req_builder.json(&p_body_k8s_port_forward_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1784,10 +2459,10 @@ pub async fn kubernetes_clusters_port_forwards_update(configuration: &configurat
 }
 
 /// Create new resource pool
-pub async fn kubernetes_clusters_resource_pools_create(configuration: &configuration::Configuration, cluster_id: i32, resource_pool_add: models::ResourcePoolAdd) -> Result<models::ResourcePoolAddResponse, Error<KubernetesClustersResourcePoolsCreateError>> {
+pub async fn kubernetes_clusters_resource_pools_create(configuration: &configuration::Configuration, cluster_id: i32, resource_pool_add_request: models::ResourcePoolAddRequest) -> Result<models::ResourcePoolAddResponse, Error<KubernetesClustersResourcePoolsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
-    let p_body_resource_pool_add = resource_pool_add;
+    let p_body_resource_pool_add_request = resource_pool_add_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/resource-pools/", configuration.base_path, cluster_id=p_path_cluster_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1803,7 +2478,7 @@ pub async fn kubernetes_clusters_resource_pools_create(configuration: &configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_resource_pool_add);
+    req_builder = req_builder.json(&p_body_resource_pool_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1914,8 +2589,8 @@ pub async fn kubernetes_clusters_resource_pools_list(configuration: &configurati
     }
 }
 
-/// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_resource_pools_nodes_destroy(configuration: &configuration::Configuration, cluster_id: i32, id: &str, pool_id: i32) -> Result<(), Error<KubernetesClustersResourcePoolsNodesDestroyError>> {
+/// Start a safe delete of one worker node.
+pub async fn kubernetes_clusters_resource_pools_nodes_destroy(configuration: &configuration::Configuration, cluster_id: i32, id: &str, pool_id: i32) -> Result<models::NodeOperation, Error<KubernetesClustersResourcePoolsNodesDestroyError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
@@ -1940,9 +2615,20 @@ pub async fn kubernetes_clusters_resource_pools_nodes_destroy(configuration: &co
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<KubernetesClustersResourcePoolsNodesDestroyError> = serde_json::from_str(&content).ok();
@@ -2047,6 +2733,55 @@ pub async fn kubernetes_clusters_resource_pools_nodes_metrics_retrieve(configura
     }
 }
 
+/// Restart one worker node, draining it first.
+pub async fn kubernetes_clusters_resource_pools_nodes_reboot_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str, pool_id: i32, node_operation_reboot_request: Option<models::NodeOperationRebootRequest>) -> Result<models::NodeOperation, Error<KubernetesClustersResourcePoolsNodesRebootCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_id = id;
+    let p_path_pool_id = pool_id;
+    let p_body_node_operation_reboot_request = node_operation_reboot_request;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/reboot/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id), pool_id=p_path_pool_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_node_operation_reboot_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersResourcePoolsNodesRebootCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 pub async fn kubernetes_clusters_resource_pools_nodes_retrieve(configuration: &configuration::Configuration, cluster_id: i32, id: &str, pool_id: i32) -> Result<models::ResourcePoolNode, Error<KubernetesClustersResourcePoolsNodesRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -2146,11 +2881,11 @@ pub async fn kubernetes_clusters_resource_pools_nodes_rrd_retrieve(configuration
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_resource_pools_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_resource_pool: Option<models::PatchedResourcePool>) -> Result<models::ResourcePool, Error<KubernetesClustersResourcePoolsPartialUpdateError>> {
+pub async fn kubernetes_clusters_resource_pools_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_resource_pool_request: Option<models::PatchedResourcePoolRequest>) -> Result<models::ResourcePool, Error<KubernetesClustersResourcePoolsPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_patched_resource_pool = patched_resource_pool;
+    let p_body_patched_resource_pool_request = patched_resource_pool_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/resource-pools/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -2166,7 +2901,7 @@ pub async fn kubernetes_clusters_resource_pools_partial_update(configuration: &c
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_resource_pool);
+    req_builder = req_builder.json(&p_body_patched_resource_pool_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2240,11 +2975,11 @@ pub async fn kubernetes_clusters_resource_pools_retrieve(configuration: &configu
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_resource_pools_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, resource_pool: Option<models::ResourcePool>) -> Result<models::ResourcePool, Error<KubernetesClustersResourcePoolsUpdateError>> {
+pub async fn kubernetes_clusters_resource_pools_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, resource_pool_request: Option<models::ResourcePoolRequest>) -> Result<models::ResourcePool, Error<KubernetesClustersResourcePoolsUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_resource_pool = resource_pool;
+    let p_body_resource_pool_request = resource_pool_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/resource-pools/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -2260,7 +2995,7 @@ pub async fn kubernetes_clusters_resource_pools_update(configuration: &configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_resource_pool);
+    req_builder = req_builder.json(&p_body_resource_pool_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2378,10 +3113,10 @@ pub async fn kubernetes_clusters_talos_version_upgrade_create(configuration: &co
 }
 
 /// Create new TCPRoute
-pub async fn kubernetes_clusters_tcproutes_create(configuration: &configuration::Configuration, cluster_id: i32, tcp_route: models::TcpRoute) -> Result<models::TcpRoute, Error<KubernetesClustersTcproutesCreateError>> {
+pub async fn kubernetes_clusters_tcproutes_create(configuration: &configuration::Configuration, cluster_id: i32, tcp_route_request: models::TcpRouteRequest) -> Result<models::TcpRoute, Error<KubernetesClustersTcproutesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
-    let p_body_tcp_route = tcp_route;
+    let p_body_tcp_route_request = tcp_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/tcproutes/", configuration.base_path, cluster_id=p_path_cluster_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2397,7 +3132,7 @@ pub async fn kubernetes_clusters_tcproutes_create(configuration: &configuration:
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_tcp_route);
+    req_builder = req_builder.json(&p_body_tcp_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2509,11 +3244,11 @@ pub async fn kubernetes_clusters_tcproutes_list(configuration: &configuration::C
 }
 
 /// Partially update TCPRoute
-pub async fn kubernetes_clusters_tcproutes_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_tcp_route: Option<models::PatchedTcpRoute>) -> Result<models::TcpRoute, Error<KubernetesClustersTcproutesPartialUpdateError>> {
+pub async fn kubernetes_clusters_tcproutes_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_tcp_route_request: Option<models::PatchedTcpRouteRequest>) -> Result<models::TcpRoute, Error<KubernetesClustersTcproutesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_patched_tcp_route = patched_tcp_route;
+    let p_body_patched_tcp_route_request = patched_tcp_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/tcproutes/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -2529,7 +3264,7 @@ pub async fn kubernetes_clusters_tcproutes_partial_update(configuration: &config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_tcp_route);
+    req_builder = req_builder.json(&p_body_patched_tcp_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2603,11 +3338,11 @@ pub async fn kubernetes_clusters_tcproutes_retrieve(configuration: &configuratio
 }
 
 /// Update TCPRoute
-pub async fn kubernetes_clusters_tcproutes_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, tcp_route: models::TcpRoute) -> Result<models::TcpRoute, Error<KubernetesClustersTcproutesUpdateError>> {
+pub async fn kubernetes_clusters_tcproutes_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, tcp_route_request: models::TcpRouteRequest) -> Result<models::TcpRoute, Error<KubernetesClustersTcproutesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_tcp_route = tcp_route;
+    let p_body_tcp_route_request = tcp_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/tcproutes/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -2623,7 +3358,7 @@ pub async fn kubernetes_clusters_tcproutes_update(configuration: &configuration:
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_tcp_route);
+    req_builder = req_builder.json(&p_body_tcp_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2696,10 +3431,10 @@ pub async fn kubernetes_clusters_toggle_cloud_vm_access_create(configuration: &c
 }
 
 /// Create new UDPRoute
-pub async fn kubernetes_clusters_udproutes_create(configuration: &configuration::Configuration, cluster_id: i32, udp_route: models::UdpRoute) -> Result<models::UdpRoute, Error<KubernetesClustersUdproutesCreateError>> {
+pub async fn kubernetes_clusters_udproutes_create(configuration: &configuration::Configuration, cluster_id: i32, udp_route_request: models::UdpRouteRequest) -> Result<models::UdpRoute, Error<KubernetesClustersUdproutesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
-    let p_body_udp_route = udp_route;
+    let p_body_udp_route_request = udp_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/udproutes/", configuration.base_path, cluster_id=p_path_cluster_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2715,7 +3450,7 @@ pub async fn kubernetes_clusters_udproutes_create(configuration: &configuration:
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_udp_route);
+    req_builder = req_builder.json(&p_body_udp_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2827,11 +3562,11 @@ pub async fn kubernetes_clusters_udproutes_list(configuration: &configuration::C
 }
 
 /// Partially update UDPRoute
-pub async fn kubernetes_clusters_udproutes_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_udp_route: Option<models::PatchedUdpRoute>) -> Result<models::UdpRoute, Error<KubernetesClustersUdproutesPartialUpdateError>> {
+pub async fn kubernetes_clusters_udproutes_partial_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, patched_udp_route_request: Option<models::PatchedUdpRouteRequest>) -> Result<models::UdpRoute, Error<KubernetesClustersUdproutesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_patched_udp_route = patched_udp_route;
+    let p_body_patched_udp_route_request = patched_udp_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/udproutes/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -2847,7 +3582,7 @@ pub async fn kubernetes_clusters_udproutes_partial_update(configuration: &config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_udp_route);
+    req_builder = req_builder.json(&p_body_patched_udp_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2921,11 +3656,11 @@ pub async fn kubernetes_clusters_udproutes_retrieve(configuration: &configuratio
 }
 
 /// Update UDPRoute
-pub async fn kubernetes_clusters_udproutes_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, udp_route: models::UdpRoute) -> Result<models::UdpRoute, Error<KubernetesClustersUdproutesUpdateError>> {
+pub async fn kubernetes_clusters_udproutes_update(configuration: &configuration::Configuration, cluster_id: i32, id: &str, udp_route_request: models::UdpRouteRequest) -> Result<models::UdpRoute, Error<KubernetesClustersUdproutesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
     let p_path_id = id;
-    let p_body_udp_route = udp_route;
+    let p_body_udp_route_request = udp_route_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/udproutes/{id}/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -2941,7 +3676,7 @@ pub async fn kubernetes_clusters_udproutes_update(configuration: &configuration:
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_udp_route);
+    req_builder = req_builder.json(&p_body_udp_route_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2969,10 +3704,10 @@ pub async fn kubernetes_clusters_udproutes_update(configuration: &configuration:
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn kubernetes_clusters_update(configuration: &configuration::Configuration, id: &str, cluster_detail: models::ClusterDetail) -> Result<models::ClusterDetail, Error<KubernetesClustersUpdateError>> {
+pub async fn kubernetes_clusters_update(configuration: &configuration::Configuration, id: &str, cluster_detail_request: models::ClusterDetailRequest) -> Result<models::ClusterDetail, Error<KubernetesClustersUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_cluster_detail = cluster_detail;
+    let p_body_cluster_detail_request = cluster_detail_request;
 
     let uri_str = format!("{}/api/kubernetes/clusters/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -2988,7 +3723,7 @@ pub async fn kubernetes_clusters_update(configuration: &configuration::Configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_cluster_detail);
+    req_builder = req_builder.json(&p_body_cluster_detail_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3058,6 +3793,53 @@ pub async fn kubernetes_clusters_upgrade_feature_create(configuration: &configur
     } else {
         let content = resp.text().await?;
         let entity: Option<KubernetesClustersUpgradeFeatureCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Inspect or perform the load-balancer upgrade the server computes for this cluster. The caller never selects a level.
+pub async fn kubernetes_clusters_upgrade_lb_create(configuration: &configuration::Configuration, id: &str, lb_upgrade_request: Option<models::LbUpgradeRequest>) -> Result<models::LbUpgradePlanResponse, Error<KubernetesClustersUpgradeLbCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_lb_upgrade_request = lb_upgrade_request;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/upgrade-lb/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_lb_upgrade_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::LbUpgradePlanResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::LbUpgradePlanResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersUpgradeLbCreateError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

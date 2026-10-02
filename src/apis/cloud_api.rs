@@ -666,6 +666,13 @@ pub enum CloudServersSnapshotsRollbackCreateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`cloud_servers_traffic_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudServersTrafficRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`cloud_servers_update`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -787,9 +794,9 @@ pub enum CloudVolumesUpdateError {
 
 
 /// Create a bucket
-pub async fn cloud_buckets_create(configuration: &configuration::Configuration, bucket_create: models::BucketCreate) -> Result<models::Bucket, Error<CloudBucketsCreateError>> {
+pub async fn cloud_buckets_create(configuration: &configuration::Configuration, bucket_create_request: models::BucketCreateRequest) -> Result<models::Bucket, Error<CloudBucketsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_bucket_create = bucket_create;
+    let p_body_bucket_create_request = bucket_create_request;
 
     let uri_str = format!("{}/api/cloud/buckets/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -805,7 +812,7 @@ pub async fn cloud_buckets_create(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_bucket_create);
+    req_builder = req_builder.json(&p_body_bucket_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1011,10 +1018,10 @@ pub async fn cloud_buckets_list(configuration: &configuration::Configuration, ) 
 }
 
 /// Resize a bucket
-pub async fn cloud_buckets_resize_create(configuration: &configuration::Configuration, id: i32, bucket_resize: models::BucketResize) -> Result<models::Bucket, Error<CloudBucketsResizeCreateError>> {
+pub async fn cloud_buckets_resize_create(configuration: &configuration::Configuration, id: i32, bucket_resize_request: models::BucketResizeRequest) -> Result<models::Bucket, Error<CloudBucketsResizeCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_bucket_resize = bucket_resize;
+    let p_body_bucket_resize_request = bucket_resize_request;
 
     let uri_str = format!("{}/api/cloud/buckets/{id}/resize/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1030,7 +1037,7 @@ pub async fn cloud_buckets_resize_create(configuration: &configuration::Configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_bucket_resize);
+    req_builder = req_builder.json(&p_body_bucket_resize_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1103,10 +1110,10 @@ pub async fn cloud_buckets_retrieve(configuration: &configuration::Configuration
 }
 
 /// Set bucket visibility
-pub async fn cloud_buckets_visibility_create(configuration: &configuration::Configuration, id: i32, bucket_visibility: models::BucketVisibility) -> Result<models::Bucket, Error<CloudBucketsVisibilityCreateError>> {
+pub async fn cloud_buckets_visibility_create(configuration: &configuration::Configuration, id: i32, bucket_visibility_request: models::BucketVisibilityRequest) -> Result<models::Bucket, Error<CloudBucketsVisibilityCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_bucket_visibility = bucket_visibility;
+    let p_body_bucket_visibility_request = bucket_visibility_request;
 
     let uri_str = format!("{}/api/cloud/buckets/{id}/visibility/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1122,7 +1129,7 @@ pub async fn cloud_buckets_visibility_create(configuration: &configuration::Conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_bucket_visibility);
+    req_builder = req_builder.json(&p_body_bucket_visibility_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1150,9 +1157,9 @@ pub async fn cloud_buckets_visibility_create(configuration: &configuration::Conf
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_firewall_rules_set_create(configuration: &configuration::Configuration, firewall_rules_set: models::FirewallRulesSet) -> Result<models::FirewallRulesSet, Error<CloudFirewallRulesSetCreateError>> {
+pub async fn cloud_firewall_rules_set_create(configuration: &configuration::Configuration, firewall_rules_set_request: models::FirewallRulesSetRequest) -> Result<models::FirewallRulesSet, Error<CloudFirewallRulesSetCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_firewall_rules_set = firewall_rules_set;
+    let p_body_firewall_rules_set_request = firewall_rules_set_request;
 
     let uri_str = format!("{}/api/cloud/firewall-rules-set/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1168,7 +1175,7 @@ pub async fn cloud_firewall_rules_set_create(configuration: &configuration::Conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_firewall_rules_set);
+    req_builder = req_builder.json(&p_body_firewall_rules_set_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1273,10 +1280,10 @@ pub async fn cloud_firewall_rules_set_list(configuration: &configuration::Config
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_firewall_rules_set_partial_update(configuration: &configuration::Configuration, id: i32, patched_firewall_rules_set: Option<models::PatchedFirewallRulesSet>) -> Result<models::FirewallRulesSet, Error<CloudFirewallRulesSetPartialUpdateError>> {
+pub async fn cloud_firewall_rules_set_partial_update(configuration: &configuration::Configuration, id: i32, patched_firewall_rules_set_request: Option<models::PatchedFirewallRulesSetRequest>) -> Result<models::FirewallRulesSet, Error<CloudFirewallRulesSetPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_firewall_rules_set = patched_firewall_rules_set;
+    let p_body_patched_firewall_rules_set_request = patched_firewall_rules_set_request;
 
     let uri_str = format!("{}/api/cloud/firewall-rules-set/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1292,7 +1299,7 @@ pub async fn cloud_firewall_rules_set_partial_update(configuration: &configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_firewall_rules_set);
+    req_builder = req_builder.json(&p_body_patched_firewall_rules_set_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1365,10 +1372,10 @@ pub async fn cloud_firewall_rules_set_retrieve(configuration: &configuration::Co
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_firewall_rules_set_rules_create(configuration: &configuration::Configuration, rules_set_id: &str, firewall_rule: models::FirewallRule) -> Result<models::FirewallRule, Error<CloudFirewallRulesSetRulesCreateError>> {
+pub async fn cloud_firewall_rules_set_rules_create(configuration: &configuration::Configuration, rules_set_id: &str, firewall_rule_request: models::FirewallRuleRequest) -> Result<models::FirewallRule, Error<CloudFirewallRulesSetRulesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_rules_set_id = rules_set_id;
-    let p_body_firewall_rule = firewall_rule;
+    let p_body_firewall_rule_request = firewall_rule_request;
 
     let uri_str = format!("{}/api/cloud/firewall-rules-set/{rules_set_id}/rules/", configuration.base_path, rules_set_id=crate::apis::urlencode(p_path_rules_set_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1384,7 +1391,7 @@ pub async fn cloud_firewall_rules_set_rules_create(configuration: &configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_firewall_rule);
+    req_builder = req_builder.json(&p_body_firewall_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1492,11 +1499,11 @@ pub async fn cloud_firewall_rules_set_rules_list(configuration: &configuration::
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_firewall_rules_set_rules_partial_update(configuration: &configuration::Configuration, rule_id: &str, rules_set_id: &str, patched_firewall_rule: Option<models::PatchedFirewallRule>) -> Result<models::FirewallRule, Error<CloudFirewallRulesSetRulesPartialUpdateError>> {
+pub async fn cloud_firewall_rules_set_rules_partial_update(configuration: &configuration::Configuration, rule_id: &str, rules_set_id: &str, patched_firewall_rule_request: Option<models::PatchedFirewallRuleRequest>) -> Result<models::FirewallRule, Error<CloudFirewallRulesSetRulesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_rule_id = rule_id;
     let p_path_rules_set_id = rules_set_id;
-    let p_body_patched_firewall_rule = patched_firewall_rule;
+    let p_body_patched_firewall_rule_request = patched_firewall_rule_request;
 
     let uri_str = format!("{}/api/cloud/firewall-rules-set/{rules_set_id}/rules/{rule_id}/", configuration.base_path, rule_id=crate::apis::urlencode(p_path_rule_id), rules_set_id=crate::apis::urlencode(p_path_rules_set_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1512,7 +1519,7 @@ pub async fn cloud_firewall_rules_set_rules_partial_update(configuration: &confi
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_firewall_rule);
+    req_builder = req_builder.json(&p_body_patched_firewall_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1586,11 +1593,11 @@ pub async fn cloud_firewall_rules_set_rules_retrieve(configuration: &configurati
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_firewall_rules_set_rules_update(configuration: &configuration::Configuration, rule_id: &str, rules_set_id: &str, firewall_rule: models::FirewallRule) -> Result<models::FirewallRule, Error<CloudFirewallRulesSetRulesUpdateError>> {
+pub async fn cloud_firewall_rules_set_rules_update(configuration: &configuration::Configuration, rule_id: &str, rules_set_id: &str, firewall_rule_request: models::FirewallRuleRequest) -> Result<models::FirewallRule, Error<CloudFirewallRulesSetRulesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_rule_id = rule_id;
     let p_path_rules_set_id = rules_set_id;
-    let p_body_firewall_rule = firewall_rule;
+    let p_body_firewall_rule_request = firewall_rule_request;
 
     let uri_str = format!("{}/api/cloud/firewall-rules-set/{rules_set_id}/rules/{rule_id}/", configuration.base_path, rule_id=crate::apis::urlencode(p_path_rule_id), rules_set_id=crate::apis::urlencode(p_path_rules_set_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -1606,7 +1613,7 @@ pub async fn cloud_firewall_rules_set_rules_update(configuration: &configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_firewall_rule);
+    req_builder = req_builder.json(&p_body_firewall_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1634,10 +1641,10 @@ pub async fn cloud_firewall_rules_set_rules_update(configuration: &configuration
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_firewall_rules_set_update(configuration: &configuration::Configuration, id: i32, firewall_rules_set: models::FirewallRulesSet) -> Result<models::FirewallRulesSet, Error<CloudFirewallRulesSetUpdateError>> {
+pub async fn cloud_firewall_rules_set_update(configuration: &configuration::Configuration, id: i32, firewall_rules_set_request: models::FirewallRulesSetRequest) -> Result<models::FirewallRulesSet, Error<CloudFirewallRulesSetUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_firewall_rules_set = firewall_rules_set;
+    let p_body_firewall_rules_set_request = firewall_rules_set_request;
 
     let uri_str = format!("{}/api/cloud/firewall-rules-set/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -1653,7 +1660,7 @@ pub async fn cloud_firewall_rules_set_update(configuration: &configuration::Conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_firewall_rules_set);
+    req_builder = req_builder.json(&p_body_firewall_rules_set_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1777,9 +1784,9 @@ pub async fn cloud_floating_ipv4_authorize_create(configuration: &configuration:
 }
 
 /// Manage floating IPv4 addresses. A floating IP can be authorized on multiple VMs simultaneously; the customer asserts ownership inside the guest via keepalived/VRRP.
-pub async fn cloud_floating_ipv4_create(configuration: &configuration::Configuration, floating_ipv4_create: Option<models::FloatingIpv4Create>) -> Result<models::FloatingIpv4, Error<CloudFloatingIpv4CreateError>> {
+pub async fn cloud_floating_ipv4_create(configuration: &configuration::Configuration, floating_ipv4_create_request: Option<models::FloatingIpv4CreateRequest>) -> Result<models::FloatingIpv4, Error<CloudFloatingIpv4CreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_floating_ipv4_create = floating_ipv4_create;
+    let p_body_floating_ipv4_create_request = floating_ipv4_create_request;
 
     let uri_str = format!("{}/api/cloud/floating-ipv4/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1795,7 +1802,7 @@ pub async fn cloud_floating_ipv4_create(configuration: &configuration::Configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_floating_ipv4_create);
+    req_builder = req_builder.json(&p_body_floating_ipv4_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1905,10 +1912,10 @@ pub async fn cloud_floating_ipv4_list(configuration: &configuration::Configurati
 }
 
 /// Get or update reverse DNS (PTR) for the IPv4 address wrapped by this floating IP.
-pub async fn cloud_floating_ipv4_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns: models::ReverseDns) -> Result<models::ReverseDns, Error<CloudFloatingIpv4RdnsCreateError>> {
+pub async fn cloud_floating_ipv4_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns_request: models::ReverseDnsRequest) -> Result<models::ReverseDns, Error<CloudFloatingIpv4RdnsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_reverse_dns = reverse_dns;
+    let p_body_reverse_dns_request = reverse_dns_request;
 
     let uri_str = format!("{}/api/cloud/floating-ipv4/{id}/rdns/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1924,7 +1931,7 @@ pub async fn cloud_floating_ipv4_rdns_create(configuration: &configuration::Conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_reverse_dns);
+    req_builder = req_builder.json(&p_body_reverse_dns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2185,9 +2192,9 @@ pub async fn cloud_floating_ipv6_authorize_create(configuration: &configuration:
 }
 
 /// Manage floating IPv6 addresses.
-pub async fn cloud_floating_ipv6_create(configuration: &configuration::Configuration, floating_ipv6_create: Option<models::FloatingIpv6Create>) -> Result<models::FloatingIpv6, Error<CloudFloatingIpv6CreateError>> {
+pub async fn cloud_floating_ipv6_create(configuration: &configuration::Configuration, floating_ipv6_create_request: Option<models::FloatingIpv6CreateRequest>) -> Result<models::FloatingIpv6, Error<CloudFloatingIpv6CreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_floating_ipv6_create = floating_ipv6_create;
+    let p_body_floating_ipv6_create_request = floating_ipv6_create_request;
 
     let uri_str = format!("{}/api/cloud/floating-ipv6/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2203,7 +2210,7 @@ pub async fn cloud_floating_ipv6_create(configuration: &configuration::Configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_floating_ipv6_create);
+    req_builder = req_builder.json(&p_body_floating_ipv6_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2313,10 +2320,10 @@ pub async fn cloud_floating_ipv6_list(configuration: &configuration::Configurati
 }
 
 /// Get or update reverse DNS (PTR) for the IPv6 address wrapped by this floating IP.
-pub async fn cloud_floating_ipv6_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns: models::ReverseDns) -> Result<models::ReverseDns, Error<CloudFloatingIpv6RdnsCreateError>> {
+pub async fn cloud_floating_ipv6_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns_request: models::ReverseDnsRequest) -> Result<models::ReverseDns, Error<CloudFloatingIpv6RdnsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_reverse_dns = reverse_dns;
+    let p_body_reverse_dns_request = reverse_dns_request;
 
     let uri_str = format!("{}/api/cloud/floating-ipv6/{id}/rdns/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2332,7 +2339,7 @@ pub async fn cloud_floating_ipv6_rdns_create(configuration: &configuration::Conf
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_reverse_dns);
+    req_builder = req_builder.json(&p_body_reverse_dns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2678,9 +2685,7 @@ pub async fn cloud_images_retrieve(configuration: &configuration::Configuration,
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_ipv4_create(configuration: &configuration::Configuration, public_ipv4: Option<models::PublicIpv4>) -> Result<models::PublicIpv4, Error<CloudIpv4CreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_public_ipv4 = public_ipv4;
+pub async fn cloud_ipv4_create(configuration: &configuration::Configuration, ) -> Result<models::PublicIpv4, Error<CloudIpv4CreateError>> {
 
     let uri_str = format!("{}/api/cloud/ipv4/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2696,7 +2701,6 @@ pub async fn cloud_ipv4_create(configuration: &configuration::Configuration, pub
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_public_ipv4);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2758,10 +2762,9 @@ pub async fn cloud_ipv4_destroy(configuration: &configuration::Configuration, id
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_ipv4_detach_create(configuration: &configuration::Configuration, id: i32, public_ipv4: Option<models::PublicIpv4>) -> Result<models::DetachIpv4Response, Error<CloudIpv4DetachCreateError>> {
+pub async fn cloud_ipv4_detach_create(configuration: &configuration::Configuration, id: i32) -> Result<models::DetachIpv4Response, Error<CloudIpv4DetachCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_public_ipv4 = public_ipv4;
 
     let uri_str = format!("{}/api/cloud/ipv4/{id}/detach/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2777,7 +2780,6 @@ pub async fn cloud_ipv4_detach_create(configuration: &configuration::Configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_public_ipv4);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2853,10 +2855,10 @@ pub async fn cloud_ipv4_list(configuration: &configuration::Configuration, page:
 }
 
 /// Get or update reverse DNS (PTR) for this IPv4 address.
-pub async fn cloud_ipv4_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns: models::ReverseDns) -> Result<models::ReverseDns, Error<CloudIpv4RdnsCreateError>> {
+pub async fn cloud_ipv4_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns_request: models::ReverseDnsRequest) -> Result<models::ReverseDns, Error<CloudIpv4RdnsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_reverse_dns = reverse_dns;
+    let p_body_reverse_dns_request = reverse_dns_request;
 
     let uri_str = format!("{}/api/cloud/ipv4/{id}/rdns/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2872,7 +2874,7 @@ pub async fn cloud_ipv4_rdns_create(configuration: &configuration::Configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_reverse_dns);
+    req_builder = req_builder.json(&p_body_reverse_dns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2990,9 +2992,7 @@ pub async fn cloud_ipv4_retrieve(configuration: &configuration::Configuration, i
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_ipv6_create(configuration: &configuration::Configuration, public_ipv6: Option<models::PublicIpv6>) -> Result<models::PublicIpv6, Error<CloudIpv6CreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_public_ipv6 = public_ipv6;
+pub async fn cloud_ipv6_create(configuration: &configuration::Configuration, ) -> Result<models::PublicIpv6, Error<CloudIpv6CreateError>> {
 
     let uri_str = format!("{}/api/cloud/ipv6/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -3008,7 +3008,6 @@ pub async fn cloud_ipv6_create(configuration: &configuration::Configuration, pub
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_public_ipv6);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3070,10 +3069,9 @@ pub async fn cloud_ipv6_destroy(configuration: &configuration::Configuration, id
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_ipv6_detach_create(configuration: &configuration::Configuration, id: i32, public_ipv6: Option<models::PublicIpv6>) -> Result<models::DetachIpv6Response, Error<CloudIpv6DetachCreateError>> {
+pub async fn cloud_ipv6_detach_create(configuration: &configuration::Configuration, id: i32) -> Result<models::DetachIpv6Response, Error<CloudIpv6DetachCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_public_ipv6 = public_ipv6;
 
     let uri_str = format!("{}/api/cloud/ipv6/{id}/detach/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -3089,7 +3087,6 @@ pub async fn cloud_ipv6_detach_create(configuration: &configuration::Configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_public_ipv6);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3165,10 +3162,10 @@ pub async fn cloud_ipv6_list(configuration: &configuration::Configuration, page:
 }
 
 /// Get or update reverse DNS (PTR) for this IPv6 address.
-pub async fn cloud_ipv6_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns: models::ReverseDns) -> Result<models::ReverseDns, Error<CloudIpv6RdnsCreateError>> {
+pub async fn cloud_ipv6_rdns_create(configuration: &configuration::Configuration, id: i32, reverse_dns_request: models::ReverseDnsRequest) -> Result<models::ReverseDns, Error<CloudIpv6RdnsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_reverse_dns = reverse_dns;
+    let p_body_reverse_dns_request = reverse_dns_request;
 
     let uri_str = format!("{}/api/cloud/ipv6/{id}/rdns/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -3184,7 +3181,7 @@ pub async fn cloud_ipv6_rdns_create(configuration: &configuration::Configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_reverse_dns);
+    req_builder = req_builder.json(&p_body_reverse_dns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3302,10 +3299,10 @@ pub async fn cloud_ipv6_retrieve(configuration: &configuration::Configuration, i
 }
 
 /// Manage private networks
-pub async fn cloud_private_networks_add_server_create(configuration: &configuration::Configuration, id: i32, private_network_add_host: models::PrivateNetworkAddHost) -> Result<models::AddServerResponse, Error<CloudPrivateNetworksAddServerCreateError>> {
+pub async fn cloud_private_networks_add_server_create(configuration: &configuration::Configuration, id: i32, private_network_add_host_request: models::PrivateNetworkAddHostRequest) -> Result<models::AddServerResponse, Error<CloudPrivateNetworksAddServerCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_private_network_add_host = private_network_add_host;
+    let p_body_private_network_add_host_request = private_network_add_host_request;
 
     let uri_str = format!("{}/api/cloud/private-networks/{id}/add-server/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -3321,7 +3318,7 @@ pub async fn cloud_private_networks_add_server_create(configuration: &configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_private_network_add_host);
+    req_builder = req_builder.json(&p_body_private_network_add_host_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3349,9 +3346,9 @@ pub async fn cloud_private_networks_add_server_create(configuration: &configurat
 }
 
 /// Manage private networks
-pub async fn cloud_private_networks_create(configuration: &configuration::Configuration, private_network: models::PrivateNetwork) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksCreateError>> {
+pub async fn cloud_private_networks_create(configuration: &configuration::Configuration, private_network_request: models::PrivateNetworkRequest) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_private_network = private_network;
+    let p_body_private_network_request = private_network_request;
 
     let uri_str = format!("{}/api/cloud/private-networks/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -3367,7 +3364,7 @@ pub async fn cloud_private_networks_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_private_network);
+    req_builder = req_builder.json(&p_body_private_network_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3477,10 +3474,10 @@ pub async fn cloud_private_networks_list(configuration: &configuration::Configur
 }
 
 /// Manage private networks
-pub async fn cloud_private_networks_partial_update(configuration: &configuration::Configuration, id: i32, patched_private_network: Option<models::PatchedPrivateNetwork>) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksPartialUpdateError>> {
+pub async fn cloud_private_networks_partial_update(configuration: &configuration::Configuration, id: i32, patched_private_network_update_request: Option<models::PatchedPrivateNetworkUpdateRequest>) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_private_network = patched_private_network;
+    let p_body_patched_private_network_update_request = patched_private_network_update_request;
 
     let uri_str = format!("{}/api/cloud/private-networks/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -3496,7 +3493,7 @@ pub async fn cloud_private_networks_partial_update(configuration: &configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_private_network);
+    req_builder = req_builder.json(&p_body_patched_private_network_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3524,10 +3521,10 @@ pub async fn cloud_private_networks_partial_update(configuration: &configuration
 }
 
 /// Manage private networks
-pub async fn cloud_private_networks_remove_server_create(configuration: &configuration::Configuration, id: i32, private_network_remove_host: models::PrivateNetworkRemoveHost) -> Result<models::RemoveServerResponse, Error<CloudPrivateNetworksRemoveServerCreateError>> {
+pub async fn cloud_private_networks_remove_server_create(configuration: &configuration::Configuration, id: i32, private_network_remove_host_request: models::PrivateNetworkRemoveHostRequest) -> Result<models::RemoveServerResponse, Error<CloudPrivateNetworksRemoveServerCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_private_network_remove_host = private_network_remove_host;
+    let p_body_private_network_remove_host_request = private_network_remove_host_request;
 
     let uri_str = format!("{}/api/cloud/private-networks/{id}/remove-server/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -3543,7 +3540,7 @@ pub async fn cloud_private_networks_remove_server_create(configuration: &configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_private_network_remove_host);
+    req_builder = req_builder.json(&p_body_private_network_remove_host_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3616,10 +3613,10 @@ pub async fn cloud_private_networks_retrieve(configuration: &configuration::Conf
 }
 
 /// Manage private networks
-pub async fn cloud_private_networks_update(configuration: &configuration::Configuration, id: i32, private_network: models::PrivateNetwork) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksUpdateError>> {
+pub async fn cloud_private_networks_update(configuration: &configuration::Configuration, id: i32, private_network_update_request: Option<models::PrivateNetworkUpdateRequest>) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_private_network = private_network;
+    let p_body_private_network_update_request = private_network_update_request;
 
     let uri_str = format!("{}/api/cloud/private-networks/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -3635,7 +3632,7 @@ pub async fn cloud_private_networks_update(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_private_network);
+    req_builder = req_builder.json(&p_body_private_network_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3942,17 +3939,13 @@ pub async fn cloud_servers_attach_ipv6_create(configuration: &configuration::Con
 }
 
 /// List the ISO catalog entries visible to this user and their package compatibility.
-pub async fn cloud_servers_boot_isos_list(configuration: &configuration::Configuration, id: i32, page: Option<i32>) -> Result<models::PaginatedBootIsoList, Error<CloudServersBootIsosListError>> {
+pub async fn cloud_servers_boot_isos_list(configuration: &configuration::Configuration, id: i32) -> Result<Vec<models::BootIso>, Error<CloudServersBootIsosListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_query_page = page;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/boot-isos/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_page {
-        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
-    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3980,8 +3973,8 @@ pub async fn cloud_servers_boot_isos_list(configuration: &configuration::Configu
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedBootIsoList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedBootIsoList`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::BootIso&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::BootIso&gt;`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -4036,9 +4029,9 @@ pub async fn cloud_servers_console_create(configuration: &configuration::Configu
 }
 
 /// Create new server
-pub async fn cloud_servers_create(configuration: &configuration::Configuration, server_add: models::ServerAdd) -> Result<models::ServerAddResponse, Error<CloudServersCreateError>> {
+pub async fn cloud_servers_create(configuration: &configuration::Configuration, server_add_request: models::ServerAddRequest) -> Result<models::ServerAddResponse, Error<CloudServersCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_server_add = server_add;
+    let p_body_server_add_request = server_add_request;
 
     let uri_str = format!("{}/api/cloud/servers/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -4054,7 +4047,7 @@ pub async fn cloud_servers_create(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_server_add);
+    req_builder = req_builder.json(&p_body_server_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4116,10 +4109,10 @@ pub async fn cloud_servers_destroy(configuration: &configuration::Configuration,
 }
 
 /// Enable or disable destroy protection.
-pub async fn cloud_servers_destroy_protection_create(configuration: &configuration::Configuration, id: i32, destroy_protection: models::DestroyProtection) -> Result<models::DestroyProtectionResponse, Error<CloudServersDestroyProtectionCreateError>> {
+pub async fn cloud_servers_destroy_protection_create(configuration: &configuration::Configuration, id: i32, destroy_protection_request: models::DestroyProtectionRequest) -> Result<models::DestroyProtectionResponse, Error<CloudServersDestroyProtectionCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_destroy_protection = destroy_protection;
+    let p_body_destroy_protection_request = destroy_protection_request;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/destroy-protection/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -4135,7 +4128,7 @@ pub async fn cloud_servers_destroy_protection_create(configuration: &configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_destroy_protection);
+    req_builder = req_builder.json(&p_body_destroy_protection_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4305,10 +4298,10 @@ pub async fn cloud_servers_list(configuration: &configuration::Configuration, pa
 }
 
 /// Modify server package: downgrade available only for packages with the same disk size.
-pub async fn cloud_servers_modify_package_create(configuration: &configuration::Configuration, id: i32, server_product_upgrade: models::ServerProductUpgrade) -> Result<models::ServerUpgradeResponse, Error<CloudServersModifyPackageCreateError>> {
+pub async fn cloud_servers_modify_package_create(configuration: &configuration::Configuration, id: i32, server_product_upgrade_request: models::ServerProductUpgradeRequest) -> Result<models::ServerUpgradeResponse, Error<CloudServersModifyPackageCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_server_product_upgrade = server_product_upgrade;
+    let p_body_server_product_upgrade_request = server_product_upgrade_request;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/modify-package/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -4324,7 +4317,7 @@ pub async fn cloud_servers_modify_package_create(configuration: &configuration::
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_server_product_upgrade);
+    req_builder = req_builder.json(&p_body_server_product_upgrade_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4352,10 +4345,10 @@ pub async fn cloud_servers_modify_package_create(configuration: &configuration::
 }
 
 /// Cloud servers
-pub async fn cloud_servers_partial_update(configuration: &configuration::Configuration, id: i32, patched_server_detail: Option<models::PatchedServerDetail>) -> Result<models::ServerDetail, Error<CloudServersPartialUpdateError>> {
+pub async fn cloud_servers_partial_update(configuration: &configuration::Configuration, id: i32, patched_server_detail_request: Option<models::PatchedServerDetailRequest>) -> Result<models::ServerDetail, Error<CloudServersPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_server_detail = patched_server_detail;
+    let p_body_patched_server_detail_request = patched_server_detail_request;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -4371,7 +4364,7 @@ pub async fn cloud_servers_partial_update(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_server_detail);
+    req_builder = req_builder.json(&p_body_patched_server_detail_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4491,10 +4484,10 @@ pub async fn cloud_servers_power_management_retrieve(configuration: &configurati
 }
 
 /// Public interface
-pub async fn cloud_servers_public_interface_create(configuration: &configuration::Configuration, id: i32, public_interface: Option<models::PublicInterface>) -> Result<models::PublicInterface, Error<CloudServersPublicInterfaceCreateError>> {
+pub async fn cloud_servers_public_interface_create(configuration: &configuration::Configuration, id: i32, public_interface_request: Option<models::PublicInterfaceRequest>) -> Result<models::PublicInterface, Error<CloudServersPublicInterfaceCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_public_interface = public_interface;
+    let p_body_public_interface_request = public_interface_request;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/public-interface/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -4510,7 +4503,7 @@ pub async fn cloud_servers_public_interface_create(configuration: &configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_public_interface);
+    req_builder = req_builder.json(&p_body_public_interface_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4798,19 +4791,15 @@ pub async fn cloud_servers_retry_provision_create(configuration: &configuration:
     }
 }
 
-/// List snapshots for this server or queue a new snapshot.
-pub async fn cloud_servers_snapshots_create(configuration: &configuration::Configuration, id: i32, snapshot_create: models::SnapshotCreate, page: Option<i32>) -> Result<models::PaginatedSnapshotList, Error<CloudServersSnapshotsCreateError>> {
+/// Cloud servers
+pub async fn cloud_servers_snapshots_create(configuration: &configuration::Configuration, id: i32, snapshot_create_request: models::SnapshotCreateRequest) -> Result<models::SnapshotCreateQueued, Error<CloudServersSnapshotsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_snapshot_create = snapshot_create;
-    let p_query_page = page;
+    let p_body_snapshot_create_request = snapshot_create_request;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/snapshots/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_page {
-        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
-    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4822,7 +4811,7 @@ pub async fn cloud_servers_snapshots_create(configuration: &configuration::Confi
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_snapshot_create);
+    req_builder = req_builder.json(&p_body_snapshot_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4839,8 +4828,8 @@ pub async fn cloud_servers_snapshots_create(configuration: &configuration::Confi
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedSnapshotList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedSnapshotList`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SnapshotCreateQueued`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SnapshotCreateQueued`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -4896,17 +4885,13 @@ pub async fn cloud_servers_snapshots_destroy(configuration: &configuration::Conf
 }
 
 /// List snapshots for this server or queue a new snapshot.
-pub async fn cloud_servers_snapshots_list(configuration: &configuration::Configuration, id: i32, page: Option<i32>) -> Result<models::PaginatedSnapshotList, Error<CloudServersSnapshotsListError>> {
+pub async fn cloud_servers_snapshots_list(configuration: &configuration::Configuration, id: i32) -> Result<Vec<models::Snapshot>, Error<CloudServersSnapshotsListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_query_page = page;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/snapshots/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_page {
-        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
-    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4934,8 +4919,8 @@ pub async fn cloud_servers_snapshots_list(configuration: &configuration::Configu
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedSnapshotList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedSnapshotList`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::Snapshot&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::Snapshot&gt;`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -4990,11 +4975,56 @@ pub async fn cloud_servers_snapshots_rollback_create(configuration: &configurati
     }
 }
 
-/// Cloud servers
-pub async fn cloud_servers_update(configuration: &configuration::Configuration, id: i32, server_detail: Option<models::ServerDetail>) -> Result<models::ServerDetail, Error<CloudServersUpdateError>> {
+/// Get this month's traffic usage for a server.
+pub async fn cloud_servers_traffic_retrieve(configuration: &configuration::Configuration, id: i32) -> Result<models::ServerTrafficResponse, Error<CloudServersTrafficRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_server_detail = server_detail;
+
+    let uri_str = format!("{}/api/cloud/servers/{id}/traffic/", configuration.base_path, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ServerTrafficResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ServerTrafficResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudServersTrafficRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Cloud servers
+pub async fn cloud_servers_update(configuration: &configuration::Configuration, id: i32, server_detail_request: Option<models::ServerDetailRequest>) -> Result<models::ServerDetail, Error<CloudServersUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_server_detail_request = server_detail_request;
 
     let uri_str = format!("{}/api/cloud/servers/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -5010,7 +5040,7 @@ pub async fn cloud_servers_update(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_server_detail);
+    req_builder = req_builder.json(&p_body_server_detail_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5083,10 +5113,10 @@ pub async fn cloud_servers_usage_retrieve(configuration: &configuration::Configu
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_servers_volumes_create(configuration: &configuration::Configuration, server_id: &str, volume: models::Volume) -> Result<models::Volume, Error<CloudServersVolumesCreateError>> {
+pub async fn cloud_servers_volumes_create(configuration: &configuration::Configuration, server_id: &str, volume_request: models::VolumeRequest) -> Result<models::Volume, Error<CloudServersVolumesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_server_id = server_id;
-    let p_body_volume = volume;
+    let p_body_volume_request = volume_request;
 
     let uri_str = format!("{}/api/cloud/servers/{server_id}/volumes/", configuration.base_path, server_id=crate::apis::urlencode(p_path_server_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -5102,7 +5132,7 @@ pub async fn cloud_servers_volumes_create(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_volume);
+    req_builder = req_builder.json(&p_body_volume_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5210,11 +5240,11 @@ pub async fn cloud_servers_volumes_list(configuration: &configuration::Configura
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_servers_volumes_partial_update(configuration: &configuration::Configuration, server_id: &str, volume_id: &str, patched_volume: Option<models::PatchedVolume>) -> Result<models::Volume, Error<CloudServersVolumesPartialUpdateError>> {
+pub async fn cloud_servers_volumes_partial_update(configuration: &configuration::Configuration, server_id: &str, volume_id: &str, patched_volume_update_request: Option<models::PatchedVolumeUpdateRequest>) -> Result<models::Volume, Error<CloudServersVolumesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_server_id = server_id;
     let p_path_volume_id = volume_id;
-    let p_body_patched_volume = patched_volume;
+    let p_body_patched_volume_update_request = patched_volume_update_request;
 
     let uri_str = format!("{}/api/cloud/servers/{server_id}/volumes/{volume_id}/", configuration.base_path, server_id=crate::apis::urlencode(p_path_server_id), volume_id=crate::apis::urlencode(p_path_volume_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -5230,7 +5260,7 @@ pub async fn cloud_servers_volumes_partial_update(configuration: &configuration:
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_volume);
+    req_builder = req_builder.json(&p_body_patched_volume_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5304,11 +5334,11 @@ pub async fn cloud_servers_volumes_retrieve(configuration: &configuration::Confi
 }
 
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
-pub async fn cloud_servers_volumes_update(configuration: &configuration::Configuration, server_id: &str, volume_id: &str, volume: models::Volume) -> Result<models::Volume, Error<CloudServersVolumesUpdateError>> {
+pub async fn cloud_servers_volumes_update(configuration: &configuration::Configuration, server_id: &str, volume_id: &str, volume_update_request: models::VolumeUpdateRequest) -> Result<models::Volume, Error<CloudServersVolumesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_server_id = server_id;
     let p_path_volume_id = volume_id;
-    let p_body_volume = volume;
+    let p_body_volume_update_request = volume_update_request;
 
     let uri_str = format!("{}/api/cloud/servers/{server_id}/volumes/{volume_id}/", configuration.base_path, server_id=crate::apis::urlencode(p_path_server_id), volume_id=crate::apis::urlencode(p_path_volume_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -5324,7 +5354,7 @@ pub async fn cloud_servers_volumes_update(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_volume);
+    req_builder = req_builder.json(&p_body_volume_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5445,10 +5475,10 @@ pub async fn cloud_storage_products_retrieve(configuration: &configuration::Conf
 }
 
 /// Attach existing volume to a server
-pub async fn cloud_volumes_attach_create(configuration: &configuration::Configuration, id: i32, attach_volume: models::AttachVolume) -> Result<models::AttachVolume, Error<CloudVolumesAttachCreateError>> {
+pub async fn cloud_volumes_attach_create(configuration: &configuration::Configuration, id: i32, attach_volume_request: models::AttachVolumeRequest) -> Result<models::AttachVolume, Error<CloudVolumesAttachCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_attach_volume = attach_volume;
+    let p_body_attach_volume_request = attach_volume_request;
 
     let uri_str = format!("{}/api/cloud/volumes/{id}/attach/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -5464,7 +5494,7 @@ pub async fn cloud_volumes_attach_create(configuration: &configuration::Configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_attach_volume);
+    req_builder = req_builder.json(&p_body_attach_volume_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5526,10 +5556,9 @@ pub async fn cloud_volumes_destroy(configuration: &configuration::Configuration,
 }
 
 /// Detach volume from server
-pub async fn cloud_volumes_detach_create(configuration: &configuration::Configuration, id: i32, volume: models::Volume) -> Result<models::DetachVolume, Error<CloudVolumesDetachCreateError>> {
+pub async fn cloud_volumes_detach_create(configuration: &configuration::Configuration, id: i32) -> Result<models::DetachVolume, Error<CloudVolumesDetachCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_volume = volume;
 
     let uri_str = format!("{}/api/cloud/volumes/{id}/detach/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -5545,7 +5574,6 @@ pub async fn cloud_volumes_detach_create(configuration: &configuration::Configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_volume);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5616,10 +5644,10 @@ pub async fn cloud_volumes_list(configuration: &configuration::Configuration, ) 
 }
 
 /// Volumes management
-pub async fn cloud_volumes_partial_update(configuration: &configuration::Configuration, id: i32, patched_volume: Option<models::PatchedVolume>) -> Result<models::Volume, Error<CloudVolumesPartialUpdateError>> {
+pub async fn cloud_volumes_partial_update(configuration: &configuration::Configuration, id: i32, patched_volume_update_request: Option<models::PatchedVolumeUpdateRequest>) -> Result<models::Volume, Error<CloudVolumesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_volume = patched_volume;
+    let p_body_patched_volume_update_request = patched_volume_update_request;
 
     let uri_str = format!("{}/api/cloud/volumes/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -5635,7 +5663,7 @@ pub async fn cloud_volumes_partial_update(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_volume);
+    req_builder = req_builder.json(&p_body_patched_volume_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5708,10 +5736,10 @@ pub async fn cloud_volumes_retrieve(configuration: &configuration::Configuration
 }
 
 /// Volumes management
-pub async fn cloud_volumes_update(configuration: &configuration::Configuration, id: i32, volume: models::Volume) -> Result<models::Volume, Error<CloudVolumesUpdateError>> {
+pub async fn cloud_volumes_update(configuration: &configuration::Configuration, id: i32, volume_update_request: models::VolumeUpdateRequest) -> Result<models::Volume, Error<CloudVolumesUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_volume = volume;
+    let p_body_volume_update_request = volume_update_request;
 
     let uri_str = format!("{}/api/cloud/volumes/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -5727,7 +5755,7 @@ pub async fn cloud_volumes_update(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_volume);
+    req_builder = req_builder.json(&p_body_volume_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

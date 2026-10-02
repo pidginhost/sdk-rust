@@ -10,6 +10,7 @@
 | CloudnativePg | cloudnative-pg |
 | MariadbOperator | mariadb-operator |
 | MongodbOperator | mongodb-operator |
+| LbEnvoyMetrics | lb-envoy-metrics |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

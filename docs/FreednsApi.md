@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## freedns_dns_activate_create
 
-> models::ActivateFreeDnsResponse freedns_dns_activate_create(activate_free_dns)
+> models::ActivateFreeDnsResponse freedns_dns_activate_create(activate_free_dns_request)
 
 
 Activate FreeDNS for a domain. For internal domains the nameservers are changed to PidginHost NS. A default zone is created on the cPanel node.
@@ -25,7 +25,7 @@ Activate FreeDNS for a domain. For internal domains the nameservers are changed 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**activate_free_dns** | [**ActivateFreeDns**](ActivateFreeDns.md) |  | [required] |
+**activate_free_dns_request** | [**ActivateFreeDnsRequest**](ActivateFreeDnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## freedns_dns_add_record_create
 
-> models::DnsRecordMutateResponse freedns_dns_add_record_create(domain, source, dns_record_create)
+> models::DnsRecordMutateResponse freedns_dns_add_record_create(domain, source, dns_record_create_request)
 
 
 Add or edit a DNS record. To edit an existing record, include the 'line' field with its line number. Required type-specific fields depend on 'type': A/AAAA → address; CNAME → cname; MX → preference, exchange; SRV → priority, weight, port, target; TXT → txtdata, unencoded; TYPE257 (CAA) → flag, tag, value.
@@ -57,7 +57,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** | Domain name or PK. | [required] |
 **source** | **String** | 'internal' or 'external'. | [required] |
-**dns_record_create** | [**DnsRecordCreate**](DnsRecordCreate.md) |  | [required] |
+**dns_record_create_request** | [**DnsRecordCreateRequest**](DnsRecordCreateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 
 ## freedns_dns_deactivate_create
 
-> models::DeactivateFreeDnsResponse freedns_dns_deactivate_create(deactivate_free_dns)
+> models::DeactivateFreeDnsResponse freedns_dns_deactivate_create(deactivate_free_dns_request)
 
 
 Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node and, for internal domains, the original nameservers are restored.
@@ -87,7 +87,7 @@ Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node an
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**deactivate_free_dns** | [**DeactivateFreeDns**](DeactivateFreeDns.md) |  | [required] |
+**deactivate_free_dns_request** | [**DeactivateFreeDnsRequest**](DeactivateFreeDnsRequest.md) |  | [required] |
 
 ### Return type
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 ## freedns_dns_delete_record_create
 
-> models::DeleteRecordResponse freedns_dns_delete_record_create(domain, source, delete_record)
+> models::DeleteRecordResponse freedns_dns_delete_record_create(domain, source, delete_record_request)
 
 
 Delete a DNS record by its line number.
@@ -119,7 +119,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **domain** | **String** | Domain name or PK. | [required] |
 **source** | **String** | 'internal' or 'external'. | [required] |
-**delete_record** | [**DeleteRecord**](DeleteRecord.md) |  | [required] |
+**delete_record_request** | [**DeleteRecordRequest**](DeleteRecordRequest.md) |  | [required] |
 
 ### Return type
 

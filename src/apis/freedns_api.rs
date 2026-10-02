@@ -59,9 +59,9 @@ pub enum FreednsDnsRecordsListError {
 
 
 /// Activate FreeDNS for a domain. For internal domains the nameservers are changed to PidginHost NS. A default zone is created on the cPanel node.
-pub async fn freedns_dns_activate_create(configuration: &configuration::Configuration, activate_free_dns: models::ActivateFreeDns) -> Result<models::ActivateFreeDnsResponse, Error<FreednsDnsActivateCreateError>> {
+pub async fn freedns_dns_activate_create(configuration: &configuration::Configuration, activate_free_dns_request: models::ActivateFreeDnsRequest) -> Result<models::ActivateFreeDnsResponse, Error<FreednsDnsActivateCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_activate_free_dns = activate_free_dns;
+    let p_body_activate_free_dns_request = activate_free_dns_request;
 
     let uri_str = format!("{}/api/freedns/dns/activate/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -77,7 +77,7 @@ pub async fn freedns_dns_activate_create(configuration: &configuration::Configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_activate_free_dns);
+    req_builder = req_builder.json(&p_body_activate_free_dns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -105,11 +105,11 @@ pub async fn freedns_dns_activate_create(configuration: &configuration::Configur
 }
 
 /// Add or edit a DNS record. To edit an existing record, include the 'line' field with its line number. Required type-specific fields depend on 'type': A/AAAA → address; CNAME → cname; MX → preference, exchange; SRV → priority, weight, port, target; TXT → txtdata, unencoded; TYPE257 (CAA) → flag, tag, value.
-pub async fn freedns_dns_add_record_create(configuration: &configuration::Configuration, domain: &str, source: &str, dns_record_create: models::DnsRecordCreate) -> Result<models::DnsRecordMutateResponse, Error<FreednsDnsAddRecordCreateError>> {
+pub async fn freedns_dns_add_record_create(configuration: &configuration::Configuration, domain: &str, source: &str, dns_record_create_request: models::DnsRecordCreateRequest) -> Result<models::DnsRecordMutateResponse, Error<FreednsDnsAddRecordCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_domain = domain;
     let p_query_source = source;
-    let p_body_dns_record_create = dns_record_create;
+    let p_body_dns_record_create_request = dns_record_create_request;
 
     let uri_str = format!("{}/api/freedns/dns/add-record/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -127,7 +127,7 @@ pub async fn freedns_dns_add_record_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_dns_record_create);
+    req_builder = req_builder.json(&p_body_dns_record_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -155,9 +155,9 @@ pub async fn freedns_dns_add_record_create(configuration: &configuration::Config
 }
 
 /// Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node and, for internal domains, the original nameservers are restored.
-pub async fn freedns_dns_deactivate_create(configuration: &configuration::Configuration, deactivate_free_dns: models::DeactivateFreeDns) -> Result<models::DeactivateFreeDnsResponse, Error<FreednsDnsDeactivateCreateError>> {
+pub async fn freedns_dns_deactivate_create(configuration: &configuration::Configuration, deactivate_free_dns_request: models::DeactivateFreeDnsRequest) -> Result<models::DeactivateFreeDnsResponse, Error<FreednsDnsDeactivateCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_deactivate_free_dns = deactivate_free_dns;
+    let p_body_deactivate_free_dns_request = deactivate_free_dns_request;
 
     let uri_str = format!("{}/api/freedns/dns/deactivate/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -173,7 +173,7 @@ pub async fn freedns_dns_deactivate_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_deactivate_free_dns);
+    req_builder = req_builder.json(&p_body_deactivate_free_dns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -201,11 +201,11 @@ pub async fn freedns_dns_deactivate_create(configuration: &configuration::Config
 }
 
 /// Delete a DNS record by its line number.
-pub async fn freedns_dns_delete_record_create(configuration: &configuration::Configuration, domain: &str, source: &str, delete_record: models::DeleteRecord) -> Result<models::DeleteRecordResponse, Error<FreednsDnsDeleteRecordCreateError>> {
+pub async fn freedns_dns_delete_record_create(configuration: &configuration::Configuration, domain: &str, source: &str, delete_record_request: models::DeleteRecordRequest) -> Result<models::DeleteRecordResponse, Error<FreednsDnsDeleteRecordCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_domain = domain;
     let p_query_source = source;
-    let p_body_delete_record = delete_record;
+    let p_body_delete_record_request = delete_record_request;
 
     let uri_str = format!("{}/api/freedns/dns/delete-record/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -223,7 +223,7 @@ pub async fn freedns_dns_delete_record_create(configuration: &configuration::Con
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_delete_record);
+    req_builder = req_builder.json(&p_body_delete_record_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

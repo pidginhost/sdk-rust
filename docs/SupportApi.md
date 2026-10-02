@@ -74,7 +74,7 @@ Name | Type | Description  | Required | Notes
 
 ## support_tickets_create
 
-> models::TicketDetail support_tickets_create(ticket_create)
+> models::TicketDetail support_tickets_create(ticket_create_request)
 
 
 Create a new support ticket.
@@ -84,7 +84,7 @@ Create a new support ticket.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**ticket_create** | [**TicketCreate**](TicketCreate.md) |  | [required] |
+**ticket_create_request** | [**TicketCreateRequest**](TicketCreateRequest.md) |  | [required] |
 
 ### Return type
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Required | Notes
 
 ## support_tickets_reply_create
 
-> models::TicketReplyResponse support_tickets_reply_create(id, ticket_reply)
+> models::TicketReplyResponse support_tickets_reply_create(id, ticket_reply_request)
 
 
 Reply to a ticket.
@@ -206,7 +206,7 @@ Reply to a ticket.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**ticket_reply** | [**TicketReply**](TicketReply.md) |  | [required] |
+**ticket_reply_request** | [**TicketReplyRequest**](TicketReplyRequest.md) |  | [required] |
 
 ### Return type
 

@@ -28,15 +28,15 @@ pub struct ApiTokenList {
     pub last_used: Option<String>,
     #[serde(rename = "request_count")]
     pub request_count: i32,
-    #[serde(rename = "account", deserialize_with = "Option::deserialize")]
-    pub account: Option<String>,
-    #[serde(rename = "membership_status", deserialize_with = "Option::deserialize")]
-    pub membership_status: Option<String>,
+    #[serde(rename = "account", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub account: Option<Option<String>>,
+    #[serde(rename = "membership_status", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub membership_status: Option<Option<String>>,
 }
 
 impl ApiTokenList {
     /// Label bound tokens with their account + membership status (spec §4.2).  A dark deployment (flag off) with only personal rows keeps the exact pre-feature response shape; a bound row is always labeled so it cannot be mistaken for a personal token even after an emergency disable.
-    pub fn new(id: i32, name: String, scope: models::ScopeEnum, key_prefix: String, created: String, last_used: Option<String>, request_count: i32, account: Option<String>, membership_status: Option<String>) -> ApiTokenList {
+    pub fn new(id: i32, name: String, scope: models::ScopeEnum, key_prefix: String, created: String, last_used: Option<String>, request_count: i32) -> ApiTokenList {
         ApiTokenList {
             id,
             name,
@@ -45,8 +45,8 @@ impl ApiTokenList {
             created,
             last_used,
             request_count,
-            account,
-            membership_status,
+            account: None,
+            membership_status: None,
         }
     }
 }

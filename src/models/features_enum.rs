@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// FeaturesEnum : * `cert-manager` - Certificate manager * `ceph-csi` - Ceph CSI * `metrics-server` - Metrics Server * `cloudnative-pg` - CloudNative PG * `mariadb-operator` - MariaDB Operator * `mongodb-operator` - MongoDB Operator
-/// * `cert-manager` - Certificate manager * `ceph-csi` - Ceph CSI * `metrics-server` - Metrics Server * `cloudnative-pg` - CloudNative PG * `mariadb-operator` - MariaDB Operator * `mongodb-operator` - MongoDB Operator
+/// FeaturesEnum : * `cert-manager` - Certificate manager * `ceph-csi` - Ceph CSI * `metrics-server` - Metrics Server * `cloudnative-pg` - CloudNative PG * `mariadb-operator` - MariaDB Operator * `mongodb-operator` - MongoDB Operator * `lb-envoy-metrics` - Load balancer metrics
+/// * `cert-manager` - Certificate manager * `ceph-csi` - Ceph CSI * `metrics-server` - Metrics Server * `cloudnative-pg` - CloudNative PG * `mariadb-operator` - MariaDB Operator * `mongodb-operator` - MongoDB Operator * `lb-envoy-metrics` - Load balancer metrics
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum FeaturesEnum {
     #[serde(rename = "cert-manager")]
@@ -27,6 +27,8 @@ pub enum FeaturesEnum {
     MariadbOperator,
     #[serde(rename = "mongodb-operator")]
     MongodbOperator,
+    #[serde(rename = "lb-envoy-metrics")]
+    LbEnvoyMetrics,
 
 }
 
@@ -39,6 +41,7 @@ impl std::fmt::Display for FeaturesEnum {
             Self::CloudnativePg => write!(f, "cloudnative-pg"),
             Self::MariadbOperator => write!(f, "mariadb-operator"),
             Self::MongodbOperator => write!(f, "mongodb-operator"),
+            Self::LbEnvoyMetrics => write!(f, "lb-envoy-metrics"),
         }
     }
 }

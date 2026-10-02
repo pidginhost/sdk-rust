@@ -100,10 +100,10 @@ pub async fn dedicated_servers_list(configuration: &configuration::Configuration
 }
 
 /// Execute a power management action (start, stop, restart, shutdown).
-pub async fn dedicated_servers_power_create(configuration: &configuration::Configuration, id: &str, power_action: models::PowerAction) -> Result<models::PowerActionResponse, Error<DedicatedServersPowerCreateError>> {
+pub async fn dedicated_servers_power_create(configuration: &configuration::Configuration, id: &str, power_action_request: models::PowerActionRequest) -> Result<models::PowerActionResponse, Error<DedicatedServersPowerCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_power_action = power_action;
+    let p_body_power_action_request = power_action_request;
 
     let uri_str = format!("{}/api/dedicated/servers/{id}/power/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -119,7 +119,7 @@ pub async fn dedicated_servers_power_create(configuration: &configuration::Confi
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_power_action);
+    req_builder = req_builder.json(&p_body_power_action_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -147,10 +147,10 @@ pub async fn dedicated_servers_power_create(configuration: &configuration::Confi
 }
 
 /// Update reverse DNS for a dedicated server IP.
-pub async fn dedicated_servers_rdns_create(configuration: &configuration::Configuration, id: &str, dedicated_rdns: models::DedicatedRdns) -> Result<models::RdnsUpdateResponse, Error<DedicatedServersRdnsCreateError>> {
+pub async fn dedicated_servers_rdns_create(configuration: &configuration::Configuration, id: &str, dedicated_rdns_request: models::DedicatedRdnsRequest) -> Result<models::RdnsUpdateResponse, Error<DedicatedServersRdnsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_dedicated_rdns = dedicated_rdns;
+    let p_body_dedicated_rdns_request = dedicated_rdns_request;
 
     let uri_str = format!("{}/api/dedicated/servers/{id}/rdns/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -166,7 +166,7 @@ pub async fn dedicated_servers_rdns_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_dedicated_rdns);
+    req_builder = req_builder.json(&p_body_dedicated_rdns_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -194,10 +194,10 @@ pub async fn dedicated_servers_rdns_create(configuration: &configuration::Config
 }
 
 /// Reinstall the dedicated server with a new operating system.
-pub async fn dedicated_servers_reinstall_create(configuration: &configuration::Configuration, id: &str, reinstall: models::Reinstall) -> Result<models::ReinstallResponse, Error<DedicatedServersReinstallCreateError>> {
+pub async fn dedicated_servers_reinstall_create(configuration: &configuration::Configuration, id: &str, reinstall_request: models::ReinstallRequest) -> Result<models::ReinstallResponse, Error<DedicatedServersReinstallCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_reinstall = reinstall;
+    let p_body_reinstall_request = reinstall_request;
 
     let uri_str = format!("{}/api/dedicated/servers/{id}/reinstall/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -213,7 +213,7 @@ pub async fn dedicated_servers_reinstall_create(configuration: &configuration::C
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_reinstall);
+    req_builder = req_builder.json(&p_body_reinstall_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -22,13 +22,13 @@ pub struct TicketMessage {
     #[serde(rename = "author_name")]
     pub author_name: String,
     #[serde(rename = "has_attachment")]
-    pub has_attachment: String,
+    pub has_attachment: bool,
     #[serde(rename = "attachment_filename")]
     pub attachment_filename: String,
 }
 
 impl TicketMessage {
-    pub fn new(id: i32, date: String, message: String, author_name: String, has_attachment: String, attachment_filename: String) -> TicketMessage {
+    pub fn new(id: i32, date: String, message: String, author_name: String, has_attachment: bool, attachment_filename: String) -> TicketMessage {
         TicketMessage {
             id,
             date,

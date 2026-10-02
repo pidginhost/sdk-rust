@@ -161,9 +161,9 @@ pub async fn support_tickets_close_create(configuration: &configuration::Configu
 }
 
 /// Create a new support ticket.
-pub async fn support_tickets_create(configuration: &configuration::Configuration, ticket_create: models::TicketCreate) -> Result<models::TicketDetail, Error<SupportTicketsCreateError>> {
+pub async fn support_tickets_create(configuration: &configuration::Configuration, ticket_create_request: models::TicketCreateRequest) -> Result<models::TicketDetail, Error<SupportTicketsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_ticket_create = ticket_create;
+    let p_body_ticket_create_request = ticket_create_request;
 
     let uri_str = format!("{}/api/support/tickets/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -179,7 +179,7 @@ pub async fn support_tickets_create(configuration: &configuration::Configuration
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_ticket_create);
+    req_builder = req_builder.json(&p_body_ticket_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -335,10 +335,10 @@ pub async fn support_tickets_reopen_create(configuration: &configuration::Config
 }
 
 /// Reply to a ticket.
-pub async fn support_tickets_reply_create(configuration: &configuration::Configuration, id: &str, ticket_reply: models::TicketReply) -> Result<models::TicketReplyResponse, Error<SupportTicketsReplyCreateError>> {
+pub async fn support_tickets_reply_create(configuration: &configuration::Configuration, id: &str, ticket_reply_request: models::TicketReplyRequest) -> Result<models::TicketReplyResponse, Error<SupportTicketsReplyCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_ticket_reply = ticket_reply;
+    let p_body_ticket_reply_request = ticket_reply_request;
 
     let uri_str = format!("{}/api/support/tickets/{id}/reply/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -354,7 +354,7 @@ pub async fn support_tickets_reply_create(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_ticket_reply);
+    req_builder = req_builder.json(&p_body_ticket_reply_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

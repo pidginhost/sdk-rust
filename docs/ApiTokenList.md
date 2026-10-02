@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **created** | **String** |  | [readonly]
 **last_used** | Option<**String**> |  | [readonly]
 **request_count** | **i32** |  | [readonly]
-**account** | Option<**String**> |  | [readonly]
-**membership_status** | Option<**String**> |  | [readonly]
+**account** | Option<**String**> |  | [optional]
+**membership_status** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

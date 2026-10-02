@@ -225,13 +225,6 @@ pub enum EmailServicesDedicatedIpDestroyError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`email_services_destroy`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum EmailServicesDestroyError {
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`email_services_domains_create`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -388,9 +381,9 @@ pub enum EmailSuppressionsRetrieveError {
 
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_api_credentials_create(configuration: &configuration::Configuration, api_credential: Option<models::ApiCredential>) -> Result<models::ApiCredential, Error<EmailApiCredentialsCreateError>> {
+pub async fn email_api_credentials_create(configuration: &configuration::Configuration, credential_create_request: Option<models::CredentialCreateRequest>) -> Result<models::ApiCredentialCreated, Error<EmailApiCredentialsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_api_credential = api_credential;
+    let p_body_credential_create_request = credential_create_request;
 
     let uri_str = format!("{}/api/email/api_credentials/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -406,7 +399,7 @@ pub async fn email_api_credentials_create(configuration: &configuration::Configu
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_api_credential);
+    req_builder = req_builder.json(&p_body_credential_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -423,8 +416,8 @@ pub async fn email_api_credentials_create(configuration: &configuration::Configu
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ApiCredential`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ApiCredential`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ApiCredentialCreated`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ApiCredentialCreated`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -561,9 +554,9 @@ pub async fn email_api_credentials_retrieve(configuration: &configuration::Confi
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_domains_create(configuration: &configuration::Configuration, domain_add: models::DomainAdd) -> Result<models::SendingDomain, Error<EmailDomainsCreateError>> {
+pub async fn email_domains_create(configuration: &configuration::Configuration, domain_add_request: models::DomainAddRequest) -> Result<models::SendingDomain, Error<EmailDomainsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_domain_add = domain_add;
+    let p_body_domain_add_request = domain_add_request;
 
     let uri_str = format!("{}/api/email/domains/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -579,7 +572,7 @@ pub async fn email_domains_create(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_domain_add);
+    req_builder = req_builder.json(&p_body_domain_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -607,10 +600,10 @@ pub async fn email_domains_create(configuration: &configuration::Configuration, 
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_domains_inbound_routes_create(configuration: &configuration::Configuration, domain_pk: i32, inbound_route: models::InboundRoute) -> Result<models::InboundRoute, Error<EmailDomainsInboundRoutesCreateError>> {
+pub async fn email_domains_inbound_routes_create(configuration: &configuration::Configuration, domain_pk: i32, inbound_route_create_request: models::InboundRouteCreateRequest) -> Result<models::InboundRouteWriteResponse, Error<EmailDomainsInboundRoutesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_domain_pk = domain_pk;
-    let p_body_inbound_route = inbound_route;
+    let p_body_inbound_route_create_request = inbound_route_create_request;
 
     let uri_str = format!("{}/api/email/domains/{domain_pk}/inbound_routes/", configuration.base_path, domain_pk=p_path_domain_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -626,7 +619,7 @@ pub async fn email_domains_inbound_routes_create(configuration: &configuration::
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_inbound_route);
+    req_builder = req_builder.json(&p_body_inbound_route_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -643,8 +636,8 @@ pub async fn email_domains_inbound_routes_create(configuration: &configuration::
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InboundRoute`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InboundRoute`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InboundRouteWriteResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InboundRouteWriteResponse`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -796,10 +789,9 @@ pub async fn email_domains_retrieve(configuration: &configuration::Configuration
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_domains_rotate_dkim_create(configuration: &configuration::Configuration, id: i32, sending_domain: Option<models::SendingDomain>) -> Result<models::SendingDomain, Error<EmailDomainsRotateDkimCreateError>> {
+pub async fn email_domains_rotate_dkim_create(configuration: &configuration::Configuration, id: i32) -> Result<models::SendingDomain, Error<EmailDomainsRotateDkimCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_sending_domain = sending_domain;
 
     let uri_str = format!("{}/api/email/domains/{id}/rotate_dkim/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -815,7 +807,6 @@ pub async fn email_domains_rotate_dkim_create(configuration: &configuration::Con
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_sending_domain);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -843,10 +834,10 @@ pub async fn email_domains_rotate_dkim_create(configuration: &configuration::Con
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_domains_toggle_inbound_create(configuration: &configuration::Configuration, id: i32, sending_domain: Option<models::SendingDomain>) -> Result<models::SendingDomain, Error<EmailDomainsToggleInboundCreateError>> {
+pub async fn email_domains_toggle_inbound_create(configuration: &configuration::Configuration, id: i32, toggle_inbound_request: Option<models::ToggleInboundRequest>) -> Result<models::SendingDomain, Error<EmailDomainsToggleInboundCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_sending_domain = sending_domain;
+    let p_body_toggle_inbound_request = toggle_inbound_request;
 
     let uri_str = format!("{}/api/email/domains/{id}/toggle_inbound/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -862,7 +853,7 @@ pub async fn email_domains_toggle_inbound_create(configuration: &configuration::
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_sending_domain);
+    req_builder = req_builder.json(&p_body_toggle_inbound_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -890,10 +881,9 @@ pub async fn email_domains_toggle_inbound_create(configuration: &configuration::
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_domains_verify_create(configuration: &configuration::Configuration, id: i32, sending_domain: Option<models::SendingDomain>) -> Result<models::SendingDomain, Error<EmailDomainsVerifyCreateError>> {
+pub async fn email_domains_verify_create(configuration: &configuration::Configuration, id: i32) -> Result<models::SendingDomain, Error<EmailDomainsVerifyCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_sending_domain = sending_domain;
 
     let uri_str = format!("{}/api/email/domains/{id}/verify/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -909,7 +899,6 @@ pub async fn email_domains_verify_create(configuration: &configuration::Configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_sending_domain);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -937,9 +926,9 @@ pub async fn email_domains_verify_create(configuration: &configuration::Configur
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_inbound_routes_create(configuration: &configuration::Configuration, inbound_route: models::InboundRoute) -> Result<models::InboundRoute, Error<EmailInboundRoutesCreateError>> {
+pub async fn email_inbound_routes_create(configuration: &configuration::Configuration, inbound_route_create_request: models::InboundRouteCreateRequest) -> Result<models::InboundRouteWriteResponse, Error<EmailInboundRoutesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_inbound_route = inbound_route;
+    let p_body_inbound_route_create_request = inbound_route_create_request;
 
     let uri_str = format!("{}/api/email/inbound_routes/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -955,7 +944,7 @@ pub async fn email_inbound_routes_create(configuration: &configuration::Configur
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_inbound_route);
+    req_builder = req_builder.json(&p_body_inbound_route_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -972,8 +961,8 @@ pub async fn email_inbound_routes_create(configuration: &configuration::Configur
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InboundRoute`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InboundRoute`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InboundRouteWriteResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InboundRouteWriteResponse`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -1065,10 +1054,10 @@ pub async fn email_inbound_routes_list(configuration: &configuration::Configurat
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_inbound_routes_partial_update(configuration: &configuration::Configuration, id: i32, patched_inbound_route: Option<models::PatchedInboundRoute>) -> Result<models::InboundRoute, Error<EmailInboundRoutesPartialUpdateError>> {
+pub async fn email_inbound_routes_partial_update(configuration: &configuration::Configuration, id: i32, patched_inbound_route_create_request: Option<models::PatchedInboundRouteCreateRequest>) -> Result<models::InboundRouteWriteResponse, Error<EmailInboundRoutesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_inbound_route = patched_inbound_route;
+    let p_body_patched_inbound_route_create_request = patched_inbound_route_create_request;
 
     let uri_str = format!("{}/api/email/inbound_routes/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1084,7 +1073,7 @@ pub async fn email_inbound_routes_partial_update(configuration: &configuration::
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_inbound_route);
+    req_builder = req_builder.json(&p_body_patched_inbound_route_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1101,8 +1090,8 @@ pub async fn email_inbound_routes_partial_update(configuration: &configuration::
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InboundRoute`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InboundRoute`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InboundRouteWriteResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InboundRouteWriteResponse`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -1157,7 +1146,7 @@ pub async fn email_inbound_routes_retrieve(configuration: &configuration::Config
 }
 
 /// Look up a single message via Postal v3 legacy API using the server's own token.
-pub async fn email_messages_retrieve(configuration: &configuration::Configuration, message_id: &str) -> Result<(), Error<EmailMessagesRetrieveError>> {
+pub async fn email_messages_retrieve(configuration: &configuration::Configuration, message_id: &str) -> Result<std::collections::HashMap<String, serde_json::Value>, Error<EmailMessagesRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_message_id = message_id;
 
@@ -1180,9 +1169,20 @@ pub async fn email_messages_retrieve(configuration: &configuration::Configuratio
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `std::collections::HashMap&lt;String, serde_json::Value&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `std::collections::HashMap&lt;String, serde_json::Value&gt;`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<EmailMessagesRetrieveError> = serde_json::from_str(&content).ok();
@@ -1191,9 +1191,9 @@ pub async fn email_messages_retrieve(configuration: &configuration::Configuratio
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_sandbox_addresses_create(configuration: &configuration::Configuration, sandbox_address: models::SandboxAddress) -> Result<models::SandboxAddress, Error<EmailSandboxAddressesCreateError>> {
+pub async fn email_sandbox_addresses_create(configuration: &configuration::Configuration, sandbox_address_request: models::SandboxAddressRequest) -> Result<models::SandboxAddress, Error<EmailSandboxAddressesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_sandbox_address = sandbox_address;
+    let p_body_sandbox_address_request = sandbox_address_request;
 
     let uri_str = format!("{}/api/email/sandbox_addresses/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1209,7 +1209,7 @@ pub async fn email_sandbox_addresses_create(configuration: &configuration::Confi
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_sandbox_address);
+    req_builder = req_builder.json(&p_body_sandbox_address_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1363,7 +1363,9 @@ pub async fn email_sandbox_addresses_retrieve(configuration: &configuration::Con
     }
 }
 
-pub async fn email_send_create(configuration: &configuration::Configuration, ) -> Result<(), Error<EmailSendCreateError>> {
+pub async fn email_send_create(configuration: &configuration::Configuration, send_request: models::SendRequest) -> Result<models::EmailSendResponse, Error<EmailSendCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_body_send_request = send_request;
 
     let uri_str = format!("{}/api/email/send/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1371,42 +1373,10 @@ pub async fn email_send_create(configuration: &configuration::Configuration, ) -
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-
-    if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<EmailSendCreateError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-/// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_api_credentials_create(configuration: &configuration::Configuration, service_pk: i32, api_credential: Option<models::ApiCredential>) -> Result<models::ApiCredential, Error<EmailServicesApiCredentialsCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_service_pk = service_pk;
-    let p_body_api_credential = api_credential;
-
-    let uri_str = format!("{}/api/email/services/{service_pk}/api_credentials/", configuration.base_path, service_pk=p_path_service_pk);
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body_api_credential);
+    req_builder = req_builder.json(&p_body_send_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1423,8 +1393,55 @@ pub async fn email_services_api_credentials_create(configuration: &configuration
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ApiCredential`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ApiCredential`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EmailSendResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EmailSendResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<EmailSendCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
+pub async fn email_services_api_credentials_create(configuration: &configuration::Configuration, service_pk: i32, credential_create_request: Option<models::CredentialCreateRequest>) -> Result<models::ApiCredentialCreated, Error<EmailServicesApiCredentialsCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_service_pk = service_pk;
+    let p_body_credential_create_request = credential_create_request;
+
+    let uri_str = format!("{}/api/email/services/{service_pk}/api_credentials/", configuration.base_path, service_pk=p_path_service_pk);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_credential_create_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ApiCredentialCreated`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ApiCredentialCreated`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -1528,10 +1545,10 @@ pub async fn email_services_cancel_create(configuration: &configuration::Configu
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_change_tier_partial_update(configuration: &configuration::Configuration, id: i32, patched_subscribe: Option<models::PatchedSubscribe>) -> Result<models::EmailService, Error<EmailServicesChangeTierPartialUpdateError>> {
+pub async fn email_services_change_tier_partial_update(configuration: &configuration::Configuration, id: i32, subscribe_request: models::SubscribeRequest) -> Result<models::EmailService, Error<EmailServicesChangeTierPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_subscribe = patched_subscribe;
+    let p_body_subscribe_request = subscribe_request;
 
     let uri_str = format!("{}/api/email/services/{id}/change_tier/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1547,7 +1564,7 @@ pub async fn email_services_change_tier_partial_update(configuration: &configura
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_subscribe);
+    req_builder = req_builder.json(&p_body_subscribe_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1575,9 +1592,9 @@ pub async fn email_services_change_tier_partial_update(configuration: &configura
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_create(configuration: &configuration::Configuration, subscribe: models::Subscribe) -> Result<models::EmailService, Error<EmailServicesCreateError>> {
+pub async fn email_services_create(configuration: &configuration::Configuration, subscribe_request: models::SubscribeRequest) -> Result<models::EmailService, Error<EmailServicesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_subscribe = subscribe;
+    let p_body_subscribe_request = subscribe_request;
 
     let uri_str = format!("{}/api/email/services/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1593,7 +1610,7 @@ pub async fn email_services_create(configuration: &configuration::Configuration,
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_subscribe);
+    req_builder = req_builder.json(&p_body_subscribe_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1666,7 +1683,7 @@ pub async fn email_services_dedicated_ip_create(configuration: &configuration::C
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_dedicated_ip_destroy(configuration: &configuration::Configuration, id: i32) -> Result<(), Error<EmailServicesDedicatedIpDestroyError>> {
+pub async fn email_services_dedicated_ip_destroy(configuration: &configuration::Configuration, id: i32) -> Result<models::EmailService, Error<EmailServicesDedicatedIpDestroyError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
 
@@ -1689,9 +1706,20 @@ pub async fn email_services_dedicated_ip_destroy(configuration: &configuration::
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EmailService`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EmailService`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<EmailServicesDedicatedIpDestroyError> = serde_json::from_str(&content).ok();
@@ -1700,44 +1728,10 @@ pub async fn email_services_dedicated_ip_destroy(configuration: &configuration::
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_destroy(configuration: &configuration::Configuration, id: i32) -> Result<(), Error<EmailServicesDestroyError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_id = id;
-
-    let uri_str = format!("{}/api/email/services/{id}/", configuration.base_path, id=p_path_id);
-    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-
-    if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<EmailServicesDestroyError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-/// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_domains_create(configuration: &configuration::Configuration, service_pk: i32, domain_add: models::DomainAdd) -> Result<models::SendingDomain, Error<EmailServicesDomainsCreateError>> {
+pub async fn email_services_domains_create(configuration: &configuration::Configuration, service_pk: i32, domain_add_request: models::DomainAddRequest) -> Result<models::SendingDomain, Error<EmailServicesDomainsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_service_pk = service_pk;
-    let p_body_domain_add = domain_add;
+    let p_body_domain_add_request = domain_add_request;
 
     let uri_str = format!("{}/api/email/services/{service_pk}/domains/", configuration.base_path, service_pk=p_path_service_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1753,7 +1747,7 @@ pub async fn email_services_domains_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_domain_add);
+    req_builder = req_builder.json(&p_body_domain_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1878,13 +1872,21 @@ pub async fn email_services_list(configuration: &configuration::Configuration, p
 }
 
 /// List recently observed messages for a customer's email service.  Postal v3 legacy API exposes per-message lookups only; phclient builds the list locally from webhook events. Each message_id is deduped, keeping the most recent event_type as the message status.
-pub async fn email_services_messages_retrieve(configuration: &configuration::Configuration, service_pk: i32) -> Result<(), Error<EmailServicesMessagesRetrieveError>> {
+pub async fn email_services_messages_retrieve(configuration: &configuration::Configuration, service_pk: i32, page: Option<i32>, per_page: Option<i32>) -> Result<models::EmailMessageList, Error<EmailServicesMessagesRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_service_pk = service_pk;
+    let p_query_page = page;
+    let p_query_per_page = per_page;
 
     let uri_str = format!("{}/api/email/services/{service_pk}/messages/", configuration.base_path, service_pk=p_path_service_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_per_page {
+        req_builder = req_builder.query(&[("per_page", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1901,9 +1903,20 @@ pub async fn email_services_messages_retrieve(configuration: &configuration::Con
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EmailMessageList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EmailMessageList`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<EmailServicesMessagesRetrieveError> = serde_json::from_str(&content).ok();
@@ -1912,10 +1925,9 @@ pub async fn email_services_messages_retrieve(configuration: &configuration::Con
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_partial_update(configuration: &configuration::Configuration, id: i32, patched_email_service: Option<models::PatchedEmailService>) -> Result<models::EmailService, Error<EmailServicesPartialUpdateError>> {
+pub async fn email_services_partial_update(configuration: &configuration::Configuration, id: i32) -> Result<models::EmailService, Error<EmailServicesPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
-    let p_body_patched_email_service = patched_email_service;
 
     let uri_str = format!("{}/api/email/services/{id}/", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
@@ -1931,7 +1943,6 @@ pub async fn email_services_partial_update(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_patched_email_service);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2049,10 +2060,10 @@ pub async fn email_services_retrieve(configuration: &configuration::Configuratio
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_sandbox_addresses_create(configuration: &configuration::Configuration, service_pk: i32, sandbox_address: models::SandboxAddress) -> Result<models::SandboxAddress, Error<EmailServicesSandboxAddressesCreateError>> {
+pub async fn email_services_sandbox_addresses_create(configuration: &configuration::Configuration, service_pk: i32, sandbox_address_request: models::SandboxAddressRequest) -> Result<models::SandboxAddress, Error<EmailServicesSandboxAddressesCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_service_pk = service_pk;
-    let p_body_sandbox_address = sandbox_address;
+    let p_body_sandbox_address_request = sandbox_address_request;
 
     let uri_str = format!("{}/api/email/services/{service_pk}/sandbox_addresses/", configuration.base_path, service_pk=p_path_service_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2068,7 +2079,7 @@ pub async fn email_services_sandbox_addresses_create(configuration: &configurati
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_sandbox_address);
+    req_builder = req_builder.json(&p_body_sandbox_address_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2145,10 +2156,10 @@ pub async fn email_services_sandbox_addresses_list(configuration: &configuration
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_smtp_credentials_create(configuration: &configuration::Configuration, service_pk: i32, smtp_credential: Option<models::SmtpCredential>) -> Result<models::SmtpCredential, Error<EmailServicesSmtpCredentialsCreateError>> {
+pub async fn email_services_smtp_credentials_create(configuration: &configuration::Configuration, service_pk: i32, credential_create_request: Option<models::CredentialCreateRequest>) -> Result<models::SmtpCredentialCreated, Error<EmailServicesSmtpCredentialsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_service_pk = service_pk;
-    let p_body_smtp_credential = smtp_credential;
+    let p_body_credential_create_request = credential_create_request;
 
     let uri_str = format!("{}/api/email/services/{service_pk}/smtp_credentials/", configuration.base_path, service_pk=p_path_service_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2164,7 +2175,7 @@ pub async fn email_services_smtp_credentials_create(configuration: &configuratio
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_smtp_credential);
+    req_builder = req_builder.json(&p_body_credential_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2181,8 +2192,8 @@ pub async fn email_services_smtp_credentials_create(configuration: &configuratio
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SmtpCredential`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SmtpCredential`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SmtpCredentialCreated`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SmtpCredentialCreated`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -2241,13 +2252,21 @@ pub async fn email_services_smtp_credentials_list(configuration: &configuration:
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_stats_retrieve(configuration: &configuration::Configuration, service_pk: i32) -> Result<(), Error<EmailServicesStatsRetrieveError>> {
+pub async fn email_services_stats_retrieve(configuration: &configuration::Configuration, service_pk: i32, end: Option<chrono::NaiveDate>, start: Option<chrono::NaiveDate>) -> Result<models::EmailStats, Error<EmailServicesStatsRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_service_pk = service_pk;
+    let p_query_end = end;
+    let p_query_start = start;
 
     let uri_str = format!("{}/api/email/services/{service_pk}/stats/", configuration.base_path, service_pk=p_path_service_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_end {
+        req_builder = req_builder.query(&[("end", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_start {
+        req_builder = req_builder.query(&[("start", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2264,9 +2283,20 @@ pub async fn email_services_stats_retrieve(configuration: &configuration::Config
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EmailStats`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EmailStats`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<EmailServicesStatsRetrieveError> = serde_json::from_str(&content).ok();
@@ -2275,10 +2305,10 @@ pub async fn email_services_stats_retrieve(configuration: &configuration::Config
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_services_suppressions_create(configuration: &configuration::Configuration, service_pk: i32, suppression_entry: Option<models::SuppressionEntry>) -> Result<models::SuppressionEntry, Error<EmailServicesSuppressionsCreateError>> {
+pub async fn email_services_suppressions_create(configuration: &configuration::Configuration, service_pk: i32, suppression_add_request: models::SuppressionAddRequest) -> Result<models::SuppressionEntry, Error<EmailServicesSuppressionsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_service_pk = service_pk;
-    let p_body_suppression_entry = suppression_entry;
+    let p_body_suppression_add_request = suppression_add_request;
 
     let uri_str = format!("{}/api/email/services/{service_pk}/suppressions/", configuration.base_path, service_pk=p_path_service_pk);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2294,7 +2324,7 @@ pub async fn email_services_suppressions_create(configuration: &configuration::C
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_suppression_entry);
+    req_builder = req_builder.json(&p_body_suppression_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2371,9 +2401,9 @@ pub async fn email_services_suppressions_list(configuration: &configuration::Con
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_smtp_credentials_create(configuration: &configuration::Configuration, smtp_credential: Option<models::SmtpCredential>) -> Result<models::SmtpCredential, Error<EmailSmtpCredentialsCreateError>> {
+pub async fn email_smtp_credentials_create(configuration: &configuration::Configuration, credential_create_request: Option<models::CredentialCreateRequest>) -> Result<models::SmtpCredentialCreated, Error<EmailSmtpCredentialsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_smtp_credential = smtp_credential;
+    let p_body_credential_create_request = credential_create_request;
 
     let uri_str = format!("{}/api/email/smtp_credentials/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2389,7 +2419,7 @@ pub async fn email_smtp_credentials_create(configuration: &configuration::Config
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_smtp_credential);
+    req_builder = req_builder.json(&p_body_credential_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2406,8 +2436,8 @@ pub async fn email_smtp_credentials_create(configuration: &configuration::Config
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SmtpCredential`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SmtpCredential`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SmtpCredentialCreated`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SmtpCredentialCreated`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -2544,9 +2574,9 @@ pub async fn email_smtp_credentials_retrieve(configuration: &configuration::Conf
 }
 
 /// Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-pub async fn email_suppressions_create(configuration: &configuration::Configuration, suppression_entry: Option<models::SuppressionEntry>) -> Result<models::SuppressionEntry, Error<EmailSuppressionsCreateError>> {
+pub async fn email_suppressions_create(configuration: &configuration::Configuration, suppression_add_request: models::SuppressionAddRequest) -> Result<models::SuppressionEntry, Error<EmailSuppressionsCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_body_suppression_entry = suppression_entry;
+    let p_body_suppression_add_request = suppression_add_request;
 
     let uri_str = format!("{}/api/email/suppressions/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -2562,7 +2592,7 @@ pub async fn email_suppressions_create(configuration: &configuration::Configurat
         };
         req_builder = req_builder.header("Authorization", value);
     };
-    req_builder = req_builder.json(&p_body_suppression_entry);
+    req_builder = req_builder.json(&p_body_suppression_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

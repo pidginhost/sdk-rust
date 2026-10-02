@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## hosting_hosting_change_password_create
 
-> models::HostingChangePasswordResponse hosting_hosting_change_password_create(id, change_password)
+> models::HostingChangePasswordResponse hosting_hosting_change_password_create(id, change_password_request)
 
 
 Change the cPanel password for this hosting service.
@@ -23,7 +23,7 @@ Change the cPanel password for this hosting service.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**change_password** | [**ChangePassword**](ChangePassword.md) |  | [required] |
+**change_password_request** | [**ChangePasswordRequest**](ChangePasswordRequest.md) |  | [required] |
 
 ### Return type
 

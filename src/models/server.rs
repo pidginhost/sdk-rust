@@ -43,7 +43,7 @@ pub struct Server {
     #[serde(rename = "custom_os")]
     pub custom_os: bool,
     #[serde(rename = "networks")]
-    pub networks: std::collections::HashMap<String, serde_json::Value>,
+    pub networks: Box<models::ServerNetworks>,
     #[serde(rename = "rescue_mode")]
     pub rescue_mode: bool,
     #[serde(rename = "boot_iso", deserialize_with = "Option::deserialize")]
@@ -53,7 +53,7 @@ pub struct Server {
 }
 
 impl Server {
-    pub fn new(id: i32, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, networks: std::collections::HashMap<String, serde_json::Value>, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> Server {
+    pub fn new(id: i32, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, networks: models::ServerNetworks, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> Server {
         Server {
             id,
             hostname: None,
@@ -68,7 +68,7 @@ impl Server {
             destroy_protection,
             ha_enabled,
             custom_os,
-            networks,
+            networks: Box::new(networks),
             rescue_mode,
             boot_iso,
             rescue_supported,

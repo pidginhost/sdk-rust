@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **i32** |  | [readonly]
 **slug** | **String** |  | 
 **name** | **String** | Display name for users | 
-**family_name** | **String** |  | [readonly]
+**family_name** | Option<**String**> |  | [readonly]
 **is_default** | Option<**bool**> | Default version within this family (shown pre-selected) | [optional]
 **default_username** | **String** | Account the image provisions for SSH login. | [readonly]
 

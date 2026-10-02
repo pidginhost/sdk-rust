@@ -29,17 +29,17 @@ pub struct HostingService {
     pub created: String,
     #[serde(rename = "billing_cycle")]
     pub billing_cycle: String,
-    #[serde(rename = "package_name")]
-    pub package_name: String,
-    #[serde(rename = "node_url")]
-    pub node_url: String,
-    #[serde(rename = "username")]
-    pub username: String,
+    #[serde(rename = "package_name", deserialize_with = "Option::deserialize")]
+    pub package_name: Option<String>,
+    #[serde(rename = "node_url", deserialize_with = "Option::deserialize")]
+    pub node_url: Option<String>,
+    #[serde(rename = "username", deserialize_with = "Option::deserialize")]
+    pub username: Option<String>,
 }
 
 impl HostingService {
     /// Read-only serializer for shared/cPanel hosting services.
-    pub fn new(id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, package_name: String, node_url: String, username: String) -> HostingService {
+    pub fn new(id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, package_name: Option<String>, node_url: Option<String>, username: Option<String>) -> HostingService {
         HostingService {
             id,
             hostname,

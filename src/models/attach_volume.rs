@@ -13,15 +13,14 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AttachVolume {
-    /// Server ID
-    #[serde(rename = "vm")]
-    pub vm: i32,
+    #[serde(rename = "attached")]
+    pub attached: bool,
 }
 
 impl AttachVolume {
-    pub fn new(vm: i32) -> AttachVolume {
+    pub fn new(attached: bool) -> AttachVolume {
         AttachVolume {
-            vm,
+            attached,
         }
     }
 }

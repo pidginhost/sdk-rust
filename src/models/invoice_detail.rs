@@ -46,11 +46,11 @@ pub struct InvoiceDetail {
     #[serde(rename = "payment_method")]
     pub payment_method: String,
     #[serde(rename = "services")]
-    pub services: String,
+    pub services: Vec<models::InvoiceService>,
 }
 
 impl InvoiceDetail {
-    pub fn new(id: i32, number_proforma: String, number_fiscal: String, status: models::InvoiceStatusEnum, subtotal: String, vat_value: String, vat_percentage: i32, total: String, invoice_date: chrono::NaiveDate, due_date: Option<chrono::NaiveDate>, payment_date: Option<String>, product_info: Option<serde_json::Value>, usage_detail: Option<serde_json::Value>, client_info: Option<serde_json::Value>, invoice_info: Option<serde_json::Value>, payment_method: String, services: String) -> InvoiceDetail {
+    pub fn new(id: i32, number_proforma: String, number_fiscal: String, status: models::InvoiceStatusEnum, subtotal: String, vat_value: String, vat_percentage: i32, total: String, invoice_date: chrono::NaiveDate, due_date: Option<chrono::NaiveDate>, payment_date: Option<String>, product_info: Option<serde_json::Value>, usage_detail: Option<serde_json::Value>, client_info: Option<serde_json::Value>, invoice_info: Option<serde_json::Value>, payment_method: String, services: Vec<models::InvoiceService>) -> InvoiceDetail {
         InvoiceDetail {
             id,
             number_proforma,

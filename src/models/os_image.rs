@@ -20,8 +20,8 @@ pub struct OsImage {
     /// Display name for users
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "family_name")]
-    pub family_name: String,
+    #[serde(rename = "family_name", deserialize_with = "Option::deserialize")]
+    pub family_name: Option<String>,
     /// Default version within this family (shown pre-selected)
     #[serde(rename = "is_default", skip_serializing_if = "Option::is_none")]
     pub is_default: Option<bool>,
@@ -31,7 +31,7 @@ pub struct OsImage {
 }
 
 impl OsImage {
-    pub fn new(id: i32, slug: String, name: String, family_name: String, default_username: String) -> OsImage {
+    pub fn new(id: i32, slug: String, name: String, family_name: Option<String>, default_username: String) -> OsImage {
         OsImage {
             id,
             slug,
