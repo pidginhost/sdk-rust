@@ -12,16 +12,18 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct CheckAvailability {
-    /// Domain with tld, ex: example.com
-    #[serde(rename = "domain")]
-    pub domain: String,
+pub struct HostingLvePeriod {
+    #[serde(rename = "from", deserialize_with = "Option::deserialize")]
+    pub from: Option<String>,
+    #[serde(rename = "to", deserialize_with = "Option::deserialize")]
+    pub to: Option<String>,
 }
 
-impl CheckAvailability {
-    pub fn new(domain: String) -> CheckAvailability {
-        CheckAvailability {
-            domain,
+impl HostingLvePeriod {
+    pub fn new(from: Option<String>, to: Option<String>) -> HostingLvePeriod {
+        HostingLvePeriod {
+            from,
+            to,
         }
     }
 }

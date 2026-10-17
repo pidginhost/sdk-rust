@@ -14,6 +14,8 @@ use serde::{Deserialize, Serialize};
 /// DedicatedServer : Read-only serializer for dedicated server services.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DedicatedServer {
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
     #[serde(rename = "id")]
     pub id: i32,
     #[serde(rename = "hostname")]
@@ -35,12 +37,15 @@ pub struct DedicatedServer {
     pub ips: Vec<models::DedicatedServerIp>,
     #[serde(rename = "os_name", deserialize_with = "Option::deserialize")]
     pub os_name: Option<String>,
+    #[serde(rename = "hardware", deserialize_with = "Option::deserialize")]
+    pub hardware: Option<Box<models::DedicatedHardware>>,
 }
 
 impl DedicatedServer {
     /// Read-only serializer for dedicated server services.
-    pub fn new(id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, server_status: Option<models::DedicatedServerStatus>, ips: Vec<models::DedicatedServerIp>, os_name: Option<String>) -> DedicatedServer {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, server_status: Option<models::DedicatedServerStatus>, ips: Vec<models::DedicatedServerIp>, os_name: Option<String>, hardware: Option<models::DedicatedHardware>) -> DedicatedServer {
         DedicatedServer {
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
             hostname,
             status,
@@ -51,6 +56,7 @@ impl DedicatedServer {
             server_status: if let Some(x) = server_status {Some(Box::new(x))} else {None},
             ips,
             os_name,
+            hardware: if let Some(x) = hardware {Some(Box::new(x))} else {None},
         }
     }
 }

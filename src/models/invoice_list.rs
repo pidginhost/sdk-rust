@@ -21,6 +21,10 @@ pub struct InvoiceList {
     pub number_fiscal: String,
     #[serde(rename = "status")]
     pub status: models::InvoiceStatusEnum,
+    #[serde(rename = "invoice_type")]
+    pub invoice_type: models::InvoiceTypeEnum,
+    #[serde(rename = "can_pay_with_funds")]
+    pub can_pay_with_funds: bool,
     #[serde(rename = "subtotal")]
     pub subtotal: String,
     #[serde(rename = "vat_value")]
@@ -29,6 +33,8 @@ pub struct InvoiceList {
     pub vat_percentage: i32,
     #[serde(rename = "total")]
     pub total: String,
+    #[serde(rename = "local_amounts", deserialize_with = "Option::deserialize")]
+    pub local_amounts: Option<Box<models::InvoiceLocalAmounts>>,
     #[serde(rename = "invoice_date")]
     pub invoice_date: chrono::NaiveDate,
     #[serde(rename = "due_date", deserialize_with = "Option::deserialize")]
@@ -38,16 +44,19 @@ pub struct InvoiceList {
 }
 
 impl InvoiceList {
-    pub fn new(id: i32, number_proforma: String, number_fiscal: String, status: models::InvoiceStatusEnum, subtotal: String, vat_value: String, vat_percentage: i32, total: String, invoice_date: chrono::NaiveDate, due_date: Option<chrono::NaiveDate>, payment_date: Option<String>) -> InvoiceList {
+    pub fn new(id: i32, number_proforma: String, number_fiscal: String, status: models::InvoiceStatusEnum, invoice_type: models::InvoiceTypeEnum, can_pay_with_funds: bool, subtotal: String, vat_value: String, vat_percentage: i32, total: String, local_amounts: Option<models::InvoiceLocalAmounts>, invoice_date: chrono::NaiveDate, due_date: Option<chrono::NaiveDate>, payment_date: Option<String>) -> InvoiceList {
         InvoiceList {
             id,
             number_proforma,
             number_fiscal,
             status,
+            invoice_type,
+            can_pay_with_funds,
             subtotal,
             vat_value,
             vat_percentage,
             total,
+            local_amounts: if let Some(x) = local_amounts {Some(Box::new(x))} else {None},
             invoice_date,
             due_date,
             payment_date,

@@ -36,6 +36,12 @@ pub struct Tld {
     pub wg_support: Option<bool>,
     #[serde(rename = "reactivate_max_days", skip_serializing_if = "Option::is_none")]
     pub reactivate_max_days: Option<i32>,
+    /// Smallest registration term the registry accepts (e.g. 2 for .ai).
+    #[serde(rename = "min_years", skip_serializing_if = "Option::is_none")]
+    pub min_years: Option<i32>,
+    /// Allowed step between registration terms (e.g. 2 for .ai → 2, 4, 6 years).
+    #[serde(rename = "year_step", skip_serializing_if = "Option::is_none")]
+    pub year_step: Option<i32>,
 }
 
 impl Tld {
@@ -51,6 +57,8 @@ impl Tld {
             idna_support: None,
             wg_support: None,
             reactivate_max_days: None,
+            min_years: None,
+            year_step: None,
         }
     }
 }

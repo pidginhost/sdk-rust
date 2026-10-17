@@ -29,6 +29,13 @@ pub enum DomainDomainCheckAvailabilityCreateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`domain_domain_check_availability_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DomainDomainCheckAvailabilityRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`domain_domain_contacts_create`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -155,6 +162,13 @@ pub enum DomainRegistrantsUpdateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`domain_tld_catalog_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DomainTldCatalogRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`domain_tld_list`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -216,7 +230,7 @@ pub async fn domain_domain_cancel_create(configuration: &configuration::Configur
 }
 
 /// Manage your domains
-pub async fn domain_domain_check_availability_create(configuration: &configuration::Configuration, check_availability_request: models::CheckAvailabilityRequest) -> Result<models::CheckAvailability, Error<DomainDomainCheckAvailabilityCreateError>> {
+pub async fn domain_domain_check_availability_create(configuration: &configuration::Configuration, check_availability_request: models::CheckAvailabilityRequest) -> Result<models::DomainAvailability, Error<DomainDomainCheckAvailabilityCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_body_check_availability_request = check_availability_request;
 
@@ -251,12 +265,58 @@ pub async fn domain_domain_check_availability_create(configuration: &configurati
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::CheckAvailability`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::CheckAvailability`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::DomainAvailability`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::DomainAvailability`")))),
         }
     } else {
         let content = resp.text().await?;
         let entity: Option<DomainDomainCheckAvailabilityCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Manage your domains
+pub async fn domain_domain_check_availability_retrieve(configuration: &configuration::Configuration, domain: &str) -> Result<models::DomainAvailability, Error<DomainDomainCheckAvailabilityRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_domain = domain;
+
+    let uri_str = format!("{}/api/domain/domain/check-availability/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    req_builder = req_builder.query(&[("domain", &p_query_domain.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::DomainAvailability`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::DomainAvailability`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DomainDomainCheckAvailabilityRetrieveError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -486,15 +546,19 @@ pub async fn domain_domain_dns_list(configuration: &configuration::Configuration
 }
 
 /// Manage your domains
-pub async fn domain_domain_list(configuration: &configuration::Configuration, page: Option<i32>) -> Result<models::PaginatedDomainList, Error<DomainDomainListError>> {
+pub async fn domain_domain_list(configuration: &configuration::Configuration, page: Option<i32>, status_group: Option<&str>) -> Result<models::PaginatedDomainList, Error<DomainDomainListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_page = page;
+    let p_query_status_group = status_group;
 
     let uri_str = format!("{}/api/domain/domain/", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_status_group {
+        req_builder = req_builder.query(&[("status_group", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -1075,6 +1139,49 @@ pub async fn domain_registrants_update(configuration: &configuration::Configurat
     } else {
         let content = resp.text().await?;
         let entity: Option<DomainRegistrantsUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Registration catalog uses exactly the registrar/prices used by create.
+pub async fn domain_tld_catalog_retrieve(configuration: &configuration::Configuration, ) -> Result<models::TldCatalog, Error<DomainTldCatalogRetrieveError>> {
+
+    let uri_str = format!("{}/api/domain/tld/catalog/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TldCatalog`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TldCatalog`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DomainTldCatalogRetrieveError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

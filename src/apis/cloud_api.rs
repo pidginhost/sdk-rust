@@ -712,6 +712,7 @@ pub enum CloudServersVolumesListError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CloudServersVolumesPartialUpdateError {
+    Status409(models::VolumeBusy),
     UnknownValue(serde_json::Value),
 }
 
@@ -726,6 +727,7 @@ pub enum CloudServersVolumesRetrieveError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CloudServersVolumesUpdateError {
+    Status409(models::VolumeBusy),
     UnknownValue(serde_json::Value),
 }
 
@@ -775,6 +777,7 @@ pub enum CloudVolumesListError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CloudVolumesPartialUpdateError {
+    Status409(models::VolumeBusy),
     UnknownValue(serde_json::Value),
 }
 
@@ -789,6 +792,7 @@ pub enum CloudVolumesRetrieveError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CloudVolumesUpdateError {
+    Status409(models::VolumeBusy),
     UnknownValue(serde_json::Value),
 }
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 **id** | **i32** |  | [readonly]
 **hostname** | **String** |  | [readonly]
 **status** | [**models::ServiceStatusEnum**](ServiceStatusEnum.md) |  | [readonly]

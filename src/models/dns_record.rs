@@ -22,55 +22,55 @@ pub struct DnsRecord {
     pub ttl: i32,
     #[serde(rename = "type")]
     pub r#type: String,
-    #[serde(rename = "address")]
-    pub address: String,
-    #[serde(rename = "cname")]
-    pub cname: String,
-    #[serde(rename = "exchange")]
-    pub exchange: String,
-    #[serde(rename = "preference")]
-    pub preference: i32,
-    #[serde(rename = "txtdata")]
-    pub txtdata: String,
-    #[serde(rename = "unencoded")]
-    pub unencoded: String,
-    #[serde(rename = "target")]
-    pub target: String,
-    #[serde(rename = "priority")]
-    pub priority: i32,
-    #[serde(rename = "weight")]
-    pub weight: i32,
-    #[serde(rename = "port")]
-    pub port: i32,
-    #[serde(rename = "flag")]
-    pub flag: i32,
-    #[serde(rename = "tag")]
-    pub tag: String,
-    #[serde(rename = "value")]
-    pub value: String,
+    #[serde(rename = "address", skip_serializing_if = "Option::is_none")]
+    pub address: Option<String>,
+    #[serde(rename = "cname", skip_serializing_if = "Option::is_none")]
+    pub cname: Option<String>,
+    #[serde(rename = "exchange", skip_serializing_if = "Option::is_none")]
+    pub exchange: Option<String>,
+    #[serde(rename = "preference", skip_serializing_if = "Option::is_none")]
+    pub preference: Option<i32>,
+    #[serde(rename = "txtdata", skip_serializing_if = "Option::is_none")]
+    pub txtdata: Option<String>,
+    #[serde(rename = "unencoded", skip_serializing_if = "Option::is_none")]
+    pub unencoded: Option<String>,
+    #[serde(rename = "target", skip_serializing_if = "Option::is_none")]
+    pub target: Option<String>,
+    #[serde(rename = "priority", skip_serializing_if = "Option::is_none")]
+    pub priority: Option<i32>,
+    #[serde(rename = "weight", skip_serializing_if = "Option::is_none")]
+    pub weight: Option<i32>,
+    #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
+    pub port: Option<i32>,
+    #[serde(rename = "flag", skip_serializing_if = "Option::is_none")]
+    pub flag: Option<i32>,
+    #[serde(rename = "tag", skip_serializing_if = "Option::is_none")]
+    pub tag: Option<String>,
+    #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
 }
 
 impl DnsRecord {
     /// Read-only representation of a DNS record from the cPanel zone dump.
-    pub fn new(line: i32, name: String, ttl: i32, r#type: String, address: String, cname: String, exchange: String, preference: i32, txtdata: String, unencoded: String, target: String, priority: i32, weight: i32, port: i32, flag: i32, tag: String, value: String) -> DnsRecord {
+    pub fn new(line: i32, name: String, ttl: i32, r#type: String) -> DnsRecord {
         DnsRecord {
             line,
             name,
             ttl,
             r#type,
-            address,
-            cname,
-            exchange,
-            preference,
-            txtdata,
-            unencoded,
-            target,
-            priority,
-            weight,
-            port,
-            flag,
-            tag,
-            value,
+            address: None,
+            cname: None,
+            exchange: None,
+            preference: None,
+            txtdata: None,
+            unencoded: None,
+            target: None,
+            priority: None,
+            weight: None,
+            port: None,
+            flag: None,
+            tag: None,
+            value: None,
         }
     }
 }

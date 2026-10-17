@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ServerDetail {
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
     #[serde(rename = "id")]
     pub id: i32,
     #[serde(rename = "hostname")]
@@ -64,8 +66,9 @@ pub struct ServerDetail {
 }
 
 impl ServerDetail {
-    pub fn new(id: i32, hostname: String, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, machine: std::collections::HashMap<String, serde_json::Value>, volumes: Vec<models::Volume>, networks: models::ServerNetworks, floating_ips: Vec<models::FloatingIpSummary>, status: models::ResourceStatusEnum, username: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> ServerDetail {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, hostname: String, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, machine: std::collections::HashMap<String, serde_json::Value>, volumes: Vec<models::Volume>, networks: models::ServerNetworks, floating_ips: Vec<models::FloatingIpSummary>, status: models::ResourceStatusEnum, username: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> ServerDetail {
         ServerDetail {
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
             hostname,
             project: None,

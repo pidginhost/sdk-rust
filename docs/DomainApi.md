@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**domain_domain_cancel_create**](DomainApi.md#domain_domain_cancel_create) | **POST** /api/domain/domain/{domain}/cancel/ | 
 [**domain_domain_check_availability_create**](DomainApi.md#domain_domain_check_availability_create) | **POST** /api/domain/domain/check-availability/ | 
+[**domain_domain_check_availability_retrieve**](DomainApi.md#domain_domain_check_availability_retrieve) | **GET** /api/domain/domain/check-availability/ | 
 [**domain_domain_contacts_create**](DomainApi.md#domain_domain_contacts_create) | **POST** /api/domain/domain/{domain}/contacts/ | 
 [**domain_domain_create**](DomainApi.md#domain_domain_create) | **POST** /api/domain/domain/ | 
 [**domain_domain_dns_create**](DomainApi.md#domain_domain_dns_create) | **POST** /api/domain/domain/{domain}/dns/ | 
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**domain_registrants_partial_update**](DomainApi.md#domain_registrants_partial_update) | **PATCH** /api/domain/registrants/{id}/ | 
 [**domain_registrants_retrieve**](DomainApi.md#domain_registrants_retrieve) | **GET** /api/domain/registrants/{id}/ | 
 [**domain_registrants_update**](DomainApi.md#domain_registrants_update) | **PUT** /api/domain/registrants/{id}/ | 
+[**domain_tld_catalog_retrieve**](DomainApi.md#domain_tld_catalog_retrieve) | **GET** /api/domain/tld/catalog/ | 
 [**domain_tld_list**](DomainApi.md#domain_tld_list) | **GET** /api/domain/tld/ | 
 [**domain_tld_retrieve**](DomainApi.md#domain_tld_retrieve) | **GET** /api/domain/tld/{id}/ | 
 
@@ -61,7 +63,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_check_availability_create
 
-> models::CheckAvailability domain_domain_check_availability_create(check_availability_request)
+> models::DomainAvailability domain_domain_check_availability_create(check_availability_request)
 
 
 Manage your domains
@@ -75,7 +77,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::CheckAvailability**](CheckAvailability.md)
+[**models::DomainAvailability**](DomainAvailability.md)
 
 ### Authorization
 
@@ -84,6 +86,36 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## domain_domain_check_availability_retrieve
+
+> models::DomainAvailability domain_domain_check_availability_retrieve(domain)
+
+
+Manage your domains
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**domain** | **String** | Domain with tld, ex: example.com | [required] |
+
+### Return type
+
+[**models::DomainAvailability**](DomainAvailability.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -245,7 +277,7 @@ Name | Type | Description  | Required | Notes
 
 ## domain_domain_list
 
-> models::PaginatedDomainList domain_domain_list(page)
+> models::PaginatedDomainList domain_domain_list(page, status_group)
 
 
 Manage your domains
@@ -256,6 +288,7 @@ Manage your domains
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **page** | Option<**i32**> | A page number within the paginated result set. |  |
+**status_group** | Option<**String**> | Filter by the account service status before pagination; ordered by expiry, then ID. |  |
 
 ### Return type
 
@@ -634,6 +667,33 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## domain_tld_catalog_retrieve
+
+> models::TldCatalog domain_tld_catalog_retrieve()
+
+
+Registration catalog uses exactly the registrar/prices used by create.
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::TldCatalog**](TLDCatalog.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

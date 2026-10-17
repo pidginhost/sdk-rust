@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Bucket {
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
     #[serde(rename = "id")]
     pub id: i32,
     #[serde(rename = "name")]
@@ -22,9 +24,9 @@ pub struct Bucket {
     #[serde(rename = "quota_gb")]
     pub quota_gb: i32,
     #[serde(rename = "used_bytes")]
-    pub used_bytes: i32,
+    pub used_bytes: i64,
     #[serde(rename = "object_count")]
-    pub object_count: i32,
+    pub object_count: i64,
     #[serde(rename = "public_read")]
     pub public_read: bool,
     #[serde(rename = "status")]
@@ -38,8 +40,9 @@ pub struct Bucket {
 }
 
 impl Bucket {
-    pub fn new(id: i32, name: String, full_name: String, quota_gb: i32, used_bytes: i32, object_count: i32, public_read: bool, status: models::ResourceStatusEnum, endpoint: String, region: String, created: String) -> Bucket {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, name: String, full_name: String, quota_gb: i32, used_bytes: i64, object_count: i64, public_read: bool, status: models::ResourceStatusEnum, endpoint: String, region: String, created: String) -> Bucket {
         Bucket {
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
             name,
             full_name,

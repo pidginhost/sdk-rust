@@ -13,10 +13,12 @@ Method | HTTP request | Description
 [**account_companies_partial_update**](AccountApi.md#account_companies_partial_update) | **PATCH** /api/account/companies/{id}/ | 
 [**account_companies_retrieve**](AccountApi.md#account_companies_retrieve) | **GET** /api/account/companies/{id}/ | 
 [**account_companies_update**](AccountApi.md#account_companies_update) | **PUT** /api/account/companies/{id}/ | 
+[**account_dashboard_retrieve**](AccountApi.md#account_dashboard_retrieve) | **GET** /api/account/dashboard/ | 
 [**account_emails_list**](AccountApi.md#account_emails_list) | **GET** /api/account/emails/ | 
 [**account_profile_partial_update**](AccountApi.md#account_profile_partial_update) | **PATCH** /api/account/profile | 
 [**account_profile_retrieve**](AccountApi.md#account_profile_retrieve) | **GET** /api/account/profile | 
 [**account_profile_update**](AccountApi.md#account_profile_update) | **PUT** /api/account/profile | 
+[**account_session_retrieve**](AccountApi.md#account_session_retrieve) | **GET** /api/account/session/ | 
 [**account_ssh_keys_create**](AccountApi.md#account_ssh_keys_create) | **POST** /api/account/ssh-keys/ | 
 [**account_ssh_keys_destroy**](AccountApi.md#account_ssh_keys_destroy) | **DELETE** /api/account/ssh-keys/{id}/ | 
 [**account_ssh_keys_list**](AccountApi.md#account_ssh_keys_list) | **GET** /api/account/ssh-keys/ | 
@@ -298,6 +300,33 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## account_dashboard_retrieve
+
+> models::Dashboard account_dashboard_retrieve()
+
+
+Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::Dashboard**](Dashboard.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## account_emails_list
 
 > models::PaginatedEmailHistoryList account_emails_list(page)
@@ -410,6 +439,33 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## account_session_retrieve
+
+> models::AccountSessionResponse account_session_retrieve()
+
+
+Resolved account and role/scope intersection without owner-only profile access.
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::AccountSessionResponse**](AccountSessionResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

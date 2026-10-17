@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 **id** | **i32** |  | [readonly]
 **name** | **String** |  | [readonly]
 **full_name** | **String** |  | [readonly]
 **quota_gb** | **i32** |  | [readonly]
-**used_bytes** | **i32** |  | [readonly]
-**object_count** | **i32** |  | [readonly]
+**used_bytes** | **i64** |  | [readonly]
+**object_count** | **i64** |  | [readonly]
 **public_read** | **bool** |  | [readonly]
 **status** | [**models::ResourceStatusEnum**](ResourceStatusEnum.md) |  | [readonly]
 **endpoint** | **String** |  | [readonly]

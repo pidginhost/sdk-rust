@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **product** | **String** | ID or slug | 
 **attached** | **bool** |  | [readonly]
 **server** | **String** |  | [readonly][default to ]
+**status** | [**models::ResourceStatusEnum**](ResourceStatusEnum.md) |  | [readonly]
+**billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

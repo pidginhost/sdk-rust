@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Server {
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
     #[serde(rename = "id")]
     pub id: i32,
     #[serde(rename = "hostname", skip_serializing_if = "Option::is_none")]
@@ -53,8 +55,9 @@ pub struct Server {
 }
 
 impl Server {
-    pub fn new(id: i32, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, networks: models::ServerNetworks, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> Server {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, image: String, package: String, cpus: i32, memory: i32, disk_size: i32, generation: String, destroy_protection: bool, ha_enabled: bool, custom_os: bool, networks: models::ServerNetworks, rescue_mode: bool, boot_iso: Option<String>, rescue_supported: bool) -> Server {
         Server {
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
             hostname: None,
             project: None,

@@ -14,6 +14,8 @@ use serde::{Deserialize, Serialize};
 /// HostingService : Read-only serializer for shared/cPanel hosting services.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HostingService {
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
     #[serde(rename = "id")]
     pub id: i32,
     #[serde(rename = "hostname")]
@@ -39,8 +41,9 @@ pub struct HostingService {
 
 impl HostingService {
     /// Read-only serializer for shared/cPanel hosting services.
-    pub fn new(id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, package_name: Option<String>, node_url: Option<String>, username: Option<String>) -> HostingService {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, hostname: String, status: models::ServiceStatusEnum, price: String, next_invoice: chrono::NaiveDate, created: String, billing_cycle: String, package_name: Option<String>, node_url: Option<String>, username: Option<String>) -> HostingService {
         HostingService {
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
             hostname,
             status,

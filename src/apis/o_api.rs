@@ -15,6 +15,20 @@ use crate::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 
+/// struct for typed errors of method [`o_mobile_dashboard_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum OMobileDashboardRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`o_mobile_session_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum OMobileSessionRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`o_register_create`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -22,6 +36,74 @@ pub enum ORegisterCreateError {
     UnknownValue(serde_json::Value),
 }
 
+
+pub async fn o_mobile_dashboard_retrieve(configuration: &configuration::Configuration, ) -> Result<models::Dashboard, Error<OMobileDashboardRetrieveError>> {
+
+    let uri_str = format!("{}/o/mobile/dashboard/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Dashboard`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Dashboard`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<OMobileDashboardRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn o_mobile_session_retrieve(configuration: &configuration::Configuration, ) -> Result<models::MobileOAuthSession, Error<OMobileSessionRetrieveError>> {
+
+    let uri_str = format!("{}/o/mobile/session/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::MobileOAuthSession`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::MobileOAuthSession`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<OMobileSessionRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
 
 /// RFC 7591 dynamic client registration (open, throttled).
 pub async fn o_register_create(configuration: &configuration::Configuration, ) -> Result<(), Error<ORegisterCreateError>> {

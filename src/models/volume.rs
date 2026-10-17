@@ -29,10 +29,14 @@ pub struct Volume {
     pub attached: bool,
     #[serde(rename = "server")]
     pub server: String,
+    #[serde(rename = "status")]
+    pub status: models::ResourceStatusEnum,
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
 }
 
 impl Volume {
-    pub fn new(id: i32, size: i32, product: String, attached: bool, server: String) -> Volume {
+    pub fn new(id: i32, size: i32, product: String, attached: bool, server: String, status: models::ResourceStatusEnum, billing: Option<models::ResourceBilling>) -> Volume {
         Volume {
             id,
             project: None,
@@ -41,6 +45,8 @@ impl Volume {
             product,
             attached,
             server,
+            status,
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
         }
     }
 }

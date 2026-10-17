@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 **id** | **i32** |  | [readonly]
 **company** | Option<**i32**> |  | [optional]
 **billing_cycle** | **i32** |  | [readonly]

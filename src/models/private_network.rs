@@ -27,10 +27,12 @@ pub struct PrivateNetwork {
     pub provisioned: bool,
     #[serde(rename = "servers")]
     pub servers: Vec<std::collections::HashMap<String, String>>,
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
 }
 
 impl PrivateNetwork {
-    pub fn new(id: i32, slug: String, address: String, provisioned: bool, servers: Vec<std::collections::HashMap<String, String>>) -> PrivateNetwork {
+    pub fn new(id: i32, slug: String, address: String, provisioned: bool, servers: Vec<std::collections::HashMap<String, String>>, billing: Option<models::ResourceBilling>) -> PrivateNetwork {
         PrivateNetwork {
             id,
             slug,
@@ -38,6 +40,7 @@ impl PrivateNetwork {
             gateway: None,
             provisioned,
             servers,
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
         }
     }
 }

@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | Option<**String**> |  | [optional]
-**price_per_month** | Option<**String**> |  | [optional]
 **features** | Option<[**Vec<models::FeaturesEnum>**](FeaturesEnum.md)> |  | [optional]
 **protected** | Option<**bool**> |  | [optional]
 

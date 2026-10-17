@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Service {
+    #[serde(rename = "billing", deserialize_with = "Option::deserialize")]
+    pub billing: Option<Box<models::ResourceBilling>>,
     #[serde(rename = "id")]
     pub id: i32,
     #[serde(rename = "company", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -39,8 +41,9 @@ pub struct Service {
 }
 
 impl Service {
-    pub fn new(id: i32, billing_cycle: i32, hostname: String, price: String, status: models::ServiceStatusEnum, created: String, modified: String, terminated: Option<chrono::NaiveDate>, next_invoice: chrono::NaiveDate, primary_service: Option<i32>) -> Service {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, billing_cycle: i32, hostname: String, price: String, status: models::ServiceStatusEnum, created: String, modified: String, terminated: Option<chrono::NaiveDate>, next_invoice: chrono::NaiveDate, primary_service: Option<i32>) -> Service {
         Service {
+            billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
             company: None,
             billing_cycle,

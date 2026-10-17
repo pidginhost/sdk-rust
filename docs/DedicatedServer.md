@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 **id** | **i32** |  | [readonly]
 **hostname** | **String** |  | [readonly]
 **status** | [**models::ServiceStatusEnum**](ServiceStatusEnum.md) |  | [readonly]
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **server_status** | Option<[**models::DedicatedServerStatus**](DedicatedServerStatus.md)> |  | [readonly]
 **ips** | [**Vec<models::DedicatedServerIp>**](DedicatedServerIP.md) |  | [readonly]
 **os_name** | Option<**String**> |  | [readonly]
+**hardware** | Option<[**models::DedicatedHardware**](DedicatedHardware.md)> |  | [readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

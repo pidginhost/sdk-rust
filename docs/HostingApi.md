@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**hosting_hosting_change_password_create**](HostingApi.md#hosting_hosting_change_password_create) | **POST** /api/hosting/hosting/{id}/change-password/ | 
 [**hosting_hosting_list**](HostingApi.md#hosting_hosting_list) | **GET** /api/hosting/hosting/ | 
 [**hosting_hosting_retrieve**](HostingApi.md#hosting_hosting_retrieve) | **GET** /api/hosting/hosting/{id}/ | 
+[**hosting_hosting_upgrade_options_retrieve**](HostingApi.md#hosting_hosting_upgrade_options_retrieve) | **GET** /api/hosting/hosting/{id}/upgrade-options/ | 
+[**hosting_hosting_usage_retrieve**](HostingApi.md#hosting_hosting_usage_retrieve) | **GET** /api/hosting/hosting/{id}/usage/ | 
 
 
 
@@ -88,6 +90,66 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::HostingService**](HostingService.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## hosting_hosting_upgrade_options_retrieve
+
+> models::HostingUpgradeOptions hosting_hosting_upgrade_options_retrieve(id)
+
+
+List and manage cPanel/shared hosting services.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::HostingUpgradeOptions**](HostingUpgradeOptions.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## hosting_hosting_usage_retrieve
+
+> models::HostingUsage hosting_hosting_usage_retrieve(id)
+
+
+List and manage cPanel/shared hosting services.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::HostingUsage**](HostingUsage.md)
 
 ### Authorization
 

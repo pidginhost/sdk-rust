@@ -15,8 +15,6 @@ use serde::{Deserialize, Serialize};
 pub struct PatchedClusterDetailRequest {
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    #[serde(rename = "price_per_month", skip_serializing_if = "Option::is_none")]
-    pub price_per_month: Option<String>,
     #[serde(rename = "features", skip_serializing_if = "Option::is_none")]
     pub features: Option<Vec<models::FeaturesEnum>>,
     #[serde(rename = "protected", skip_serializing_if = "Option::is_none")]
@@ -27,7 +25,6 @@ impl PatchedClusterDetailRequest {
     pub fn new() -> PatchedClusterDetailRequest {
         PatchedClusterDetailRequest {
             name: None,
-            price_per_month: None,
             features: None,
             protected: None,
         }

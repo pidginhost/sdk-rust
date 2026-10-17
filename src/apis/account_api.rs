@@ -78,6 +78,13 @@ pub enum AccountCompaniesUpdateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`account_dashboard_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum AccountDashboardRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`account_emails_list`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -103,6 +110,13 @@ pub enum AccountProfileRetrieveError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum AccountProfileUpdateError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`account_session_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum AccountSessionRetrieveError {
     UnknownValue(serde_json::Value),
 }
 
@@ -544,6 +558,49 @@ pub async fn account_companies_update(configuration: &configuration::Configurati
     }
 }
 
+/// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+pub async fn account_dashboard_retrieve(configuration: &configuration::Configuration, ) -> Result<models::Dashboard, Error<AccountDashboardRetrieveError>> {
+
+    let uri_str = format!("{}/api/account/dashboard/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Dashboard`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Dashboard`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<AccountDashboardRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// List email history for the authenticated user.
 pub async fn account_emails_list(configuration: &configuration::Configuration, page: Option<i32>) -> Result<models::PaginatedEmailHistoryList, Error<AccountEmailsListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -723,6 +780,49 @@ pub async fn account_profile_update(configuration: &configuration::Configuration
     } else {
         let content = resp.text().await?;
         let entity: Option<AccountProfileUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Resolved account and role/scope intersection without owner-only profile access.
+pub async fn account_session_retrieve(configuration: &configuration::Configuration, ) -> Result<models::AccountSessionResponse, Error<AccountSessionRetrieveError>> {
+
+    let uri_str = format!("{}/api/account/session/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AccountSessionResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AccountSessionResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<AccountSessionRetrieveError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

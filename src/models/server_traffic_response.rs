@@ -22,11 +22,11 @@ pub struct ServerTrafficResponse {
     #[serde(rename = "status")]
     pub status: String,
     #[serde(rename = "bytes_in")]
-    pub bytes_in: i32,
+    pub bytes_in: i64,
     #[serde(rename = "bytes_out")]
-    pub bytes_out: i32,
+    pub bytes_out: i64,
     #[serde(rename = "bytes_total")]
-    pub bytes_total: i32,
+    pub bytes_total: i64,
     #[serde(rename = "included_tb", deserialize_with = "Option::deserialize")]
     pub included_tb: Option<i32>,
     #[serde(rename = "used_units")]
@@ -36,7 +36,7 @@ pub struct ServerTrafficResponse {
     pub used_tb: String,
     /// Of bytes_total, the part that may be charged.
     #[serde(rename = "billable_bytes")]
-    pub billable_bytes: i32,
+    pub billable_bytes: i64,
     #[serde(rename = "billable_units")]
     pub billable_units: i32,
     /// Billable usage rounded up to six decimal places; billable_bytes is exact.
@@ -54,9 +54,9 @@ pub struct ServerTrafficResponse {
     #[serde(rename = "currency")]
     pub currency: String,
     #[serde(rename = "unit_bytes")]
-    pub unit_bytes: i32,
+    pub unit_bytes: i64,
     #[serde(rename = "remaining_bytes", deserialize_with = "Option::deserialize")]
-    pub remaining_bytes: Option<i32>,
+    pub remaining_bytes: Option<i64>,
     #[serde(rename = "last_sample_at", deserialize_with = "Option::deserialize")]
     pub last_sample_at: Option<chrono::NaiveDate>,
     #[serde(rename = "daily")]
@@ -64,7 +64,7 @@ pub struct ServerTrafficResponse {
 }
 
 impl ServerTrafficResponse {
-    pub fn new(year: i32, month: i32, as_of: Option<chrono::NaiveDate>, status: String, bytes_in: i32, bytes_out: i32, bytes_total: i32, included_tb: Option<i32>, used_units: i32, used_tb: String, billable_bytes: i32, billable_units: i32, billable_tb: String, billable_from: Option<chrono::NaiveDate>, charged_tb: i32, charged_amount: String, price_per_tb: Option<String>, currency: String, unit_bytes: i32, remaining_bytes: Option<i32>, last_sample_at: Option<chrono::NaiveDate>, daily: Vec<std::collections::HashMap<String, serde_json::Value>>) -> ServerTrafficResponse {
+    pub fn new(year: i32, month: i32, as_of: Option<chrono::NaiveDate>, status: String, bytes_in: i64, bytes_out: i64, bytes_total: i64, included_tb: Option<i32>, used_units: i32, used_tb: String, billable_bytes: i64, billable_units: i32, billable_tb: String, billable_from: Option<chrono::NaiveDate>, charged_tb: i32, charged_amount: String, price_per_tb: Option<String>, currency: String, unit_bytes: i64, remaining_bytes: Option<i64>, last_sample_at: Option<chrono::NaiveDate>, daily: Vec<std::collections::HashMap<String, serde_json::Value>>) -> ServerTrafficResponse {
         ServerTrafficResponse {
             year,
             month,

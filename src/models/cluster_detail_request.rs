@@ -15,8 +15,6 @@ use serde::{Deserialize, Serialize};
 pub struct ClusterDetailRequest {
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    #[serde(rename = "price_per_month")]
-    pub price_per_month: String,
     #[serde(rename = "features", skip_serializing_if = "Option::is_none")]
     pub features: Option<Vec<models::FeaturesEnum>>,
     #[serde(rename = "protected", skip_serializing_if = "Option::is_none")]
@@ -24,10 +22,9 @@ pub struct ClusterDetailRequest {
 }
 
 impl ClusterDetailRequest {
-    pub fn new(price_per_month: String) -> ClusterDetailRequest {
+    pub fn new() -> ClusterDetailRequest {
         ClusterDetailRequest {
             name: None,
-            price_per_month,
             features: None,
             protected: None,
         }

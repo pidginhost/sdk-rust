@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **gateway** | Option<**String**> |  | [optional]
 **provisioned** | **bool** |  | [readonly]
 **servers** | **Vec<std::collections::HashMap<String, String>>** |  | [readonly]
+**billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

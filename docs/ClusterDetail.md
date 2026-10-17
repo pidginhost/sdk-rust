@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **generation** | **String** |  | [readonly]
 **cluster_type** | Option<**String**> |  | [readonly]
 **kube_version** | Option<**String**> |  | [readonly]
-**price_per_month** | **String** |  | 
+**price_per_month** | **String** |  | [readonly]
 **price_per_hour** | **f64** |  | [readonly]
 **features** | Option<[**Vec<models::FeaturesEnum>**](FeaturesEnum.md)> |  | [optional]
 **features_ready** | **bool** |  | [readonly]

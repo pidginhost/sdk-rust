@@ -24,6 +24,9 @@ Method | HTTP request | Description
 [**kubernetes_clusters_kube_version_upgrade_create**](KubernetesApi.md#kubernetes_clusters_kube_version_upgrade_create) | **POST** /api/kubernetes/clusters/{id}/kube-version-upgrade/ | 
 [**kubernetes_clusters_kubeconfig_create**](KubernetesApi.md#kubernetes_clusters_kubeconfig_create) | **POST** /api/kubernetes/clusters/{id}/kubeconfig/ | 
 [**kubernetes_clusters_kubeconfig_retrieve**](KubernetesApi.md#kubernetes_clusters_kubeconfig_retrieve) | **GET** /api/kubernetes/clusters/{id}/kubeconfig/ | 
+[**kubernetes_clusters_l3_cutover_create**](KubernetesApi.md#kubernetes_clusters_l3_cutover_create) | **POST** /api/kubernetes/clusters/{id}/l3/cutover/ | 
+[**kubernetes_clusters_l3_retrieve**](KubernetesApi.md#kubernetes_clusters_l3_retrieve) | **GET** /api/kubernetes/clusters/{id}/l3/ | 
+[**kubernetes_clusters_l3_revert_create**](KubernetesApi.md#kubernetes_clusters_l3_revert_create) | **POST** /api/kubernetes/clusters/{id}/l3/revert/ | 
 [**kubernetes_clusters_lb_firewall_create**](KubernetesApi.md#kubernetes_clusters_lb_firewall_create) | **POST** /api/kubernetes/clusters/{cluster_id}/lb-firewall/ | 
 [**kubernetes_clusters_lb_firewall_destroy**](KubernetesApi.md#kubernetes_clusters_lb_firewall_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
 [**kubernetes_clusters_lb_firewall_list**](KubernetesApi.md#kubernetes_clusters_lb_firewall_list) | **GET** /api/kubernetes/clusters/{cluster_id}/lb-firewall/ | 
@@ -687,6 +690,98 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## kubernetes_clusters_l3_cutover_create
+
+> models::ClusterDetail kubernetes_clusters_l3_cutover_create(id, cluster_detail_request)
+
+
+Start one staff L3 cutover. Only the plan, the confirmation and the attended window are read from the request.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**cluster_detail_request** | Option<[**ClusterDetailRequest**](ClusterDetailRequest.md)> |  |  |
+
+### Return type
+
+[**models::ClusterDetail**](ClusterDetail.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## kubernetes_clusters_l3_retrieve
+
+> models::ClusterDetail kubernetes_clusters_l3_retrieve(id)
+
+
+The staff L3 plan for this cluster; read-only.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::ClusterDetail**](ClusterDetail.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## kubernetes_clusters_l3_revert_create
+
+> models::ClusterDetail kubernetes_clusters_l3_revert_create(id, cluster_detail_request)
+
+
+Request one staff revert of a committed L3 operation.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**cluster_detail_request** | Option<[**ClusterDetailRequest**](ClusterDetailRequest.md)> |  |  |
+
+### Return type
+
+[**models::ClusterDetail**](ClusterDetail.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1410,10 +1505,10 @@ Name | Type | Description  | Required | Notes
 
 ## kubernetes_clusters_resource_pools_destroy
 
-> kubernetes_clusters_resource_pools_destroy(cluster_id, id)
+> kubernetes_clusters_resource_pools_destroy(cluster_id, id, resource_pool_delete_request)
 
 
-Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+Delete a resource pool and every node in it.
 
 ### Parameters
 
@@ -1422,6 +1517,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **cluster_id** | **i32** |  | [required] |
 **id** | **String** |  | [required] |
+**resource_pool_delete_request** | Option<[**ResourcePoolDeleteRequest**](ResourcePoolDeleteRequest.md)> |  |  |
 
 ### Return type
 
@@ -1433,7 +1529,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1472,7 +1568,7 @@ Name | Type | Description  | Required | Notes
 
 ## kubernetes_clusters_resource_pools_nodes_destroy
 
-> models::NodeOperation kubernetes_clusters_resource_pools_nodes_destroy(cluster_id, id, pool_id)
+> models::NodeOperation kubernetes_clusters_resource_pools_nodes_destroy(cluster_id, id, pool_id, node_operation_delete_request)
 
 
 Start a safe delete of one worker node.
@@ -1485,6 +1581,7 @@ Name | Type | Description  | Required | Notes
 **cluster_id** | **i32** |  | [required] |
 **id** | **String** |  | [required] |
 **pool_id** | **i32** |  | [required] |
+**node_operation_delete_request** | Option<[**NodeOperationDeleteRequest**](NodeOperationDeleteRequest.md)> |  |  |
 
 ### Return type
 
@@ -1496,7 +1593,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2238,7 +2335,7 @@ Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection wi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
-**cluster_detail_request** | [**ClusterDetailRequest**](ClusterDetailRequest.md) |  | [required] |
+**cluster_detail_request** | Option<[**ClusterDetailRequest**](ClusterDetailRequest.md)> |  |  |
 
 ### Return type
 
