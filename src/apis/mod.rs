@@ -121,7 +121,6 @@ pub mod email_api;
 pub mod freedns_api;
 pub mod hosting_api;
 pub mod kubernetes_api;
-pub mod o_api;
 pub mod schema_api;
 pub mod support_api;
 

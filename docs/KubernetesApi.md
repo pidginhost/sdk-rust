@@ -13,7 +13,6 @@ Method | HTTP request | Description
 [**kubernetes_clusters_eligible_vms_retrieve**](KubernetesApi.md#kubernetes_clusters_eligible_vms_retrieve) | **GET** /api/kubernetes/clusters/{id}/eligible-vms/ | 
 [**kubernetes_clusters_encryption_create**](KubernetesApi.md#kubernetes_clusters_encryption_create) | **POST** /api/kubernetes/clusters/{id}/encryption/ | 
 [**kubernetes_clusters_encryption_recheck_create**](KubernetesApi.md#kubernetes_clusters_encryption_recheck_create) | **POST** /api/kubernetes/clusters/{id}/encryption/recheck/ | 
-[**kubernetes_clusters_encryption_reconcile_create**](KubernetesApi.md#kubernetes_clusters_encryption_reconcile_create) | **POST** /api/kubernetes/clusters/{id}/encryption/reconcile/ | 
 [**kubernetes_clusters_encryption_retrieve**](KubernetesApi.md#kubernetes_clusters_encryption_retrieve) | **GET** /api/kubernetes/clusters/{id}/encryption/ | 
 [**kubernetes_clusters_httproutes_create**](KubernetesApi.md#kubernetes_clusters_httproutes_create) | **POST** /api/kubernetes/clusters/{cluster_id}/httproutes/ | 
 [**kubernetes_clusters_httproutes_destroy**](KubernetesApi.md#kubernetes_clusters_httproutes_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/httproutes/{id}/ | 
@@ -24,9 +23,6 @@ Method | HTTP request | Description
 [**kubernetes_clusters_kube_version_upgrade_create**](KubernetesApi.md#kubernetes_clusters_kube_version_upgrade_create) | **POST** /api/kubernetes/clusters/{id}/kube-version-upgrade/ | 
 [**kubernetes_clusters_kubeconfig_create**](KubernetesApi.md#kubernetes_clusters_kubeconfig_create) | **POST** /api/kubernetes/clusters/{id}/kubeconfig/ | 
 [**kubernetes_clusters_kubeconfig_retrieve**](KubernetesApi.md#kubernetes_clusters_kubeconfig_retrieve) | **GET** /api/kubernetes/clusters/{id}/kubeconfig/ | 
-[**kubernetes_clusters_l3_cutover_create**](KubernetesApi.md#kubernetes_clusters_l3_cutover_create) | **POST** /api/kubernetes/clusters/{id}/l3/cutover/ | 
-[**kubernetes_clusters_l3_retrieve**](KubernetesApi.md#kubernetes_clusters_l3_retrieve) | **GET** /api/kubernetes/clusters/{id}/l3/ | 
-[**kubernetes_clusters_l3_revert_create**](KubernetesApi.md#kubernetes_clusters_l3_revert_create) | **POST** /api/kubernetes/clusters/{id}/l3/revert/ | 
 [**kubernetes_clusters_lb_firewall_create**](KubernetesApi.md#kubernetes_clusters_lb_firewall_create) | **POST** /api/kubernetes/clusters/{cluster_id}/lb-firewall/ | 
 [**kubernetes_clusters_lb_firewall_destroy**](KubernetesApi.md#kubernetes_clusters_lb_firewall_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
 [**kubernetes_clusters_lb_firewall_list**](KubernetesApi.md#kubernetes_clusters_lb_firewall_list) | **GET** /api/kubernetes/clusters/{cluster_id}/lb-firewall/ | 
@@ -36,12 +32,10 @@ Method | HTTP request | Description
 [**kubernetes_clusters_list**](KubernetesApi.md#kubernetes_clusters_list) | **GET** /api/kubernetes/clusters/ | 
 [**kubernetes_clusters_node_operations_cancel_create**](KubernetesApi.md#kubernetes_clusters_node_operations_cancel_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/cancel/ | 
 [**kubernetes_clusters_node_operations_list**](KubernetesApi.md#kubernetes_clusters_node_operations_list) | **GET** /api/kubernetes/clusters/{cluster_id}/node-operations/ | 
-[**kubernetes_clusters_node_operations_resume_create**](KubernetesApi.md#kubernetes_clusters_node_operations_resume_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/resume/ | 
 [**kubernetes_clusters_node_operations_retrieve**](KubernetesApi.md#kubernetes_clusters_node_operations_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/ | 
 [**kubernetes_clusters_node_operations_retry_create**](KubernetesApi.md#kubernetes_clusters_node_operations_retry_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/retry/ | 
 [**kubernetes_clusters_partial_update**](KubernetesApi.md#kubernetes_clusters_partial_update) | **PATCH** /api/kubernetes/clusters/{id}/ | 
 [**kubernetes_clusters_pool_removal_journals_list**](KubernetesApi.md#kubernetes_clusters_pool_removal_journals_list) | **GET** /api/kubernetes/clusters/{cluster_id}/pool-removal-journals/ | 
-[**kubernetes_clusters_pool_removal_journals_resume_create**](KubernetesApi.md#kubernetes_clusters_pool_removal_journals_resume_create) | **POST** /api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/resume/ | 
 [**kubernetes_clusters_pool_removal_journals_retrieve**](KubernetesApi.md#kubernetes_clusters_pool_removal_journals_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/ | 
 [**kubernetes_clusters_port_forwards_create**](KubernetesApi.md#kubernetes_clusters_port_forwards_create) | **POST** /api/kubernetes/clusters/{cluster_id}/port-forwards/ | 
 [**kubernetes_clusters_port_forwards_destroy**](KubernetesApi.md#kubernetes_clusters_port_forwards_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/port-forwards/{id}/ | 
@@ -355,37 +349,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## kubernetes_clusters_encryption_reconcile_create
-
-> models::ClusterEncryptionOperation kubernetes_clusters_encryption_reconcile_create(id, cluster_encryption_reconcile_request)
-
-
-Staff only: resolve a cluster whose encryption state is unknown.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** |  | [required] |
-**cluster_encryption_reconcile_request** | [**ClusterEncryptionReconcileRequest**](ClusterEncryptionReconcileRequest.md) |  | [required] |
-
-### Return type
-
-[**models::ClusterEncryptionOperation**](ClusterEncryptionOperation.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## kubernetes_clusters_encryption_retrieve
 
 > models::ClusterEncryption kubernetes_clusters_encryption_retrieve(id)
@@ -694,98 +657,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## kubernetes_clusters_l3_cutover_create
-
-> models::ClusterDetail kubernetes_clusters_l3_cutover_create(id, cluster_detail_request)
-
-
-Start one staff L3 cutover. Only the plan, the confirmation and the attended window are read from the request.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** |  | [required] |
-**cluster_detail_request** | Option<[**ClusterDetailRequest**](ClusterDetailRequest.md)> |  |  |
-
-### Return type
-
-[**models::ClusterDetail**](ClusterDetail.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## kubernetes_clusters_l3_retrieve
-
-> models::ClusterDetail kubernetes_clusters_l3_retrieve(id)
-
-
-The staff L3 plan for this cluster; read-only.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** |  | [required] |
-
-### Return type
-
-[**models::ClusterDetail**](ClusterDetail.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## kubernetes_clusters_l3_revert_create
-
-> models::ClusterDetail kubernetes_clusters_l3_revert_create(id, cluster_detail_request)
-
-
-Request one staff revert of a committed L3 operation.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** |  | [required] |
-**cluster_detail_request** | Option<[**ClusterDetailRequest**](ClusterDetailRequest.md)> |  |  |
-
-### Return type
-
-[**models::ClusterDetail**](ClusterDetail.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## kubernetes_clusters_lb_firewall_create
 
 > models::LbFirewallRule kubernetes_clusters_lb_firewall_create(cluster_id, lb_firewall_rule_request)
@@ -1066,37 +937,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## kubernetes_clusters_node_operations_resume_create
-
-> models::NodeOperation kubernetes_clusters_node_operations_resume_create(cluster_id, id)
-
-
-Staff-only resume of an operation waiting for support.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**cluster_id** | **i32** |  | [required] |
-**id** | **String** |  | [required] |
-
-### Return type
-
-[**models::NodeOperation**](NodeOperation.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## kubernetes_clusters_node_operations_retrieve
 
 > models::NodeOperation kubernetes_clusters_node_operations_retrieve(cluster_id, id)
@@ -1209,37 +1049,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::PaginatedPoolRemovalJournalList**](PaginatedPoolRemovalJournalList.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## kubernetes_clusters_pool_removal_journals_resume_create
-
-> models::PoolRemovalJournal kubernetes_clusters_pool_removal_journals_resume_create(cluster_id, id)
-
-
-Staff-only resume of a pool removal waiting for support.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**cluster_id** | **i32** |  | [required] |
-**id** | **String** |  | [required] |
-
-### Return type
-
-[**models::PoolRemovalJournal**](PoolRemovalJournal.md)
 
 ### Authorization
 

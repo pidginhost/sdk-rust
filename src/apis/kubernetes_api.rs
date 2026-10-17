@@ -88,17 +88,6 @@ pub enum KubernetesClustersEncryptionRecheckCreateError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`kubernetes_clusters_encryption_reconcile_create`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum KubernetesClustersEncryptionReconcileCreateError {
-    Status400(models::ClusterEncryptionError),
-    Status403(models::ClusterEncryptionError),
-    Status404(models::ClusterEncryptionError),
-    Status409(models::ClusterEncryptionError),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`kubernetes_clusters_encryption_retrieve`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -172,27 +161,6 @@ pub enum KubernetesClustersKubeconfigRetrieveError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`kubernetes_clusters_l3_cutover_create`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum KubernetesClustersL3CutoverCreateError {
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`kubernetes_clusters_l3_retrieve`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum KubernetesClustersL3RetrieveError {
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`kubernetes_clusters_l3_revert_create`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum KubernetesClustersL3RevertCreateError {
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`kubernetes_clusters_lb_firewall_create`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -256,13 +224,6 @@ pub enum KubernetesClustersNodeOperationsListError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`kubernetes_clusters_node_operations_resume_create`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum KubernetesClustersNodeOperationsResumeCreateError {
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`kubernetes_clusters_node_operations_retrieve`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -288,13 +249,6 @@ pub enum KubernetesClustersPartialUpdateError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum KubernetesClustersPoolRemovalJournalsListError {
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`kubernetes_clusters_pool_removal_journals_resume_create`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum KubernetesClustersPoolRemovalJournalsResumeCreateError {
     UnknownValue(serde_json::Value),
 }
 
@@ -962,53 +916,6 @@ pub async fn kubernetes_clusters_encryption_recheck_create(configuration: &confi
     }
 }
 
-/// Staff only: resolve a cluster whose encryption state is unknown.
-pub async fn kubernetes_clusters_encryption_reconcile_create(configuration: &configuration::Configuration, id: &str, cluster_encryption_reconcile_request: models::ClusterEncryptionReconcileRequest) -> Result<models::ClusterEncryptionOperation, Error<KubernetesClustersEncryptionReconcileCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_id = id;
-    let p_body_cluster_encryption_reconcile_request = cluster_encryption_reconcile_request;
-
-    let uri_str = format!("{}/api/kubernetes/clusters/{id}/encryption/reconcile/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    req_builder = req_builder.json(&p_body_cluster_encryption_reconcile_request);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterEncryptionOperation`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterEncryptionOperation`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<KubernetesClustersEncryptionReconcileCreateError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
 /// Read the cluster's encryption state, restart gate and per-node verification evidence.
 pub async fn kubernetes_clusters_encryption_retrieve(configuration: &configuration::Configuration, id: &str) -> Result<models::ClusterEncryption, Error<KubernetesClustersEncryptionRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -1462,145 +1369,6 @@ pub async fn kubernetes_clusters_kubeconfig_retrieve(configuration: &configurati
     }
 }
 
-/// Start one staff L3 cutover. Only the plan, the confirmation and the attended window are read from the request.
-pub async fn kubernetes_clusters_l3_cutover_create(configuration: &configuration::Configuration, id: &str, cluster_detail_request: Option<models::ClusterDetailRequest>) -> Result<models::ClusterDetail, Error<KubernetesClustersL3CutoverCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_id = id;
-    let p_body_cluster_detail_request = cluster_detail_request;
-
-    let uri_str = format!("{}/api/kubernetes/clusters/{id}/l3/cutover/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    req_builder = req_builder.json(&p_body_cluster_detail_request);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterDetail`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterDetail`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<KubernetesClustersL3CutoverCreateError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-/// The staff L3 plan for this cluster; read-only.
-pub async fn kubernetes_clusters_l3_retrieve(configuration: &configuration::Configuration, id: &str) -> Result<models::ClusterDetail, Error<KubernetesClustersL3RetrieveError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_id = id;
-
-    let uri_str = format!("{}/api/kubernetes/clusters/{id}/l3/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterDetail`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterDetail`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<KubernetesClustersL3RetrieveError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-/// Request one staff revert of a committed L3 operation.
-pub async fn kubernetes_clusters_l3_revert_create(configuration: &configuration::Configuration, id: &str, cluster_detail_request: Option<models::ClusterDetailRequest>) -> Result<models::ClusterDetail, Error<KubernetesClustersL3RevertCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_id = id;
-    let p_body_cluster_detail_request = cluster_detail_request;
-
-    let uri_str = format!("{}/api/kubernetes/clusters/{id}/l3/revert/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    req_builder = req_builder.json(&p_body_cluster_detail_request);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterDetail`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterDetail`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<KubernetesClustersL3RevertCreateError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 pub async fn kubernetes_clusters_lb_firewall_create(configuration: &configuration::Configuration, cluster_id: i32, lb_firewall_rule_request: Option<models::LbFirewallRuleRequest>) -> Result<models::LbFirewallRule, Error<KubernetesClustersLbFirewallCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -2017,52 +1785,6 @@ pub async fn kubernetes_clusters_node_operations_list(configuration: &configurat
     }
 }
 
-/// Staff-only resume of an operation waiting for support.
-pub async fn kubernetes_clusters_node_operations_resume_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::NodeOperation, Error<KubernetesClustersNodeOperationsResumeCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_cluster_id = cluster_id;
-    let p_path_id = id;
-
-    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/resume/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::NodeOperation`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::NodeOperation`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<KubernetesClustersNodeOperationsResumeCreateError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
 /// Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
 pub async fn kubernetes_clusters_node_operations_retrieve(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::NodeOperation, Error<KubernetesClustersNodeOperationsRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -2249,52 +1971,6 @@ pub async fn kubernetes_clusters_pool_removal_journals_list(configuration: &conf
     } else {
         let content = resp.text().await?;
         let entity: Option<KubernetesClustersPoolRemovalJournalsListError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-/// Staff-only resume of a pool removal waiting for support.
-pub async fn kubernetes_clusters_pool_removal_journals_resume_create(configuration: &configuration::Configuration, cluster_id: i32, id: &str) -> Result<models::PoolRemovalJournal, Error<KubernetesClustersPoolRemovalJournalsResumeCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_cluster_id = cluster_id;
-    let p_path_id = id;
-
-    let uri_str = format!("{}/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/resume/", configuration.base_path, cluster_id=p_path_cluster_id, id=crate::apis::urlencode(p_path_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PoolRemovalJournal`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PoolRemovalJournal`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<KubernetesClustersPoolRemovalJournalsResumeCreateError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
