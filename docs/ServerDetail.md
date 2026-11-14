@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **billing** | Option<[**models::ResourceBilling**](ResourceBilling.md)> |  | [readonly]
 **id** | **i32** |  | [readonly]
-**hostname** | **String** |  | [readonly]
+**hostname** | Option<**String**> | Renaming also moves reverse DNS still on the old name. The server takes the new name at its next reboot from the panel or API, which also creates new SSH host keys and resets the login password and SSH keys to the ones saved here. | [optional]
 **project** | Option<**String**> |  | [optional]
 **image** | **String** |  | [readonly]
 **package** | **String** |  | [readonly]

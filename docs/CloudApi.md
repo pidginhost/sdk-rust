@@ -42,6 +42,51 @@ Method | HTTP request | Description
 [**cloud_floating_ipv6_rdns_retrieve**](CloudApi.md#cloud_floating_ipv6_rdns_retrieve) | **GET** /api/cloud/floating-ipv6/{id}/rdns/ | 
 [**cloud_floating_ipv6_retrieve**](CloudApi.md#cloud_floating_ipv6_retrieve) | **GET** /api/cloud/floating-ipv6/{id}/ | 
 [**cloud_floating_ipv6_unauthorize_create**](CloudApi.md#cloud_floating_ipv6_unauthorize_create) | **POST** /api/cloud/floating-ipv6/{id}/unauthorize/ | 
+[**cloud_gateways_create**](CloudApi.md#cloud_gateways_create) | **POST** /api/cloud/gateways/ | 
+[**cloud_gateways_destroy**](CloudApi.md#cloud_gateways_destroy) | **DELETE** /api/cloud/gateways/{id}/ | 
+[**cloud_gateways_firewall_rules_create**](CloudApi.md#cloud_gateways_firewall_rules_create) | **POST** /api/cloud/gateways/{gateway_id}/firewall-rules/ | 
+[**cloud_gateways_firewall_rules_destroy**](CloudApi.md#cloud_gateways_firewall_rules_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/ | 
+[**cloud_gateways_firewall_rules_list**](CloudApi.md#cloud_gateways_firewall_rules_list) | **GET** /api/cloud/gateways/{gateway_id}/firewall-rules/ | 
+[**cloud_gateways_firewall_rules_move_create**](CloudApi.md#cloud_gateways_firewall_rules_move_create) | **POST** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/move/ | 
+[**cloud_gateways_firewall_rules_partial_update**](CloudApi.md#cloud_gateways_firewall_rules_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/ | 
+[**cloud_gateways_firewall_rules_retrieve**](CloudApi.md#cloud_gateways_firewall_rules_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/ | 
+[**cloud_gateways_list**](CloudApi.md#cloud_gateways_list) | **GET** /api/cloud/gateways/ | 
+[**cloud_gateways_listeners_create**](CloudApi.md#cloud_gateways_listeners_create) | **POST** /api/cloud/gateways/{gateway_id}/listeners/ | 
+[**cloud_gateways_listeners_destroy**](CloudApi.md#cloud_gateways_listeners_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/listeners/{id}/ | 
+[**cloud_gateways_listeners_list**](CloudApi.md#cloud_gateways_listeners_list) | **GET** /api/cloud/gateways/{gateway_id}/listeners/ | 
+[**cloud_gateways_listeners_partial_update**](CloudApi.md#cloud_gateways_listeners_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/listeners/{id}/ | 
+[**cloud_gateways_listeners_retrieve**](CloudApi.md#cloud_gateways_listeners_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/listeners/{id}/ | 
+[**cloud_gateways_listeners_routes_create**](CloudApi.md#cloud_gateways_listeners_routes_create) | **POST** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/ | 
+[**cloud_gateways_listeners_routes_destroy**](CloudApi.md#cloud_gateways_listeners_routes_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/ | 
+[**cloud_gateways_listeners_routes_list**](CloudApi.md#cloud_gateways_listeners_routes_list) | **GET** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/ | 
+[**cloud_gateways_listeners_routes_partial_update**](CloudApi.md#cloud_gateways_listeners_routes_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/ | 
+[**cloud_gateways_listeners_routes_retrieve**](CloudApi.md#cloud_gateways_listeners_routes_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/ | 
+[**cloud_gateways_networks_create**](CloudApi.md#cloud_gateways_networks_create) | **POST** /api/cloud/gateways/{gateway_id}/networks/ | 
+[**cloud_gateways_networks_destroy**](CloudApi.md#cloud_gateways_networks_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/networks/{network_id}/ | 
+[**cloud_gateways_networks_list**](CloudApi.md#cloud_gateways_networks_list) | **GET** /api/cloud/gateways/{gateway_id}/networks/ | 
+[**cloud_gateways_networks_partial_update**](CloudApi.md#cloud_gateways_networks_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/networks/{network_id}/ | 
+[**cloud_gateways_networks_retrieve**](CloudApi.md#cloud_gateways_networks_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/networks/{network_id}/ | 
+[**cloud_gateways_operations_list**](CloudApi.md#cloud_gateways_operations_list) | **GET** /api/cloud/gateways/{gateway_id}/operations/ | 
+[**cloud_gateways_operations_retrieve**](CloudApi.md#cloud_gateways_operations_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/operations/{id}/ | 
+[**cloud_gateways_partial_update**](CloudApi.md#cloud_gateways_partial_update) | **PATCH** /api/cloud/gateways/{id}/ | 
+[**cloud_gateways_pools_backends_create**](CloudApi.md#cloud_gateways_pools_backends_create) | **POST** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/ | 
+[**cloud_gateways_pools_backends_destroy**](CloudApi.md#cloud_gateways_pools_backends_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/ | 
+[**cloud_gateways_pools_backends_list**](CloudApi.md#cloud_gateways_pools_backends_list) | **GET** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/ | 
+[**cloud_gateways_pools_backends_partial_update**](CloudApi.md#cloud_gateways_pools_backends_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/ | 
+[**cloud_gateways_pools_backends_retrieve**](CloudApi.md#cloud_gateways_pools_backends_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/ | 
+[**cloud_gateways_pools_create**](CloudApi.md#cloud_gateways_pools_create) | **POST** /api/cloud/gateways/{gateway_id}/pools/ | 
+[**cloud_gateways_pools_destroy**](CloudApi.md#cloud_gateways_pools_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/pools/{id}/ | 
+[**cloud_gateways_pools_list**](CloudApi.md#cloud_gateways_pools_list) | **GET** /api/cloud/gateways/{gateway_id}/pools/ | 
+[**cloud_gateways_pools_partial_update**](CloudApi.md#cloud_gateways_pools_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/pools/{id}/ | 
+[**cloud_gateways_pools_retrieve**](CloudApi.md#cloud_gateways_pools_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/pools/{id}/ | 
+[**cloud_gateways_port_forwards_create**](CloudApi.md#cloud_gateways_port_forwards_create) | **POST** /api/cloud/gateways/{gateway_id}/port-forwards/ | 
+[**cloud_gateways_port_forwards_destroy**](CloudApi.md#cloud_gateways_port_forwards_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/port-forwards/{id}/ | 
+[**cloud_gateways_port_forwards_list**](CloudApi.md#cloud_gateways_port_forwards_list) | **GET** /api/cloud/gateways/{gateway_id}/port-forwards/ | 
+[**cloud_gateways_port_forwards_partial_update**](CloudApi.md#cloud_gateways_port_forwards_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/port-forwards/{id}/ | 
+[**cloud_gateways_port_forwards_retrieve**](CloudApi.md#cloud_gateways_port_forwards_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/port-forwards/{id}/ | 
+[**cloud_gateways_reenroll_create**](CloudApi.md#cloud_gateways_reenroll_create) | **POST** /api/cloud/gateways/{id}/reenroll/ | 
+[**cloud_gateways_retrieve**](CloudApi.md#cloud_gateways_retrieve) | **GET** /api/cloud/gateways/{id}/ | 
+[**cloud_gateways_status_retrieve**](CloudApi.md#cloud_gateways_status_retrieve) | **GET** /api/cloud/gateways/{id}/status/ | 
 [**cloud_generations_list**](CloudApi.md#cloud_generations_list) | **GET** /api/cloud/generations/ | List hardware generations
 [**cloud_generations_retrieve**](CloudApi.md#cloud_generations_retrieve) | **GET** /api/cloud/generations/{slug}/ | 
 [**cloud_images_list**](CloudApi.md#cloud_images_list) | **GET** /api/cloud/images/ | 
@@ -61,12 +106,14 @@ Method | HTTP request | Description
 [**cloud_ipv6_rdns_retrieve**](CloudApi.md#cloud_ipv6_rdns_retrieve) | **GET** /api/cloud/ipv6/{id}/rdns/ | 
 [**cloud_ipv6_retrieve**](CloudApi.md#cloud_ipv6_retrieve) | **GET** /api/cloud/ipv6/{id}/ | 
 [**cloud_private_networks_add_server_create**](CloudApi.md#cloud_private_networks_add_server_create) | **POST** /api/cloud/private-networks/{id}/add-server/ | 
+[**cloud_private_networks_apply_route_create**](CloudApi.md#cloud_private_networks_apply_route_create) | **POST** /api/cloud/private-networks/{id}/apply-route/ | 
 [**cloud_private_networks_create**](CloudApi.md#cloud_private_networks_create) | **POST** /api/cloud/private-networks/ | 
 [**cloud_private_networks_destroy**](CloudApi.md#cloud_private_networks_destroy) | **DELETE** /api/cloud/private-networks/{id}/ | 
 [**cloud_private_networks_list**](CloudApi.md#cloud_private_networks_list) | **GET** /api/cloud/private-networks/ | 
 [**cloud_private_networks_partial_update**](CloudApi.md#cloud_private_networks_partial_update) | **PATCH** /api/cloud/private-networks/{id}/ | 
 [**cloud_private_networks_remove_server_create**](CloudApi.md#cloud_private_networks_remove_server_create) | **POST** /api/cloud/private-networks/{id}/remove-server/ | 
 [**cloud_private_networks_retrieve**](CloudApi.md#cloud_private_networks_retrieve) | **GET** /api/cloud/private-networks/{id}/ | 
+[**cloud_private_networks_route_status_retrieve**](CloudApi.md#cloud_private_networks_route_status_retrieve) | **GET** /api/cloud/private-networks/{id}/route-status/ | 
 [**cloud_private_networks_update**](CloudApi.md#cloud_private_networks_update) | **PUT** /api/cloud/private-networks/{id}/ | 
 [**cloud_server_packages_by_generation_retrieve**](CloudApi.md#cloud_server_packages_by_generation_retrieve) | **GET** /api/cloud/server-packages/by-generation/ | 
 [**cloud_server_packages_list**](CloudApi.md#cloud_server_packages_list) | **GET** /api/cloud/server-packages/ | 
@@ -1271,6 +1318,1428 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## cloud_gateways_create
+
+> models::Gateway cloud_gateways_create(gateway_create_request)
+
+
+Reserve a gateway and queue its provisioning (spec 11.1); its state shows the progress.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_create_request** | [**GatewayCreateRequest**](GatewayCreateRequest.md) |  | [required] |
+
+### Return type
+
+[**models::Gateway**](Gateway.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_destroy
+
+> models::GatewayOperation cloud_gateways_destroy(id, networks, revision, servers)
+
+
+Delete the gateway (spec 11.5): its VM is destroyed, then its networks and IPv4 are released. Without the preview's revision, networks and servers, 409 with a fresh preview.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**networks** | Option<[**Vec<i32>**](I32.md)> | The preview's network ids. |  |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+**servers** | Option<[**Vec<i32>**](I32.md)> | The preview's server ids. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_firewall_rules_create
+
+> models::GatewayFirewallRule cloud_gateways_firewall_rules_create(gateway_id, gateway_firewall_rule_write_request)
+
+
+Add a rule after the last one (spec 5.7); it is pending until the agent applies its revision.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**gateway_firewall_rule_write_request** | [**GatewayFirewallRuleWriteRequest**](GatewayFirewallRuleWriteRequest.md) |  | [required] |
+
+### Return type
+
+[**models::GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_firewall_rules_destroy
+
+> models::GatewayOperation cloud_gateways_firewall_rules_destroy(gateway_id, id, revision)
+
+
+Delete a rule (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_firewall_rules_list
+
+> models::PaginatedGatewayFirewallRuleList cloud_gateways_firewall_rules_list(gateway_id, page)
+
+
+A gateway's firewall rules, in evaluation order
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayFirewallRuleList**](PaginatedGatewayFirewallRuleList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_firewall_rules_move_create
+
+> models::GatewayFirewallRule cloud_gateways_firewall_rules_move_create(gateway_id, id, gateway_firewall_move_request, revision)
+
+
+Move a rule to a position, the others keeping their order. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**gateway_firewall_move_request** | [**GatewayFirewallMoveRequest**](GatewayFirewallMoveRequest.md) |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_firewall_rules_partial_update
+
+> models::GatewayFirewallRule cloud_gateways_firewall_rules_partial_update(gateway_id, id, patched_gateway_firewall_rule_write_request)
+
+
+Change a rule's fields; a source or destination is replaced whole. Its position stays.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**patched_gateway_firewall_rule_write_request** | Option<[**PatchedGatewayFirewallRuleWriteRequest**](PatchedGatewayFirewallRuleWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_firewall_rules_retrieve
+
+> models::GatewayFirewallRule cloud_gateways_firewall_rules_retrieve(gateway_id, id)
+
+
+A gateway's firewall rules, in evaluation order
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_list
+
+> models::PaginatedGatewayList cloud_gateways_list(page)
+
+
+Manage gateways
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayList**](PaginatedGatewayList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_create
+
+> models::GatewayLbListener cloud_gateways_listeners_create(gateway_id, gateway_lb_listener_write_request)
+
+
+Add a listener (spec 6.8): tcp and udp name a pool, http takes routes. Pending until applied.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**gateway_lb_listener_write_request** | Option<[**GatewayLbListenerWriteRequest**](GatewayLbListenerWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayLbListener**](GatewayLBListener.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_destroy
+
+> models::GatewayOperation cloud_gateways_listeners_destroy(gateway_id, id, revision)
+
+
+Delete a listener and its routes (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_list
+
+> models::PaginatedGatewayLbListenerList cloud_gateways_listeners_list(gateway_id, page)
+
+
+A gateway's load balancer listeners
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayLbListenerList**](PaginatedGatewayLBListenerList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_partial_update
+
+> models::GatewayLbListener cloud_gateways_listeners_partial_update(gateway_id, id, patched_gateway_lb_listener_write_request)
+
+
+Change a listener's pool, sources, comment or enabled flag; protocol, port and mode are fixed.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**patched_gateway_lb_listener_write_request** | Option<[**PatchedGatewayLbListenerWriteRequest**](PatchedGatewayLbListenerWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayLbListener**](GatewayLBListener.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_retrieve
+
+> models::GatewayLbListener cloud_gateways_listeners_retrieve(gateway_id, id)
+
+
+A gateway's load balancer listeners
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayLbListener**](GatewayLBListener.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_routes_create
+
+> models::GatewayRoute cloud_gateways_listeners_routes_create(gateway_id, listener_id, gateway_route_write_request)
+
+
+Add a route (spec 5.6): hostnames and a path prefix to a pool. Pending until applied.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**listener_id** | **i32** |  | [required] |
+**gateway_route_write_request** | Option<[**GatewayRouteWriteRequest**](GatewayRouteWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayRoute**](GatewayRoute.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_routes_destroy
+
+> models::GatewayOperation cloud_gateways_listeners_routes_destroy(gateway_id, id, listener_id, revision)
+
+
+Delete a route (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**listener_id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_routes_list
+
+> models::PaginatedGatewayRouteList cloud_gateways_listeners_routes_list(gateway_id, listener_id, page)
+
+
+An http listener's routes
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**listener_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayRouteList**](PaginatedGatewayRouteList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_routes_partial_update
+
+> models::GatewayRoute cloud_gateways_listeners_routes_partial_update(gateway_id, id, listener_id, patched_gateway_route_write_request)
+
+
+Change a route; hostnames are replaced whole.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**listener_id** | **i32** |  | [required] |
+**patched_gateway_route_write_request** | Option<[**PatchedGatewayRouteWriteRequest**](PatchedGatewayRouteWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayRoute**](GatewayRoute.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_listeners_routes_retrieve
+
+> models::GatewayRoute cloud_gateways_listeners_routes_retrieve(gateway_id, id, listener_id)
+
+
+An http listener's routes
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**listener_id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayRoute**](GatewayRoute.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_networks_create
+
+> models::GatewayOperation cloud_gateways_networks_create(gateway_id, gateway_network_create_request)
+
+
+Attach a network (spec 11.3): the operation reserves it and hotplugs the gateway's NIC.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**gateway_network_create_request** | [**GatewayNetworkCreateRequest**](GatewayNetworkCreateRequest.md) |  | [required] |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_networks_destroy
+
+> models::GatewayOperation cloud_gateways_networks_destroy(gateway_id, network_id, revision, servers)
+
+
+Detach a network (spec 11.3). Without the preview's revision and servers, 409 with a fresh preview.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**network_id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+**servers** | Option<[**Vec<i32>**](I32.md)> | The preview's server ids. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_networks_list
+
+> models::PaginatedGatewayNetworkList cloud_gateways_networks_list(gateway_id, page)
+
+
+A gateway's private networks, by network id
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayNetworkList**](PaginatedGatewayNetworkList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_networks_partial_update
+
+> models::GatewayNetwork cloud_gateways_networks_partial_update(gateway_id, network_id, revision, servers, patched_gateway_network_update_request)
+
+
+Switch a router network's SNAT (spec 6.4). Turning it off without the preview's revision and servers answers 409 with a fresh preview; the change is pending until the agent applies it.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**network_id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+**servers** | Option<[**Vec<i32>**](I32.md)> | The preview's server ids. |  |
+**patched_gateway_network_update_request** | Option<[**PatchedGatewayNetworkUpdateRequest**](PatchedGatewayNetworkUpdateRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayNetwork**](GatewayNetwork.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_networks_retrieve
+
+> models::GatewayNetwork cloud_gateways_networks_retrieve(gateway_id, network_id)
+
+
+A gateway's private networks, by network id
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**network_id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayNetwork**](GatewayNetwork.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_operations_list
+
+> models::PaginatedGatewayOperationList cloud_gateways_operations_list(gateway_id, page)
+
+
+A gateway's operations, newest first
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayOperationList**](PaginatedGatewayOperationList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_operations_retrieve
+
+> models::GatewayOperation cloud_gateways_operations_retrieve(gateway_id, id)
+
+
+A gateway's operations, newest first
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_partial_update
+
+> models::Gateway cloud_gateways_partial_update(id, patched_gateway_update_request)
+
+
+Rename the gateway or change its maintenance window. The name is not compiled, so no revision follows; a new window reaches the agent in a new revision (spec 11.4).
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**patched_gateway_update_request** | Option<[**PatchedGatewayUpdateRequest**](PatchedGatewayUpdateRequest.md)> |  |  |
+
+### Return type
+
+[**models::Gateway**](Gateway.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_backends_create
+
+> models::GatewayBackend cloud_gateways_pools_backends_create(gateway_id, pool_id, gateway_backend_write_request)
+
+
+Add a server to the pool (spec 5.5); it is pending until the agent applies its revision.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**pool_id** | **i32** |  | [required] |
+**gateway_backend_write_request** | Option<[**GatewayBackendWriteRequest**](GatewayBackendWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayBackend**](GatewayBackend.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_backends_destroy
+
+> models::GatewayOperation cloud_gateways_pools_backends_destroy(gateway_id, id, pool_id, revision)
+
+
+Remove a server (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**pool_id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_backends_list
+
+> models::PaginatedGatewayBackendList cloud_gateways_pools_backends_list(gateway_id, pool_id, page)
+
+
+A backend pool's servers
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**pool_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayBackendList**](PaginatedGatewayBackendList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_backends_partial_update
+
+> models::GatewayBackend cloud_gateways_pools_backends_partial_update(gateway_id, id, pool_id, patched_gateway_backend_write_request)
+
+
+Change a server. The last enabled server of a pool in use cannot be disabled.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**pool_id** | **i32** |  | [required] |
+**patched_gateway_backend_write_request** | Option<[**PatchedGatewayBackendWriteRequest**](PatchedGatewayBackendWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayBackend**](GatewayBackend.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_backends_retrieve
+
+> models::GatewayBackend cloud_gateways_pools_backends_retrieve(gateway_id, id, pool_id)
+
+
+A backend pool's servers
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**pool_id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayBackend**](GatewayBackend.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_create
+
+> models::GatewayBackendPool cloud_gateways_pools_create(gateway_id, gateway_backend_pool_write_request)
+
+
+Add a backend pool (spec 5.5); it is pending until the agent applies its revision.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**gateway_backend_pool_write_request** | Option<[**GatewayBackendPoolWriteRequest**](GatewayBackendPoolWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayBackendPool**](GatewayBackendPool.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_destroy
+
+> models::GatewayOperation cloud_gateways_pools_destroy(gateway_id, id, revision)
+
+
+Delete an unused pool and its servers (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_list
+
+> models::PaginatedGatewayBackendPoolList cloud_gateways_pools_list(gateway_id, page)
+
+
+A gateway's backend pools
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayBackendPoolList**](PaginatedGatewayBackendPoolList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_partial_update
+
+> models::GatewayBackendPool cloud_gateways_pools_partial_update(gateway_id, id, patched_gateway_backend_pool_write_request)
+
+
+Change a pool; health_check takes the fields to change. Every listener and route on it must still fit.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**patched_gateway_backend_pool_write_request** | Option<[**PatchedGatewayBackendPoolWriteRequest**](PatchedGatewayBackendPoolWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayBackendPool**](GatewayBackendPool.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_pools_retrieve
+
+> models::GatewayBackendPool cloud_gateways_pools_retrieve(gateway_id, id)
+
+
+A gateway's backend pools
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayBackendPool**](GatewayBackendPool.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_port_forwards_create
+
+> models::GatewayForward cloud_gateways_port_forwards_create(gateway_id, gateway_forward_write_request)
+
+
+Add a port forward (spec 6.7); it is pending until the agent applies its revision.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**gateway_forward_write_request** | [**GatewayForwardWriteRequest**](GatewayForwardWriteRequest.md) |  | [required] |
+
+### Return type
+
+[**models::GatewayForward**](GatewayForward.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_port_forwards_destroy
+
+> models::GatewayOperation cloud_gateways_port_forwards_destroy(gateway_id, id, revision)
+
+
+Delete a forward (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**revision** | Option<**i32**> | The gateway's desired revision from the preview; without it, a preview. |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_port_forwards_list
+
+> models::PaginatedGatewayForwardList cloud_gateways_port_forwards_list(gateway_id, page)
+
+
+A gateway's port forwards
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**page** | Option<**i32**> | A page number within the paginated result set. |  |
+
+### Return type
+
+[**models::PaginatedGatewayForwardList**](PaginatedGatewayForwardList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_port_forwards_partial_update
+
+> models::GatewayForward cloud_gateways_port_forwards_partial_update(gateway_id, id, patched_gateway_forward_write_request)
+
+
+Change a forward's fields; public_ports and target are each replaced whole.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+**patched_gateway_forward_write_request** | Option<[**PatchedGatewayForwardWriteRequest**](PatchedGatewayForwardWriteRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayForward**](GatewayForward.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_port_forwards_retrieve
+
+> models::GatewayForward cloud_gateways_port_forwards_retrieve(gateway_id, id)
+
+
+A gateway's port forwards
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**gateway_id** | **i32** |  | [required] |
+**id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::GatewayForward**](GatewayForward.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_reenroll_create
+
+> models::GatewayOperation cloud_gateways_reenroll_create(id, gateway_reenroll_request)
+
+
+Re-enroll the gateway (spec 8.1 step 6): its agent token is revoked and it restarts to enroll again. Without the preview's revision, networks and servers, 409 with a fresh preview.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**gateway_reenroll_request** | Option<[**GatewayReenrollRequest**](GatewayReenrollRequest.md)> |  |  |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_retrieve
+
+> models::Gateway cloud_gateways_retrieve(id)
+
+
+Manage gateways
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::Gateway**](Gateway.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_gateways_status_retrieve
+
+> models::GatewayStatus cloud_gateways_status_retrieve(id)
+
+
+The gateway's state and the customer part of its agent's last report (spec 9.5).
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::GatewayStatus**](GatewayStatus.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## cloud_generations_list
 
 > Vec<models::HardwareGeneration> cloud_generations_list()
@@ -1835,6 +3304,37 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## cloud_private_networks_apply_route_create
+
+> models::GatewayOperation cloud_private_networks_apply_route_create(id, apply_route_request)
+
+
+Re-render the named servers' routes and reboot them (spec 6.3); naming a server acknowledges its reboot.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** |  | [required] |
+**apply_route_request** | [**ApplyRouteRequest**](ApplyRouteRequest.md) |  | [required] |
+
+### Return type
+
+[**models::GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## cloud_private_networks_create
 
 > models::PrivateNetwork cloud_private_networks_create(private_network_request)
@@ -2004,6 +3504,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::PrivateNetwork**](PrivateNetwork.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_private_networks_route_status_retrieve
+
+> models::RouteStatus cloud_private_networks_route_status_retrieve(id)
+
+
+Each server's default route against the spec 6.2 rule, read from Proxmox, and the network's route applies.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** |  | [required] |
+
+### Return type
+
+[**models::RouteStatus**](RouteStatus.md)
 
 ### Authorization
 

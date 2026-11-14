@@ -11,35 +11,29 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// KubeVersionEnum : * `1.33.13` - 1.33.13 * `1.34.10` - 1.34.10 * `1.35.7` - 1.35.7 * `1.36.3` - 1.36.3
-/// * `1.33.13` - 1.33.13 * `1.34.10` - 1.34.10 * `1.35.7` - 1.35.7 * `1.36.3` - 1.36.3
+/// KubeVersionEnum : * `1.35.10` - 1.35.10 * `1.36.6` - 1.36.6
+/// * `1.35.10` - 1.35.10 * `1.36.6` - 1.36.6
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum KubeVersionEnum {
-    #[serde(rename = "1.33.13")]
-    Variant13313,
-    #[serde(rename = "1.34.10")]
-    Variant13410,
-    #[serde(rename = "1.35.7")]
-    Variant1357,
-    #[serde(rename = "1.36.3")]
-    Variant1363,
+    #[serde(rename = "1.35.10")]
+    Variant13510,
+    #[serde(rename = "1.36.6")]
+    Variant1366,
 
 }
 
 impl std::fmt::Display for KubeVersionEnum {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::Variant13313 => write!(f, "1.33.13"),
-            Self::Variant13410 => write!(f, "1.34.10"),
-            Self::Variant1357 => write!(f, "1.35.7"),
-            Self::Variant1363 => write!(f, "1.36.3"),
+            Self::Variant13510 => write!(f, "1.35.10"),
+            Self::Variant1366 => write!(f, "1.36.6"),
         }
     }
 }
 
 impl Default for KubeVersionEnum {
     fn default() -> KubeVersionEnum {
-        Self::Variant13313
+        Self::Variant13510
     }
 }
 

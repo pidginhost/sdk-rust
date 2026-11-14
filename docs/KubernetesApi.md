@@ -29,6 +29,8 @@ Method | HTTP request | Description
 [**kubernetes_clusters_lb_firewall_partial_update**](KubernetesApi.md#kubernetes_clusters_lb_firewall_partial_update) | **PATCH** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
 [**kubernetes_clusters_lb_firewall_retrieve**](KubernetesApi.md#kubernetes_clusters_lb_firewall_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
 [**kubernetes_clusters_lb_firewall_update**](KubernetesApi.md#kubernetes_clusters_lb_firewall_update) | **PUT** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
+[**kubernetes_clusters_lb_reimage_create**](KubernetesApi.md#kubernetes_clusters_lb_reimage_create) | **POST** /api/kubernetes/clusters/{id}/lb-reimage/ | 
+[**kubernetes_clusters_lb_reimage_retrieve**](KubernetesApi.md#kubernetes_clusters_lb_reimage_retrieve) | **GET** /api/kubernetes/clusters/{id}/lb-reimage/ | 
 [**kubernetes_clusters_list**](KubernetesApi.md#kubernetes_clusters_list) | **GET** /api/kubernetes/clusters/ | 
 [**kubernetes_clusters_node_operations_cancel_create**](KubernetesApi.md#kubernetes_clusters_node_operations_cancel_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/cancel/ | 
 [**kubernetes_clusters_node_operations_list**](KubernetesApi.md#kubernetes_clusters_node_operations_list) | **GET** /api/kubernetes/clusters/{cluster_id}/node-operations/ | 
@@ -840,6 +842,67 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## kubernetes_clusters_lb_reimage_create
+
+> models::LbReimageStarted kubernetes_clusters_lb_reimage_create(id, lb_reimage_request)
+
+
+Start a load-balancer replacement now. Traffic through the load balancer stops while it is switched over. Support can roll back for 24 hours after it completes. OAuth access tokens cannot start one.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**lb_reimage_request** | [**LbReimageRequest**](LbReimageRequest.md) |  | [required] |
+
+### Return type
+
+[**models::LbReimageStarted**](LBReimageStarted.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## kubernetes_clusters_lb_reimage_retrieve
+
+> models::LbReimageStatus kubernetes_clusters_lb_reimage_retrieve(id)
+
+
+Show the latest load-balancer replacement on this cluster and whether one can start now.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+
+### Return type
+
+[**models::LbReimageStatus**](LBReimageStatus.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

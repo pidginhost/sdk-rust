@@ -281,6 +281,346 @@ pub enum CloudFloatingIpv6UnauthorizeCreateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`cloud_gateways_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysCreateError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysDestroyError {
+    Status409(models::GatewayDeleteConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_firewall_rules_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysFirewallRulesCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_firewall_rules_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysFirewallRulesDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_firewall_rules_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysFirewallRulesListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_firewall_rules_move_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysFirewallRulesMoveCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_firewall_rules_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysFirewallRulesPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_firewall_rules_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysFirewallRulesRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_routes_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersRoutesCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_routes_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersRoutesDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_routes_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersRoutesListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_routes_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersRoutesPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_listeners_routes_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysListenersRoutesRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_networks_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysNetworksCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_networks_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysNetworksDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_networks_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysNetworksListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_networks_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysNetworksPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_networks_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysNetworksRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_operations_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysOperationsListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_operations_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysOperationsRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_backends_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsBackendsCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_backends_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsBackendsDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_backends_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsBackendsListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_backends_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsBackendsPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_backends_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsBackendsRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_pools_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPoolsRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_port_forwards_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPortForwardsCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_port_forwards_destroy`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPortForwardsDestroyError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_port_forwards_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPortForwardsListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_port_forwards_partial_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPortForwardsPartialUpdateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_port_forwards_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysPortForwardsRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_reenroll_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysReenrollCreateError {
+    Status409(models::GatewayReenrollConflict),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_gateways_status_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudGatewaysStatusRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`cloud_generations_list`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -414,6 +754,14 @@ pub enum CloudPrivateNetworksAddServerCreateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`cloud_private_networks_apply_route_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudPrivateNetworksApplyRouteCreateError {
+    Status409(models::GatewayConflict),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`cloud_private_networks_create`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -453,6 +801,13 @@ pub enum CloudPrivateNetworksRemoveServerCreateError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CloudPrivateNetworksRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_private_networks_route_status_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudPrivateNetworksRouteStatusRetrieveError {
     UnknownValue(serde_json::Value),
 }
 
@@ -2507,6 +2862,2202 @@ pub async fn cloud_floating_ipv6_unauthorize_create(configuration: &configuratio
     }
 }
 
+/// Reserve a gateway and queue its provisioning (spec 11.1); its state shows the progress.
+pub async fn cloud_gateways_create(configuration: &configuration::Configuration, gateway_create_request: models::GatewayCreateRequest) -> Result<models::Gateway, Error<CloudGatewaysCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_body_gateway_create_request = gateway_create_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_create_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Gateway`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Gateway`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Delete the gateway (spec 11.5): its VM is destroyed, then its networks and IPv4 are released. Without the preview's revision, networks and servers, 409 with a fresh preview.
+pub async fn cloud_gateways_destroy(configuration: &configuration::Configuration, id: &str, networks: Option<Vec<i32>>, revision: Option<i32>, servers: Option<Vec<i32>>) -> Result<models::GatewayOperation, Error<CloudGatewaysDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_query_networks = networks;
+    let p_query_revision = revision;
+    let p_query_servers = servers;
+
+    let uri_str = format!("{}/api/cloud/gateways/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_networks {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("networks".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("networks", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        };
+    }
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_servers {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("servers".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("servers", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        };
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Add a rule after the last one (spec 5.7); it is pending until the agent applies its revision.
+pub async fn cloud_gateways_firewall_rules_create(configuration: &configuration::Configuration, gateway_id: i32, gateway_firewall_rule_write_request: models::GatewayFirewallRuleWriteRequest) -> Result<models::GatewayFirewallRule, Error<CloudGatewaysFirewallRulesCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_body_gateway_firewall_rule_write_request = gateway_firewall_rule_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/firewall-rules/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_firewall_rule_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayFirewallRule`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayFirewallRule`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysFirewallRulesCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Delete a rule (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_firewall_rules_destroy(configuration: &configuration::Configuration, gateway_id: i32, id: i32, revision: Option<i32>) -> Result<models::GatewayOperation, Error<CloudGatewaysFirewallRulesDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/firewall-rules/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysFirewallRulesDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's firewall rules, in evaluation order
+pub async fn cloud_gateways_firewall_rules_list(configuration: &configuration::Configuration, gateway_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayFirewallRuleList, Error<CloudGatewaysFirewallRulesListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/firewall-rules/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayFirewallRuleList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayFirewallRuleList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysFirewallRulesListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Move a rule to a position, the others keeping their order. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_firewall_rules_move_create(configuration: &configuration::Configuration, gateway_id: i32, id: i32, gateway_firewall_move_request: models::GatewayFirewallMoveRequest, revision: Option<i32>) -> Result<models::GatewayFirewallRule, Error<CloudGatewaysFirewallRulesMoveCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_body_gateway_firewall_move_request = gateway_firewall_move_request;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/firewall-rules/{id}/move/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_firewall_move_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayFirewallRule`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayFirewallRule`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysFirewallRulesMoveCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Change a rule's fields; a source or destination is replaced whole. Its position stays.
+pub async fn cloud_gateways_firewall_rules_partial_update(configuration: &configuration::Configuration, gateway_id: i32, id: i32, patched_gateway_firewall_rule_write_request: Option<models::PatchedGatewayFirewallRuleWriteRequest>) -> Result<models::GatewayFirewallRule, Error<CloudGatewaysFirewallRulesPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_body_patched_gateway_firewall_rule_write_request = patched_gateway_firewall_rule_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/firewall-rules/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_firewall_rule_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayFirewallRule`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayFirewallRule`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysFirewallRulesPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's firewall rules, in evaluation order
+pub async fn cloud_gateways_firewall_rules_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: i32) -> Result<models::GatewayFirewallRule, Error<CloudGatewaysFirewallRulesRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/firewall-rules/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayFirewallRule`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayFirewallRule`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysFirewallRulesRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Manage gateways
+pub async fn cloud_gateways_list(configuration: &configuration::Configuration, page: Option<i32>) -> Result<models::PaginatedGatewayList, Error<CloudGatewaysListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Add a listener (spec 6.8): tcp and udp name a pool, http takes routes. Pending until applied.
+pub async fn cloud_gateways_listeners_create(configuration: &configuration::Configuration, gateway_id: i32, gateway_lb_listener_write_request: Option<models::GatewayLbListenerWriteRequest>) -> Result<models::GatewayLbListener, Error<CloudGatewaysListenersCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_body_gateway_lb_listener_write_request = gateway_lb_listener_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_lb_listener_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayLbListener`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayLbListener`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Delete a listener and its routes (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_listeners_destroy(configuration: &configuration::Configuration, gateway_id: i32, id: i32, revision: Option<i32>) -> Result<models::GatewayOperation, Error<CloudGatewaysListenersDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's load balancer listeners
+pub async fn cloud_gateways_listeners_list(configuration: &configuration::Configuration, gateway_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayLbListenerList, Error<CloudGatewaysListenersListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayLbListenerList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayLbListenerList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Change a listener's pool, sources, comment or enabled flag; protocol, port and mode are fixed.
+pub async fn cloud_gateways_listeners_partial_update(configuration: &configuration::Configuration, gateway_id: i32, id: i32, patched_gateway_lb_listener_write_request: Option<models::PatchedGatewayLbListenerWriteRequest>) -> Result<models::GatewayLbListener, Error<CloudGatewaysListenersPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_body_patched_gateway_lb_listener_write_request = patched_gateway_lb_listener_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_lb_listener_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayLbListener`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayLbListener`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's load balancer listeners
+pub async fn cloud_gateways_listeners_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: i32) -> Result<models::GatewayLbListener, Error<CloudGatewaysListenersRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayLbListener`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayLbListener`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Add a route (spec 5.6): hostnames and a path prefix to a pool. Pending until applied.
+pub async fn cloud_gateways_listeners_routes_create(configuration: &configuration::Configuration, gateway_id: i32, listener_id: i32, gateway_route_write_request: Option<models::GatewayRouteWriteRequest>) -> Result<models::GatewayRoute, Error<CloudGatewaysListenersRoutesCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_listener_id = listener_id;
+    let p_body_gateway_route_write_request = gateway_route_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/", configuration.base_path, gateway_id=p_path_gateway_id, listener_id=p_path_listener_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_route_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayRoute`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayRoute`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersRoutesCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Delete a route (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_listeners_routes_destroy(configuration: &configuration::Configuration, gateway_id: i32, id: i32, listener_id: i32, revision: Option<i32>) -> Result<models::GatewayOperation, Error<CloudGatewaysListenersRoutesDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_path_listener_id = listener_id;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id, listener_id=p_path_listener_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersRoutesDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// An http listener's routes
+pub async fn cloud_gateways_listeners_routes_list(configuration: &configuration::Configuration, gateway_id: i32, listener_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayRouteList, Error<CloudGatewaysListenersRoutesListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_listener_id = listener_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/", configuration.base_path, gateway_id=p_path_gateway_id, listener_id=p_path_listener_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayRouteList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayRouteList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersRoutesListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Change a route; hostnames are replaced whole.
+pub async fn cloud_gateways_listeners_routes_partial_update(configuration: &configuration::Configuration, gateway_id: i32, id: i32, listener_id: i32, patched_gateway_route_write_request: Option<models::PatchedGatewayRouteWriteRequest>) -> Result<models::GatewayRoute, Error<CloudGatewaysListenersRoutesPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_path_listener_id = listener_id;
+    let p_body_patched_gateway_route_write_request = patched_gateway_route_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id, listener_id=p_path_listener_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_route_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayRoute`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayRoute`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersRoutesPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// An http listener's routes
+pub async fn cloud_gateways_listeners_routes_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: i32, listener_id: i32) -> Result<models::GatewayRoute, Error<CloudGatewaysListenersRoutesRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_path_listener_id = listener_id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id, listener_id=p_path_listener_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayRoute`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayRoute`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysListenersRoutesRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Attach a network (spec 11.3): the operation reserves it and hotplugs the gateway's NIC.
+pub async fn cloud_gateways_networks_create(configuration: &configuration::Configuration, gateway_id: i32, gateway_network_create_request: models::GatewayNetworkCreateRequest) -> Result<models::GatewayOperation, Error<CloudGatewaysNetworksCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_body_gateway_network_create_request = gateway_network_create_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/networks/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_network_create_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysNetworksCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Detach a network (spec 11.3). Without the preview's revision and servers, 409 with a fresh preview.
+pub async fn cloud_gateways_networks_destroy(configuration: &configuration::Configuration, gateway_id: i32, network_id: i32, revision: Option<i32>, servers: Option<Vec<i32>>) -> Result<models::GatewayOperation, Error<CloudGatewaysNetworksDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_network_id = network_id;
+    let p_query_revision = revision;
+    let p_query_servers = servers;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/networks/{network_id}/", configuration.base_path, gateway_id=p_path_gateway_id, network_id=p_path_network_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_servers {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("servers".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("servers", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        };
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysNetworksDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's private networks, by network id
+pub async fn cloud_gateways_networks_list(configuration: &configuration::Configuration, gateway_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayNetworkList, Error<CloudGatewaysNetworksListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/networks/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayNetworkList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayNetworkList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysNetworksListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Switch a router network's SNAT (spec 6.4). Turning it off without the preview's revision and servers answers 409 with a fresh preview; the change is pending until the agent applies it.
+pub async fn cloud_gateways_networks_partial_update(configuration: &configuration::Configuration, gateway_id: i32, network_id: i32, revision: Option<i32>, servers: Option<Vec<i32>>, patched_gateway_network_update_request: Option<models::PatchedGatewayNetworkUpdateRequest>) -> Result<models::GatewayNetwork, Error<CloudGatewaysNetworksPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_network_id = network_id;
+    let p_query_revision = revision;
+    let p_query_servers = servers;
+    let p_body_patched_gateway_network_update_request = patched_gateway_network_update_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/networks/{network_id}/", configuration.base_path, gateway_id=p_path_gateway_id, network_id=p_path_network_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_servers {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("servers".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("servers", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        };
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_network_update_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayNetwork`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayNetwork`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysNetworksPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's private networks, by network id
+pub async fn cloud_gateways_networks_retrieve(configuration: &configuration::Configuration, gateway_id: i32, network_id: i32) -> Result<models::GatewayNetwork, Error<CloudGatewaysNetworksRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_network_id = network_id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/networks/{network_id}/", configuration.base_path, gateway_id=p_path_gateway_id, network_id=p_path_network_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayNetwork`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayNetwork`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysNetworksRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's operations, newest first
+pub async fn cloud_gateways_operations_list(configuration: &configuration::Configuration, gateway_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayOperationList, Error<CloudGatewaysOperationsListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/operations/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayOperationList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayOperationList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysOperationsListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's operations, newest first
+pub async fn cloud_gateways_operations_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: &str) -> Result<models::GatewayOperation, Error<CloudGatewaysOperationsRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/operations/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysOperationsRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Rename the gateway or change its maintenance window. The name is not compiled, so no revision follows; a new window reaches the agent in a new revision (spec 11.4).
+pub async fn cloud_gateways_partial_update(configuration: &configuration::Configuration, id: &str, patched_gateway_update_request: Option<models::PatchedGatewayUpdateRequest>) -> Result<models::Gateway, Error<CloudGatewaysPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_patched_gateway_update_request = patched_gateway_update_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_update_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Gateway`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Gateway`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Add a server to the pool (spec 5.5); it is pending until the agent applies its revision.
+pub async fn cloud_gateways_pools_backends_create(configuration: &configuration::Configuration, gateway_id: i32, pool_id: i32, gateway_backend_write_request: Option<models::GatewayBackendWriteRequest>) -> Result<models::GatewayBackend, Error<CloudGatewaysPoolsBackendsCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_pool_id = pool_id;
+    let p_body_gateway_backend_write_request = gateway_backend_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/", configuration.base_path, gateway_id=p_path_gateway_id, pool_id=p_path_pool_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_backend_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayBackend`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayBackend`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsBackendsCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Remove a server (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_pools_backends_destroy(configuration: &configuration::Configuration, gateway_id: i32, id: i32, pool_id: i32, revision: Option<i32>) -> Result<models::GatewayOperation, Error<CloudGatewaysPoolsBackendsDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_path_pool_id = pool_id;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id, pool_id=p_path_pool_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsBackendsDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A backend pool's servers
+pub async fn cloud_gateways_pools_backends_list(configuration: &configuration::Configuration, gateway_id: i32, pool_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayBackendList, Error<CloudGatewaysPoolsBackendsListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_pool_id = pool_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/", configuration.base_path, gateway_id=p_path_gateway_id, pool_id=p_path_pool_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayBackendList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayBackendList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsBackendsListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Change a server. The last enabled server of a pool in use cannot be disabled.
+pub async fn cloud_gateways_pools_backends_partial_update(configuration: &configuration::Configuration, gateway_id: i32, id: i32, pool_id: i32, patched_gateway_backend_write_request: Option<models::PatchedGatewayBackendWriteRequest>) -> Result<models::GatewayBackend, Error<CloudGatewaysPoolsBackendsPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_path_pool_id = pool_id;
+    let p_body_patched_gateway_backend_write_request = patched_gateway_backend_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id, pool_id=p_path_pool_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_backend_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayBackend`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayBackend`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsBackendsPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A backend pool's servers
+pub async fn cloud_gateways_pools_backends_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: i32, pool_id: i32) -> Result<models::GatewayBackend, Error<CloudGatewaysPoolsBackendsRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_path_pool_id = pool_id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id, pool_id=p_path_pool_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayBackend`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayBackend`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsBackendsRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Add a backend pool (spec 5.5); it is pending until the agent applies its revision.
+pub async fn cloud_gateways_pools_create(configuration: &configuration::Configuration, gateway_id: i32, gateway_backend_pool_write_request: Option<models::GatewayBackendPoolWriteRequest>) -> Result<models::GatewayBackendPool, Error<CloudGatewaysPoolsCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_body_gateway_backend_pool_write_request = gateway_backend_pool_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_backend_pool_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayBackendPool`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayBackendPool`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Delete an unused pool and its servers (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_pools_destroy(configuration: &configuration::Configuration, gateway_id: i32, id: i32, revision: Option<i32>) -> Result<models::GatewayOperation, Error<CloudGatewaysPoolsDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's backend pools
+pub async fn cloud_gateways_pools_list(configuration: &configuration::Configuration, gateway_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayBackendPoolList, Error<CloudGatewaysPoolsListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayBackendPoolList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayBackendPoolList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Change a pool; health_check takes the fields to change. Every listener and route on it must still fit.
+pub async fn cloud_gateways_pools_partial_update(configuration: &configuration::Configuration, gateway_id: i32, id: i32, patched_gateway_backend_pool_write_request: Option<models::PatchedGatewayBackendPoolWriteRequest>) -> Result<models::GatewayBackendPool, Error<CloudGatewaysPoolsPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_body_patched_gateway_backend_pool_write_request = patched_gateway_backend_pool_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_backend_pool_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayBackendPool`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayBackendPool`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's backend pools
+pub async fn cloud_gateways_pools_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: i32) -> Result<models::GatewayBackendPool, Error<CloudGatewaysPoolsRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/pools/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayBackendPool`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayBackendPool`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPoolsRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Add a port forward (spec 6.7); it is pending until the agent applies its revision.
+pub async fn cloud_gateways_port_forwards_create(configuration: &configuration::Configuration, gateway_id: i32, gateway_forward_write_request: models::GatewayForwardWriteRequest) -> Result<models::GatewayForward, Error<CloudGatewaysPortForwardsCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_body_gateway_forward_write_request = gateway_forward_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/port-forwards/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_forward_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayForward`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayForward`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPortForwardsCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Delete a forward (spec 5.11): 202 with the record the agent's acknowledgement completes. Without the preview's revision, 409 with a fresh one.
+pub async fn cloud_gateways_port_forwards_destroy(configuration: &configuration::Configuration, gateway_id: i32, id: i32, revision: Option<i32>) -> Result<models::GatewayOperation, Error<CloudGatewaysPortForwardsDestroyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_query_revision = revision;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/port-forwards/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = p_query_revision {
+        req_builder = req_builder.query(&[("revision", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPortForwardsDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's port forwards
+pub async fn cloud_gateways_port_forwards_list(configuration: &configuration::Configuration, gateway_id: i32, page: Option<i32>) -> Result<models::PaginatedGatewayForwardList, Error<CloudGatewaysPortForwardsListError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_query_page = page;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/port-forwards/", configuration.base_path, gateway_id=p_path_gateway_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PaginatedGatewayForwardList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PaginatedGatewayForwardList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPortForwardsListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Change a forward's fields; public_ports and target are each replaced whole.
+pub async fn cloud_gateways_port_forwards_partial_update(configuration: &configuration::Configuration, gateway_id: i32, id: i32, patched_gateway_forward_write_request: Option<models::PatchedGatewayForwardWriteRequest>) -> Result<models::GatewayForward, Error<CloudGatewaysPortForwardsPartialUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+    let p_body_patched_gateway_forward_write_request = patched_gateway_forward_write_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/port-forwards/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_patched_gateway_forward_write_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayForward`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayForward`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPortForwardsPartialUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// A gateway's port forwards
+pub async fn cloud_gateways_port_forwards_retrieve(configuration: &configuration::Configuration, gateway_id: i32, id: i32) -> Result<models::GatewayForward, Error<CloudGatewaysPortForwardsRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_gateway_id = gateway_id;
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{gateway_id}/port-forwards/{id}/", configuration.base_path, gateway_id=p_path_gateway_id, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayForward`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayForward`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysPortForwardsRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Re-enroll the gateway (spec 8.1 step 6): its agent token is revoked and it restarts to enroll again. Without the preview's revision, networks and servers, 409 with a fresh preview.
+pub async fn cloud_gateways_reenroll_create(configuration: &configuration::Configuration, id: &str, gateway_reenroll_request: Option<models::GatewayReenrollRequest>) -> Result<models::GatewayOperation, Error<CloudGatewaysReenrollCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_gateway_reenroll_request = gateway_reenroll_request;
+
+    let uri_str = format!("{}/api/cloud/gateways/{id}/reenroll/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_gateway_reenroll_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysReenrollCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Manage gateways
+pub async fn cloud_gateways_retrieve(configuration: &configuration::Configuration, id: &str) -> Result<models::Gateway, Error<CloudGatewaysRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{id}/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Gateway`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Gateway`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// The gateway's state and the customer part of its agent's last report (spec 9.5).
+pub async fn cloud_gateways_status_retrieve(configuration: &configuration::Configuration, id: &str) -> Result<models::GatewayStatus, Error<CloudGatewaysStatusRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/gateways/{id}/status/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayStatus`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayStatus`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudGatewaysStatusRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 pub async fn cloud_generations_list(configuration: &configuration::Configuration, ) -> Result<Vec<models::HardwareGeneration>, Error<CloudGenerationsListError>> {
 
@@ -3349,6 +5900,53 @@ pub async fn cloud_private_networks_add_server_create(configuration: &configurat
     }
 }
 
+/// Re-render the named servers' routes and reboot them (spec 6.3); naming a server acknowledges its reboot.
+pub async fn cloud_private_networks_apply_route_create(configuration: &configuration::Configuration, id: i32, apply_route_request: models::ApplyRouteRequest) -> Result<models::GatewayOperation, Error<CloudPrivateNetworksApplyRouteCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_apply_route_request = apply_route_request;
+
+    let uri_str = format!("{}/api/cloud/private-networks/{id}/apply-route/", configuration.base_path, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_apply_route_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GatewayOperation`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GatewayOperation`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudPrivateNetworksApplyRouteCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Manage private networks
 pub async fn cloud_private_networks_create(configuration: &configuration::Configuration, private_network_request: models::PrivateNetworkRequest) -> Result<models::PrivateNetwork, Error<CloudPrivateNetworksCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -3612,6 +6210,51 @@ pub async fn cloud_private_networks_retrieve(configuration: &configuration::Conf
     } else {
         let content = resp.text().await?;
         let entity: Option<CloudPrivateNetworksRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Each server's default route against the spec 6.2 rule, read from Proxmox, and the network's route applies.
+pub async fn cloud_private_networks_route_status_retrieve(configuration: &configuration::Configuration, id: i32) -> Result<models::RouteStatus, Error<CloudPrivateNetworksRouteStatusRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/private-networks/{id}/route-status/", configuration.base_path, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RouteStatus`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RouteStatus`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudPrivateNetworksRouteStatusRetrieveError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

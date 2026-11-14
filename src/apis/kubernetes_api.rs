@@ -203,6 +203,21 @@ pub enum KubernetesClustersLbFirewallUpdateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`kubernetes_clusters_lb_reimage_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersLbReimageCreateError {
+    Status409(models::LbReimageRefused),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`kubernetes_clusters_lb_reimage_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum KubernetesClustersLbReimageRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`kubernetes_clusters_list`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1638,6 +1653,98 @@ pub async fn kubernetes_clusters_lb_firewall_update(configuration: &configuratio
     } else {
         let content = resp.text().await?;
         let entity: Option<KubernetesClustersLbFirewallUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Start a load-balancer replacement now. Traffic through the load balancer stops while it is switched over. Support can roll back for 24 hours after it completes. OAuth access tokens cannot start one.
+pub async fn kubernetes_clusters_lb_reimage_create(configuration: &configuration::Configuration, id: &str, lb_reimage_request: models::LbReimageRequest) -> Result<models::LbReimageStarted, Error<KubernetesClustersLbReimageCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_lb_reimage_request = lb_reimage_request;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/lb-reimage/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_lb_reimage_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::LbReimageStarted`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::LbReimageStarted`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersLbReimageCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Show the latest load-balancer replacement on this cluster and whether one can start now.
+pub async fn kubernetes_clusters_lb_reimage_retrieve(configuration: &configuration::Configuration, id: &str) -> Result<models::LbReimageStatus, Error<KubernetesClustersLbReimageRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/kubernetes/clusters/{id}/lb-reimage/", configuration.base_path, id=crate::apis::urlencode(p_path_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::LbReimageStatus`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::LbReimageStatus`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<KubernetesClustersLbReimageRetrieveError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

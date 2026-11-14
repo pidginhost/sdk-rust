@@ -19,17 +19,17 @@ pub struct ActivateFreeDnsRequest {
     /// 'internal' for domains purchased on PidginHost, 'external' for user-added domains.  * `internal` - Internal * `external` - External
     #[serde(rename = "source")]
     pub source: models::SourceEnum,
-    /// IPv4 address to use as the default A record for the zone.
-    #[serde(rename = "ip")]
-    pub ip: String,
+    /// IPv4 address for the zone's default records. Leave it out to start with an empty zone.
+    #[serde(rename = "ip", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub ip: Option<Option<String>>,
 }
 
 impl ActivateFreeDnsRequest {
-    pub fn new(domain: String, source: models::SourceEnum, ip: String) -> ActivateFreeDnsRequest {
+    pub fn new(domain: String, source: models::SourceEnum) -> ActivateFreeDnsRequest {
         ActivateFreeDnsRequest {
             domain,
             source,
-            ip,
+            ip: None,
         }
     }
 }

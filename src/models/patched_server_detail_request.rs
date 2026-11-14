@@ -13,6 +13,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PatchedServerDetailRequest {
+    /// Renaming also moves reverse DNS still on the old name. The server takes the new name at its next reboot from the panel or API, which also creates new SSH host keys and resets the login password and SSH keys to the ones saved here.
+    #[serde(rename = "hostname", skip_serializing_if = "Option::is_none")]
+    pub hostname: Option<String>,
     #[serde(rename = "project", skip_serializing_if = "Option::is_none")]
     pub project: Option<String>,
     #[serde(rename = "password", skip_serializing_if = "Option::is_none")]
@@ -25,6 +28,7 @@ pub struct PatchedServerDetailRequest {
 impl PatchedServerDetailRequest {
     pub fn new() -> PatchedServerDetailRequest {
         PatchedServerDetailRequest {
+            hostname: None,
             project: None,
             password: None,
             ssh_pub_key: None,
