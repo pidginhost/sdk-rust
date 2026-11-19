@@ -43,6 +43,13 @@ pub enum CloudBucketsDestroyError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`cloud_buckets_destroy_protection_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudBucketsDestroyProtectionCreateError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`cloud_buckets_list`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -923,6 +930,20 @@ pub enum CloudServersModifyPackageCreateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`cloud_servers_monitoring_retrieve`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudServersMonitoringRetrieveError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`cloud_servers_monitoring_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CloudServersMonitoringUpdateError {
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`cloud_servers_partial_update`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -934,6 +955,7 @@ pub enum CloudServersPartialUpdateError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CloudServersPowerManagementCreateError {
+    Status503(models::PowerManagementHostUnavailable),
     UnknownValue(serde_json::Value),
 }
 
@@ -1329,6 +1351,53 @@ pub async fn cloud_buckets_destroy(configuration: &configuration::Configuration,
     } else {
         let content = resp.text().await?;
         let entity: Option<CloudBucketsDestroyError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Enable or disable destroy protection.
+pub async fn cloud_buckets_destroy_protection_create(configuration: &configuration::Configuration, id: i32, destroy_protection_request: models::DestroyProtectionRequest) -> Result<models::DestroyProtection, Error<CloudBucketsDestroyProtectionCreateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_destroy_protection_request = destroy_protection_request;
+
+    let uri_str = format!("{}/api/cloud/buckets/{id}/destroy-protection/", configuration.base_path, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_destroy_protection_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::DestroyProtection`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::DestroyProtection`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudBucketsDestroyProtectionCreateError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -6991,6 +7060,98 @@ pub async fn cloud_servers_modify_package_create(configuration: &configuration::
     }
 }
 
+/// Show whether monitoring alerts are on for this server.
+pub async fn cloud_servers_monitoring_retrieve(configuration: &configuration::Configuration, id: i32) -> Result<models::ServerMonitoring, Error<CloudServersMonitoringRetrieveError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+
+    let uri_str = format!("{}/api/cloud/servers/{id}/monitoring/", configuration.base_path, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ServerMonitoring`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ServerMonitoring`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudServersMonitoringRetrieveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Turn monitoring alerts on or off. Only an active server can change it.
+pub async fn cloud_servers_monitoring_update(configuration: &configuration::Configuration, id: i32, server_monitoring_request: models::ServerMonitoringRequest) -> Result<models::ServerMonitoring, Error<CloudServersMonitoringUpdateError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_id = id;
+    let p_body_server_monitoring_request = server_monitoring_request;
+
+    let uri_str = format!("{}/api/cloud/servers/{id}/monitoring/", configuration.base_path, id=p_path_id);
+    let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    req_builder = req_builder.json(&p_body_server_monitoring_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ServerMonitoring`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ServerMonitoring`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CloudServersMonitoringUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Cloud servers
 pub async fn cloud_servers_partial_update(configuration: &configuration::Configuration, id: i32, patched_server_detail_request: Option<models::PatchedServerDetailRequest>) -> Result<models::ServerDetail, Error<CloudServersPartialUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
@@ -7038,7 +7199,7 @@ pub async fn cloud_servers_partial_update(configuration: &configuration::Configu
     }
 }
 
-/// Server power management
+/// Queue a power action and return the state observed before queueing. If the state cannot be read, the action is refused with HTTP 503.
 pub async fn cloud_servers_power_management_create(configuration: &configuration::Configuration, id: i32, power_management_request: models::PowerManagementRequest) -> Result<models::PowerManagement, Error<CloudServersPowerManagementCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;
@@ -7085,7 +7246,7 @@ pub async fn cloud_servers_power_management_create(configuration: &configuration
     }
 }
 
-/// Server power management
+/// Read the server's power state and the reason if it is unavailable.
 pub async fn cloud_servers_power_management_retrieve(configuration: &configuration::Configuration, id: i32) -> Result<models::PowerManagement, Error<CloudServersPowerManagementRetrieveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_id = id;

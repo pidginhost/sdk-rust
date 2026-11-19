@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**cloud_buckets_credentials_reveal_create**](CloudApi.md#cloud_buckets_credentials_reveal_create) | **POST** /api/cloud/buckets/{id}/credentials/reveal/ | 
 [**cloud_buckets_credentials_rotate_create**](CloudApi.md#cloud_buckets_credentials_rotate_create) | **POST** /api/cloud/buckets/{id}/credentials/rotate/ | 
 [**cloud_buckets_destroy**](CloudApi.md#cloud_buckets_destroy) | **DELETE** /api/cloud/buckets/{id}/ | 
+[**cloud_buckets_destroy_protection_create**](CloudApi.md#cloud_buckets_destroy_protection_create) | **POST** /api/cloud/buckets/{id}/destroy-protection/ | 
 [**cloud_buckets_list**](CloudApi.md#cloud_buckets_list) | **GET** /api/cloud/buckets/ | 
 [**cloud_buckets_resize_create**](CloudApi.md#cloud_buckets_resize_create) | **POST** /api/cloud/buckets/{id}/resize/ | 
 [**cloud_buckets_retrieve**](CloudApi.md#cloud_buckets_retrieve) | **GET** /api/cloud/buckets/{id}/ | 
@@ -130,6 +131,8 @@ Method | HTTP request | Description
 [**cloud_servers_detach_ipv6_create**](CloudApi.md#cloud_servers_detach_ipv6_create) | **POST** /api/cloud/servers/{id}/detach-ipv6/ | 
 [**cloud_servers_list**](CloudApi.md#cloud_servers_list) | **GET** /api/cloud/servers/ | 
 [**cloud_servers_modify_package_create**](CloudApi.md#cloud_servers_modify_package_create) | **POST** /api/cloud/servers/{id}/modify-package/ | 
+[**cloud_servers_monitoring_retrieve**](CloudApi.md#cloud_servers_monitoring_retrieve) | **GET** /api/cloud/servers/{id}/monitoring/ | 
+[**cloud_servers_monitoring_update**](CloudApi.md#cloud_servers_monitoring_update) | **PUT** /api/cloud/servers/{id}/monitoring/ | 
 [**cloud_servers_partial_update**](CloudApi.md#cloud_servers_partial_update) | **PATCH** /api/cloud/servers/{id}/ | 
 [**cloud_servers_power_management_create**](CloudApi.md#cloud_servers_power_management_create) | **POST** /api/cloud/servers/{id}/power-management/ | 
 [**cloud_servers_power_management_retrieve**](CloudApi.md#cloud_servers_power_management_retrieve) | **GET** /api/cloud/servers/{id}/power-management/ | 
@@ -280,6 +283,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_buckets_destroy_protection_create
+
+> models::DestroyProtection cloud_buckets_destroy_protection_create(id, destroy_protection_request)
+
+
+Enable or disable destroy protection.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | A unique integer value identifying this S3 bucket. | [required] |
+**destroy_protection_request** | [**DestroyProtectionRequest**](DestroyProtectionRequest.md) |  | [required] |
+
+### Return type
+
+[**models::DestroyProtection**](DestroyProtection.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4031,6 +4065,67 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## cloud_servers_monitoring_retrieve
+
+> models::ServerMonitoring cloud_servers_monitoring_retrieve(id)
+
+
+Show whether monitoring alerts are on for this server.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
+
+### Return type
+
+[**models::ServerMonitoring**](ServerMonitoring.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## cloud_servers_monitoring_update
+
+> models::ServerMonitoring cloud_servers_monitoring_update(id, server_monitoring_request)
+
+
+Turn monitoring alerts on or off. Only an active server can change it.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | A unique integer value identifying this virtual machine. | [required] |
+**server_monitoring_request** | [**ServerMonitoringRequest**](ServerMonitoringRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ServerMonitoring**](ServerMonitoring.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## cloud_servers_partial_update
 
 > models::ServerDetail cloud_servers_partial_update(id, patched_server_detail_request)
@@ -4067,7 +4162,7 @@ Name | Type | Description  | Required | Notes
 > models::PowerManagement cloud_servers_power_management_create(id, power_management_request)
 
 
-Server power management
+Queue a power action and return the state observed before queueing. If the state cannot be read, the action is refused with HTTP 503.
 
 ### Parameters
 
@@ -4098,7 +4193,7 @@ Name | Type | Description  | Required | Notes
 > models::PowerManagement cloud_servers_power_management_retrieve(id)
 
 
-Server power management
+Read the server's power state and the reason if it is unavailable.
 
 ### Parameters
 

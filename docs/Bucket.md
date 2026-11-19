@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **used_bytes** | **i64** |  | [readonly]
 **object_count** | **i64** |  | [readonly]
 **public_read** | **bool** |  | [readonly]
+**destroy_protection** | **bool** | Prevents the bucket from being deleted until disabled. | [readonly]
 **status** | [**models::ResourceStatusEnum**](ResourceStatusEnum.md) |  | [readonly][default to Pending]
 **endpoint** | **String** |  | [readonly]
 **region** | **String** |  | [readonly]

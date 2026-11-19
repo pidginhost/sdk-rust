@@ -29,6 +29,9 @@ pub struct Bucket {
     pub object_count: i64,
     #[serde(rename = "public_read")]
     pub public_read: bool,
+    /// Prevents the bucket from being deleted until disabled.
+    #[serde(rename = "destroy_protection")]
+    pub destroy_protection: bool,
     #[serde(rename = "status")]
     pub status: models::ResourceStatusEnum,
     #[serde(rename = "endpoint")]
@@ -40,7 +43,7 @@ pub struct Bucket {
 }
 
 impl Bucket {
-    pub fn new(billing: Option<models::ResourceBilling>, id: i32, name: String, full_name: String, quota_gb: i32, used_bytes: i64, object_count: i64, public_read: bool, status: models::ResourceStatusEnum, endpoint: String, region: String, created: String) -> Bucket {
+    pub fn new(billing: Option<models::ResourceBilling>, id: i32, name: String, full_name: String, quota_gb: i32, used_bytes: i64, object_count: i64, public_read: bool, destroy_protection: bool, status: models::ResourceStatusEnum, endpoint: String, region: String, created: String) -> Bucket {
         Bucket {
             billing: if let Some(x) = billing {Some(Box::new(x))} else {None},
             id,
@@ -50,6 +53,7 @@ impl Bucket {
             used_bytes,
             object_count,
             public_read,
+            destroy_protection,
             status,
             endpoint,
             region,

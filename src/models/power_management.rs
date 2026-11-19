@@ -15,12 +15,15 @@ use serde::{Deserialize, Serialize};
 pub struct PowerManagement {
     #[serde(rename = "status")]
     pub status: String,
+    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
+    pub message: Option<String>,
 }
 
 impl PowerManagement {
     pub fn new(status: String) -> PowerManagement {
         PowerManagement {
             status,
+            message: None,
         }
     }
 }

@@ -23,6 +23,9 @@ pub struct ServerUsageResponse {
     pub cpu: std::collections::HashMap<String, serde_json::Value>,
     #[serde(rename = "memory")]
     pub memory: std::collections::HashMap<String, serde_json::Value>,
+    /// Why the status is unavailable, when it is.
+    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
+    pub message: Option<String>,
 }
 
 impl ServerUsageResponse {
@@ -33,6 +36,7 @@ impl ServerUsageResponse {
             uptime_text,
             cpu,
             memory,
+            message: None,
         }
     }
 }
